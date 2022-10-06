@@ -4343,40 +4343,46 @@ import os
 # print()
 import re
 
+#
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#         self.verify_fio(fio)
+#         self.verify_old(old)
+#         self.verify_weight(weight)
+#
+#         self.__fio = fio.split()
+#         self.__old = old
+#         self.__password = ps
+#         self.__weight = weight
+#
+#     @classmethod
+#     def verify_fio(cls, fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должно быть строкой")
+#         f = fio.split()  # ['Волков', 'Игорь', 'Николаевич']
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         letters = "".join(re.findall(r'[a-zа-яё-]', fio, flags=re.IGNORECASE))  # ВолковИгорьНиколаевич
+#         # ['В', 'о', 'л', 'к', 'о', 'в', 'И', 'г', 'о', 'р', 'ь', 'Н', 'и', 'к', 'о', 'л', 'а', 'е', 'в', 'и', 'ч']
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @classmethod
+#     def verify_old(cls, old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом в диапазоне от 14 до 120 лет")
+#
+#     @classmethod
+#     def verify_weight(cls, w):
+#         if not isinstance(w, float) or w < 20:
+#             raise TypeError("Вес должен быть вещественным числом от 20 кг и выше")
+#
+#
+# p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
 
-class UserData:
-    def __init__(self, fio, old, ps, weight):
-        self.verify_fio(fio)
-        self.verify_old(old)
-        self.verify_weight(weight)
-
-        self.__fio = fio.split()
-        self.__old = old
-        self.__password = ps
-        self.__weight = weight
-
-    @classmethod
-    def verify_fio(cls, fio):
-        if not isinstance(fio, str):
-            raise TypeError("ФИО должно быть строкой")
-        f = fio.split()  # ['Волков', 'Игорь', 'Николаевич']
-        if len(f) != 3:
-            raise TypeError("Неверный формат ФИО")
-        letters = "".join(re.findall(r'[a-zа-яё-]', fio, flags=re.IGNORECASE))  # ВолковИгорьНиколаевич
-        # ['В', 'о', 'л', 'к', 'о', 'в', 'И', 'г', 'о', 'р', 'ь', 'Н', 'и', 'к', 'о', 'л', 'а', 'е', 'в', 'и', 'ч']
-        for s in f:
-            if len(s.strip(letters)) != 0:
-                raise TypeError("В ФИО можно использовать только буквы и дефис")
-
-    @classmethod
-    def verify_old(cls, old):
-        if not isinstance(old, int) or old < 14 or old > 120:
-            raise TypeError("Возраст должен быть числом в диапазоне от 14 до 120 лет")
-
-    @classmethod
-    def verify_weight(cls, w):
-        if not isinstance(w, float) or w < 20:
-            raise TypeError("Вес должен быть вещественным числом от 20 кг и выше")
+print("Input changes")
 
 
-p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
+
+
