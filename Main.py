@@ -4389,7 +4389,12 @@ import re
 #
 # p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
 
+<<<<<<< HEAD
 # print("Input changes")
+=======
+print("Input changes")
+print("Input changes in cloned project")
+>>>>>>> c285ab5a9acc4d354858e419f68da6bab7c14eb0
 
 
 
