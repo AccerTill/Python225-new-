@@ -1641,14 +1641,22 @@ import time
 #
 # print("PyCharm")
 
-# a = {"Tom", "Bob", "Alice"}
-# a.add("Ann")
+#print("Hello!)
+
+
+# a={1,3,5,3}
+# a.add(234)
 # print(a)
-# # b = "Tom"
-# # if b in a:
-# #     a.remove(b)
-# # a.discard("Tom")
-# # a.pop()
+
+# a = {"Tom", "Bob", "Alice"}
+# # a.add("Ann")
+# # print(a)
+# # # b = "Tom"
+# # # if b in a:
+# # #     a.remove(b)
+# a.discard("Tom")
+# a.pop() # deleting first element
+# # # a.pop()
 # a.clear()
 # print(a)
 
@@ -1676,7 +1684,7 @@ import time
 # s = s1 | s2 | s3 | s4 | s5 | s6 | s7
 # print(s)
 # print(len(s))
-# print(max(s))
+# print(max(s))m 
 # print(min(s))
 
 # s1 = "Hello"
@@ -4381,7 +4389,7 @@ import re
 #
 # p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
 
-print("Input changes")
+# print("Input changes")
 
 
 
