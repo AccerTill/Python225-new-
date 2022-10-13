@@ -2212,15 +2212,14 @@ import time
 # print(res)
 
 
-# def increment(number):
-#     def inner(x):
-#         return number + x
-#     return inner
-#
-#
-# a = increment(10)
-# print(a(5))
-# print(a(4))
+def increment(number):
+    def inner(x):
+        return number + x
+    return inner
+
+a = increment(10)
+print(a(5))
+print(a(4))
 #
 # b = increment(1)
 # print(b(7))
@@ -3328,6 +3327,12 @@ import re
 #
 # print(remove(" Hello\tWorld "))
 
+
+
+
+
+
+
 # Файлы
 
 # 1. Открытие файла
@@ -4389,12 +4394,12 @@ import re
 #
 # p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
+# # print("Input changes")
+# =======
 # print("Input changes")
-=======
-print("Input changes")
-print("Input changes in cloned project")
->>>>>>> c285ab5a9acc4d354858e419f68da6bab7c14eb0
+# print("Input changes in cloned project")
+# >>>>>>> c285ab5a9acc4d354858e419f68da6bab7c14eb0
 
 
 
