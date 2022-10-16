@@ -548,10 +548,10 @@ import re
 # print(re.findall(r"\[[1-9a-z\s-]+\]", text))
 #
 # # print(re.findall(r'\[.*?]', text))
-text2 = "1 hello 12"
-
-text = "HELLO! Ilona, 65 Alex, Andrew, Paul and " \
-       "George are here."
+# text2 = "1 hello 12"
+#
+# text = "HELLO! Ilona, 65 Alex, Andrew, Paul and " \
+#        "George are here."
 # print(re.findall(r"^HELLO!", text))
 # print(re.findall(r"here.$", text))
 # print(re.findall(r"^1[a-zA-Z\s]+12$", text2))
@@ -837,6 +837,8 @@ text = "HELLO! Ilona, 65 Alex, Andrew, Paul and " \
 # ------------------------------OS----------------------------------
 
 import os
+import time
+
 
 # print("Current directory: ", os.getcwd())
 # print(os.listdir())   # list of folders in current directory
@@ -874,19 +876,340 @@ import os
 #     print(("\t\tFiles:", files))
 #     print()
 
-def remove_empty_dirs(root_tree):
-    for root, dirs, files in os.walk(root_tree):
-        # if  os.listdir(root): # пути к непустым папкам
-        #     print(root)
-        if not os.listdir(root):  # пути к пустым папкам (not)
-            os.rmdir(root)
-            print(f'Directory {root} is removed')
+# def remove_empty_dirs(root_tree):
+#     for root, dirs, files in os.walk(root_tree):
+#         # if  os.listdir(root): # пути к непустым папкам
+#         #     print(root)
+#         if not os.listdir(root):  # пути к пустым папкам (not)
+#             os.rmdir(root)
+#             print(f'Directory {root} is removed')
+#
+# remove_empty_dirs('TEST')
+#
+#
+# print(os.path.split(r"D:\Python225\test\nested2\nested3\1.txt"))  # разбивает путь
+# # на кортеж (head, tail)
+# print(os.path.dirname(r"D:\Python225\test\nested2\nested3\1.txt"))
+# print(os.path.basename(r"D:\Python225\test\nested2\nested3\1.txt"))
+#
+#
+# print(os.path.join("C:\PycharmProjects", "Python225", "text.txt"))
 
-remove_empty_dirs('TEST')
+# dirs = ["Work/F1", "Work/F2/F21"]  # creating directories
+# for dir in dirs:
+#        os.makedirs(dir)
+
+# files = {
+#      "Work": ['w.txt'],
+#      "Work\\F1": ['f11.txt', 'f12.txt', 'f13.txt'],
+#      "Work\\F2\\f21": ['f211.txt', 'f212.txt']
+# }
+# for d, f in files.items():
+#        for file in f:
+#               file_path = os.path.join(d, file)
+#               print(file_path)
+#               open(file_path, "w").close()
+
+# file_with_text = [r"Work\w.txt", r"Work\F1\f12.txt",
+#                   r"Work\F2\f21\f211.txt", r"Work\F2\f21\f212.txt"]
+#
+# for file in file_with_text:
+#     with open(file, "w") as f:
+#         f.write(f"Any text in file {file}.")
+#
+# def print_tree(root, topdown):
+#     print(f"Walk around {root} {'to_bottom' if topdown else 'to_up'}")
+#     for root, dirs, files in os.walk(root, topdown = topdown):
+#         print(root)
+#         print(dirs)
+#         print(files)
+#     print("-"*50)
+#
+# print_tree("-Work-", topdown=False)
+# print_tree("-Work-", topdown=True)
+
+# -----------------------------------------------
+# def print_tree(root, topdown):
+#     print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
+#     for root, dirs, files in os.walk(root, topdown=topdown):
+#         print(root)
+#         print(dirs)
+#         print(files)
+#     print("-" * 50)
+#
+# #
+# print_tree('Work', topdown=False)
+# print_tree('Work', topdown=True)
 
 
-print(os.path.split(r"D:\Python225\test\nested2\nested3\1.txt"))  # разбивает путь
-# на кортеж (head, tail)
-print(os.path.dirname(r"D:\Python225\test\nested2\nested3\1.txt"))
-print(os.path.basename(r"D:\Python225\test\nested2\nested3\1.txt"))
+# -----------------------------------------------
 
+# print(os.path.split(r"D:\Python225\test\nested2\nested3\1.txt"))
+
+# print(os.path.exists(r"C:\PycharmProjects\Python225\Work\w.txt")) # checking existing of path and file
+#
+# path=r"C:\PycharmProjects\Python225\New.txt"
+# print(os.path.getatime(path)) # time of last opening of time
+# print(os.path.getmtime(path)) # time of last changing of time
+# print(os.path.getctime(path)) # time of last changing of time
+
+# path = r"C:\Program Files\PyCharm Community Edition 2022.2.2\plugins\python-ce" \
+#        r"\helpers\typeshed\stdlib"
+
+# size = os.path.getsize(path)
+# print(size)
+# ksize = size // 1024
+# print("Size", ksize, "Kbytes")
+# c_time = os.path.getctime(path)
+# print(c_time)
+# print(time.strftime("%d.%m.%y, %H:%M:%S", time.localtime(c_time)))
+
+
+# print(os.path.isfile(r"C:\Program Files\PyCharm Community Edition 2022.2.2"
+#                      r"\plugins\python-ce\helpers\typeshed\stdlib\ssl.pyi"))
+# print(os.path.isfile(r"C:\Program Files\PyCharm Community Edition 2022.2.2"
+#                      r"\plugins\python-ce\helpers\typeshed\stdlib"))
+# print(os.path.isdir(r"C:\Program Files\PyCharm Community Edition 2022.2.2"
+#                      r"\plugins\python-ce\helpers\typeshed\stdlib"))
+
+
+# -----------------------------------------
+# -------------------------------------ООП (объектно ориентированное программирование)
+# -----------------------------------------
+
+
+# class Point:
+#        """Class for coordinates of points on plate."""
+#        x=1
+#        y=1
+#
+# p1=Point()
+# print(type(p1))
+# Point.x=100
+# p1.x=200
+# print(p1.x, p1.y)
+# print(Point.x)
+# print(id(p1.x))
+# print(id(Point.x))
+# print(id(p1))
+# print(id(Point))
+# print(Point.__doc__)
+# print(Point.__name__)
+# print(dir(Point))
+# p2 = Point()
+# print(p2.x, p1.y)
+
+# class Point:
+#     """Class for coordinates of points on plate."""
+#     x = 1
+#     y = 1
+#     def set_coords(self):
+#         print(self.__dict__)
+# p1 = Point()
+# p1.x=200
+# p1.y=5
+# p1.set_coords()
+# Point.set_coords(p1)
+# p2 =Point()
+# p2.set_coords()
+
+
+# print(p1.x, p1.y)
+# print(type(p1))
+# Point.x = 100
+# print(Point.x, "Point.x ")
+# print(Point.x, Point.y)
+# print(id(p1), "-id")
+# print(id(Point), '-id')
+# print(p1.__dict__, ' p1.__dict__')
+# print(Point.__doc__)
+# print(Point.__name__)
+# print(dir(Point))
+# p2 = Point()
+# print(p2.x, p2.y)
+# print(p2.__dict__)
+# print()
+# print(Point.__dict__)
+
+# class Point:
+#     x = 1
+#     y = 1
+#     def set_coords(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+# p1=Point()
+# p1.set_coords(5, 10)
+# print(p1.__dict__)
+#
+# p2=Point()
+# p2.set_coords(3, 8)
+# print(p2.__dict__)
+#
+# Point.set_coords(p2, 2, 7)
+# print(p2.__dict__)
+#
+# -----------------------------------------------------
+#
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#     def print_info(self):
+#         print(" Personal info. ".center(40, "*"))
+#         print(f"name: {self.name}\nbirthday: {self.birthday}\n"
+#               f"phone:{self.phone}\ncountry: {self.country}\n"
+#               f"city: {self.city}\naddress: {self.address}")
+#         print("=" * 40)
+#     def input_info(self, first_name, birthday, phone, country,
+#                    city, address):
+#         self.name = first_name
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.country = country
+#         self.city = city
+#         self.address = address
+#     def set_name(self, name):  # Install name
+#         self.name = name
+#     def get_name(self):  # get name
+#         a = "Name: " + self.name
+#         return a
+#     def set_birthday(self, birthday):
+#         self.birthday = birthday
+#     def get_birthday(self):
+#         return self.birthday
+#
+# h1 = Human()
+# h1.input_info("Cat", "23.05.1986", "45-46-98", "Spain", 'Madrid', "Libre via")
+# h1.print_info()
+# h1.set_name("Valery")
+# print(h1.get_name())
+# h1.set_birthday(("12.04.2021"))
+# print(h1.get_birthday())
+
+
+#
+# class Point:
+#     x = 1
+#     y = 1
+#
+# p1 = Point()
+# p1.x = 5
+# p1.y = 10
+# print(p1.__dict__)
+# print(p1.x)
+# print(getattr(p1,"x"))
+# # print(hasattr(p1, "z"))
+# # print(hasattr(p1, "y"))
+# p1.z=7
+# p1.name= "Viola"
+# # setattr(p1,"u", 5)
+# # setattr(Point,"w", 53)
+# print(p1.__dict__)
+# # print(p1.w)
+# # print(p1.u)
+# delattr(p1, "z")
+# print(p1.__dict__)
+
+
+#
+# class Person:
+#     skill = 10
+#     def __init__(self,name,surname):
+#         self.name = name
+#         self.surname = surname
+#     def print_info(self):
+#         print("Info of staff: ", self.name, self.surname)
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Qualification: ", self.skill, "\n")
+#
+# p1 = Person("Alex", "Vissner")
+# p1.print_info()
+# p1.add_skill(3)
+#
+# p2 = Person("Susan", "Nisson")
+# p2.print_info()
+# p1.add_skill(2)
+
+
+#
+# class Point:
+#    def __init__(self, x=0, y=0):
+#         self.x=x
+#         self.y=y
+#         print("This is initializator!")
+#    def __del__(self):
+#        print("Deleting of example: " + self.__class__.__name__)
+#
+# p1=Point(5, 10)
+# print(p1.__dict__, " DICT")
+# del p1
+# print(p1.x)
+
+
+# class Point:
+#     count = 0  # статические свойства
+#     def __init__(self, x=0, y=0):  # динамические свойства
+#         self.x = x
+#         self.y = y
+#         # self.count +=1
+#         Point.count +=1
+#         # print(Point.count)
+#
+# p1 = Point(5, 10)
+# p2 = Point(15, 20)
+# p3 = Point(152, 210)
+# # print(Point.count)
+# # print(p1.count, "p1.count")
+# print(p1.count, "p2.count")
+# print(Point.count)
+
+#
+# class Robot:
+#     k = 0
+#     def __init__(self, name):
+#         self.name = name
+#         print("--Initialization of robot:", self.name)
+#         Robot.k +=1
+#     def __del__(self):
+#         print(self.name, "   Off robots.")
+#         Robot.k -=1
+#         if Robot.k == 0:
+#             print(self.name, "---Last robot.---")
+#         else:
+#             print("   Working robots Qty is:", Robot.k)
+#         # print("   Now quantity of working robots is: ", Robot.k)
+#     def say_hi(self):
+#         print("--Hello! My name is:", self.name)
+#
+# droid1=Robot("#1")
+# droid1.say_hi()
+# print("---------Quantity of robots: ", Robot.k)
+# droid2=Robot("#2")
+# droid2.say_hi()
+# print("---------Quantity of robots: ", Robot.k)
+# droid3=Robot("#3")
+# droid3.say_hi()
+# print("Quantity of robots: ", Robot.k)
+# print("----------------------------------------")
+# print("\n ***   Now robots are working   *** \n")
+# print("Work of robots is finished, let's off robots")
+# del droid1
+# del droid2
+# print("Quantity of robots: ", Robot.k)
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+# p1 = Point(5, 10)
+# # print(p1.__x, p1.__y)
+# p1.x = 100
+# p1.y = "abc"
+# # print(p1.__x, p1.__y)
+# print(p1.__dict__)

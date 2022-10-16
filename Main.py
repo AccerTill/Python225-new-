@@ -2212,14 +2212,14 @@ import time
 # print(res)
 
 
-def increment(number):
-    def inner(x):
-        return number + x
-    return inner
-
-a = increment(10)
-print(a(5))
-print(a(4))
+# def increment(number):
+#     def inner(x):
+#         return number + x
+#     return inner
+#
+# a = increment(10)
+# print(a(5))
+# print(a(4))
 #
 # b = increment(1)
 # print(b(7))
@@ -3587,7 +3587,7 @@ import os
 #         print(files)
 #     print("-" * 50)
 #
-#
+# #
 # print_tree('Work', topdown=False)
 # print_tree('Work', topdown=True)
 
@@ -3668,29 +3668,29 @@ import os
 # print(p2.__dict__)
 
 
-# class Human:
-#     name = "name"
-#     birthday = "00.00.0000"
-#     phone = "00-00-00"
-#     country = "country"
-#     city = "city"
-#     address = "street, house"
-#
-#     def print_info(self):
-#         print(" Персональные данные ".center(40, "*"))
-#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\n"
-#               f"Номер телефона: {self.phone}\nСтрана: {self.country}\n"
-#               f"Город: {self.city}\nДомашний адрес: {self.address}")
-#         print("=" * 40)
-#
-#     def input_info(self, first_name, birthday, phone, country, city, address):
-#         self.name = first_name
-#         self.birthday = birthday
-#         self.phone = phone
-#         self.country = country
-#         self.city = city
-#         self.address = address
-#
+class Human:
+    name = "name"
+    birthday = "00.00.0000"
+    phone = "00-00-00"
+    country = "country"
+    city = "city"
+    address = "street, house"
+
+    def print_info(self):
+        print(" Персональные данные ".center(40, "*"))
+        print(f"Имя: {self.name}\nДата рождения: {self.birthday}\n"
+              f"Номер телефона: {self.phone}\nСтрана: {self.country}\n"
+              f"Город: {self.city}\nДомашний адрес: {self.address}")
+        print("=" * 40)
+
+    def input_info(self, first_name, birthday, phone, country, city, address):
+        self.name = first_name
+        self.birthday = birthday
+        self.phone = phone
+        self.country = country
+        self.city = city
+        self.address = address
+
 #     def set_name(self, name):  # установить имя
 #         self.name = name
 #
@@ -3734,28 +3734,22 @@ import os
 # delattr(p1, 'z')
 # print(p1.__dict__)
 
-# class Person:
-#     skill = 10
-#
-#     def __init__(self, name, surname):
-#         self.name = name
-#         self.surname = surname
-#
-#     def print_info(self):
-#         print("Данные сотрудника:", self.name, self.surname)
-#
-#     def add_skill(self, k):
-#         self.skill += k
-#         print("Квалификация сотрудника:", self.skill, "\n")
-#
-#
-# p1 = Person("Viktor", "Reznik")
-# p1.print_info()
-# p1.add_skill(3)
-#
-# p2 = Person("Anna", "Dilgih")
-# p2.print_info()
-# p2.add_skill(2)
+class Person:
+    skill = 10
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+    def print_info(self):
+        print("Данные сотрудника:", self.name, self.surname)
+    def add_skill(self, k):
+        self.skill += k
+        print("Квалификация сотрудника:", self.skill, "\n")
+p1 = Person("Viktor", "Reznik")
+p1.print_info()
+p1.add_skill(3)
+p2 = Person("Anna", "Dilgih")
+p2.print_info()
+p2.add_skill(2)
 
 # class Point:
 #     # def __new__(cls, *args, **kwargs):
