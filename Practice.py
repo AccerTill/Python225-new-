@@ -1031,6 +1031,9 @@ import time
 # print()
 # print(Point.__dict__)
 
+
+
+
 # class Point:
 #     x = 1
 #     y = 1
@@ -1201,15 +1204,960 @@ import time
 # del droid1
 # del droid2
 # print("Quantity of robots: ", Robot.k)
+#
+# class Point:
+#     __slots__ = ["x", "y", "z"] # коллекция slots не имеет dict
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#
+# p1 = Point(5, 10)
+# p1.z = 2
+# print(p1.z)
+# # p1.x = 100
+# # p1.y = "abc"
+# # print(p1.__x, p1.__y)
+# print(p1.__dict__)
 
+#
 # class Point:
 #     def __init__(self, x=0, y=0):
 #         self.__x = x
 #         self.__y = y
+#     def __set_x(self, x):
+#         print("Call __set_x")
+#         self.__x = x
+#     def __get_x(self):
+#         print("Call __get_x")
+#         return self.__x
+#     def __del_x(self):
+#         print("Deleting property")
+#         del self.__x
+#     coord_x = property(__get_x, __set_x,__del_x)
 #
 # p1 = Point(5, 10)
-# # print(p1.__x, p1.__y)
-# p1.x = 100
-# p1.y = "abc"
-# # print(p1.__x, p1.__y)
+# p1.coord_x = 100
+# print(p1.coord_x)
+# del p1.coord_x  # deleting x.
+# p1.coord_x=7
 # print(p1.__dict__)
+
+#
+# class Car:
+#     name = "C200"
+#     make = "mersedes"
+#     model = 2008
+#     def start(self):
+#         print("Start!")
+#     def stop(self):
+#         print("Stop...")
+# car_a = Car()
+# car_b = Car()
+# print(type(car_b))
+# car_b.start()
+# print(car_b.model)
+# print(dir(car_b))
+
+# class Car:
+#     car_count =0
+#     def start(self,name,make,model):
+#         print("Start engine..")
+#         self.name = name
+#         self.make = make
+#         self.make = model
+#         Car.car_count +=1
+#
+# car_a = Car()
+# car_a.start("Corrola", "Toyota", 2015)
+# print(car_a.name)
+# print(car_a.car_count)
+#
+# car_b = Car()
+# car_b.start("City", "Honda", 2013)
+# print(car_b.name)
+# print(car_b.car_count)
+
+
+
+# class Car:
+#     @staticmethod
+#     def get_class_details():
+#         print("This is class Car")
+# Car.get_class_details()
+# g=Car()
+# g.get_class_details()
+
+# class Square:
+#     @staticmethod
+#     def get_squares(a,b):
+#         return a*a, b*b
+# print(Square.get_squares(3,5))
+# g=Square()
+# print(g.get_squares(34, 8))
+
+
+# class Car:
+#     def start(self):
+#          print("Engine has been start")
+#
+# car_a=Car()
+# print(car_a)
+
+
+# class Car:
+#     def __str__(self, name):
+#         name = "name"
+#         print(name)
+#         return "Car class object"
+#     def start(self):
+#         print("Starting..")
+#
+# car_a=Car()
+# print(car_a)
+# car_a.start()
+
+
+# class Car:
+#     car_count = 0
+#     def __init__(self):
+#         Car.car_count +=1
+#         print(Car.car_count)
+# car1=Car()
+# car2=Car()
+
+# class Car:
+#     def start(self):
+#         message = "Engine start..."
+#         print(message)
+#         return message
+# car1=Car()
+# print(car1.message)
+# print(car1.start())
+
+# class Car:
+#     message1="Engine start"
+#     def start(self):
+#         message2 = "Car is start"
+#         return  message2
+# car1=Car()
+# print(car1.message1)
+
+
+# class Vehicle:
+#     def vehicle_method(self):
+#         print("This is parent method.")
+# class Car(Vehicle):
+#     def car_method(self):
+#         print("This is second method. ")
+# car1=Car()
+# car1.vehicle_method()
+
+
+# class Vehicle:
+#     def vehicle_method(self):
+#         print("111")
+# class Car(Vehicle):
+#     def car_method(self):
+#         print("222")
+# class Cycle(Vehicle):
+#     def cycle_method(self):
+#         print("333")
+#
+# a1=Car()
+# a1.vehicle_method()
+# a1=Cycle()
+# a1.cycle_method()
+
+
+
+
+
+# class A:
+#     def a_method(self):
+#         print("AAA")
+# class B:
+#     def b_method(self):
+#         print("BBB")
+# class C(A,B):
+#     def c_method(self):
+#         print("CCC")
+#
+# s1=C()
+# s1.a_method()
+# s1.b_method()
+
+
+
+
+
+
+# class Car:
+#     count = 0
+#     def start(self, a,b=None):
+#         if b==None:
+#             print(a)
+#             Car.count +=1
+#             print(Car.count, " Count")
+#         else:
+#             print(a+b)
+#             Car.count+=1
+#             print(Car.count, " Count")
+# a1=Car()
+# a1.start(23,5)
+# a1.start(27)
+
+#
+
+
+
+
+# class Vehicle:
+#     def print_details(self):
+#         print("Это родительский метод из класса Vehicle")
+# class Car(Vehicle):
+#     def print_details(self):
+#         print("Это дочерний метод из класса Car")
+# class Cycle(Vehicle):
+#     def print_details(self):
+#         print("Это дочерний метод из класса Cycle")
+#
+# car_a = Vehicle()
+# car_a.print_details()
+#
+# car_b = Car()
+# car_b.print_details()
+#
+# car_c = Cycle()
+# car_c.print_details()
+#
+# a1=Cycle()
+# a1.print_details()
+#
+# class Car:
+#     def __init__(self,model):
+#         self.model =model
+#     @property
+#     def model(self):
+#         return self.__model
+#     @model.setter
+#     def model(self, model):
+#         if model < 2000:
+#             self.__model = 2000
+#         elif model > 2018:
+#             self.__model = 2000
+#         else:
+#             self.__model = 2000
+#     def getCarModel(self):
+#         return "Year" + str(self.model)
+#
+# a1=Car(2088)
+# print(a1.model)
+# print(a1.model())
+
+
+
+
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x+1
+#     @staticmethod
+#     def dec(x):
+#         return x-1
+#
+# print(Change.inc(5), Change.dec(8))
+
+
+
+
+#
+# class Mat:
+#     @staticmethod
+#     def min(a):
+#         return min(a)
+#     @staticmethod
+#     def middle(a):
+#         return sum(a)/len(a)
+#
+# a=[23,5,3,7]
+# # a1=Mat()
+# # print(Mat.min(a))
+# # print(Mat.middle(a))
+# a1=Mat()
+# print(a1.min(a))
+# print(a1.middle(a))
+
+
+
+
+
+
+# class Person:
+#     def __init__(self, name , age ):
+#         self.__name = name
+#         self.__age = age
+#     @property
+#     def coord_name(self):  # __get_x
+#         # print("Вызов __get_name")
+#         return self.__name
+#     @coord_name.setter
+#     def coord_name(self, n):  # __set_x
+#         # print("Вызов __set_name")
+#         self.__name = n
+#     @coord_name.deleter
+#     def coord_name(self):  # __del_x
+#         # print("Удаление свойства")
+#         del self.__name
+
+    # coord_x = property(__get_x, __set_x, __del_x)
+
+#
+# p1 = Person("Ilona", 24)
+# print(p1.__dict__, "---DICT")
+# p1.coord_name = "Kelly"
+# print(p1.coord_name)
+# print(p1.__dict__,"---DICT")
+# del p1.coord_name
+# print(p1.__dict__,"---DICT")
+# p1.coord_name = "Hansa"
+
+#
+#
+# #-------------------------------
+#
+#
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#     @property
+#     def name(self):
+#         return self.__name
+#     @name.setter
+#     def name(self, n):
+#         self.__name = n
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+# #     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, new_old):
+#         self.__old = new_old
+#
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+#
+# p1 = Person('Kelly', 15)
+# print(p1.name)
+# print(p1.__dict__, "---DICT")
+# p1.name = 'Igor'
+# del p1.name
+# p1.old = 31
+# print(p1.old)
+# del p1.old
+# print(p1.__dict__)
+
+
+# print(1 / 0.45359237)
+
+
+#-------------------------------------------------------------
+#
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#     def string_to_db(self):
+#         return f'{self.year}-{self.month}-{self.day}'
+#     @classmethod
+#     def from_string(cls, data_as_string):
+#         d, m, y = map(int, data_as_string.split('.'))
+#         return cls(d, m, y)
+#     @staticmethod
+#     def is_date_valid(data_as_string):
+#         if data_as_string.count('.') == 2:
+#             d, m, y = map(int, data_as_string.split('.'))
+#             return d <= 31 and m <= 12 and y <= 3999
+# # a=Date(23, 12, 45)
+# # print(a)
+# # print(a.string_to_db())
+# dates = [
+#     '30.12.2020',
+#     '30.12.2020',
+#     '31.01.2021',
+#     '12.31.2020'
+# ]
+# for string_date in dates:
+#     if Date.is_date_valid(string_date):
+#         date = Date.from_string(string_date)  # '30.12.2020'
+#         string_to_db = date.string_to_db()
+#         print(string_to_db)
+#     else:
+#         print("Некорректная дата")
+#
+
+
+
+# ---------------------------------
+
+
+
+
+# class Point:
+#     x=1
+#     y=2
+# p1=Point()
+# Point.x=100
+# print(Point.__dict__)
+# print(p1.x,p1.y)
+# p1.x=200
+# p1.y=300
+# print(p1.x,p1.y)
+
+
+# -----------------------------------------------
+# -----------------------------------------------
+#                     OOP
+# -----------------------------------------------
+# -----------------------------------------------
+
+# class Point:
+#     x=1
+#     y=1
+#     def set_coords(self, x,y):
+#         self.x=x
+#         self.y=y
+#         return x,y
+# a=Point()
+# a.x=100
+# a.y=200
+# print(a.__dict__)
+# print(a.set_coords(45,67))
+# print(Point.set_coords(a, 8989,344))
+# print(a.__dict__)
+
+#
+#
+# class a:
+#     name = "name"
+#     surname = 'surname'
+#     def info(self):
+#         print("INFO: ", self.name, self.surname)
+#
+#     def input(self, name, surname):
+#         self.name=name
+#         self.surname = surname
+#     def setname(self, name):
+#         self.name = name
+#     def getname(self):
+#         return self.name
+#
+#     def setbr(self, br):
+#         self.br = br
+#     def getbr(self):
+#         return self.br
+#
+#
+# s=a()
+# ss=a()
+# # s.name = "Violetta"
+# # s.surname="Brown"
+# # s.input("Gregory", "Smith")
+# # s.info()
+# ss.input("Robert", "Patrick")
+# ss.setname("Liam")
+# # print(ss.getname(), "---getting name---")
+# ss.setbr("23.12.89")
+# # ss.info()
+# # print(ss.getbr())
+# # print(ss.__dict__)
+# print(getattr(ss, "name"))
+# print(getattr(ss, "surname"))
+# print(getattr(ss, "br"))
+# print(hasattr(ss, "Number"))
+# print(hasattr(ss, "name"))
+# setattr(ss, "age", 34)
+# print(ss.__dict__)
+# delattr(ss, "br")
+# print(ss.__dict__)
+# # print(getattr(ss, "surname"))
+# # print(getattr(ss, "br"))
+#
+
+#
+# class Person:
+#     skill = 10
+#     def __new__(cls, *args, **kwargs):
+#         print("Constructor.")
+#         return super().__new__(cls) # for both calls
+#     def __init__(self):
+#          print("Initializator.")
+#
+# #     def __init__(self, name, surname):
+# #             self.name =name
+# #             self.surname = surname
+# #             print("Initializator.")
+# Person()
+# # p1=Person("Alex", "Vissner")
+# # print(p1.__dict__)
+# # for i in p1.__dict__:
+# #    print (i, '->',p1.__dict__[i])
+# # print(p1.name, p1.surname)
+
+
+#
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.x=x
+#         self.y=y
+#     def __del__(self):
+#         print("Deleting " + self.__class__.__name__)
+#
+# p1 = Point(34,6)
+# print(p1.__dict__)
+# # print(p1.__class__)
+# del p1
+# # print(p1.x)
+# # print(p1.__dict__)
+
+# class Point:
+#     # count=0
+#     def __init__(self, x):
+#         self.x=x
+#         # Point.count+=1
+#     def __del__(self):
+#         print(self.x, " deleting")
+#
+# a=Point("hjhj")
+# a.x=1000
+# print(a.__dict__)
+# print(a.x)
+# b=Point("jhhlfwef")
+# d=Point("wurytewuy")
+# b=Point(23)
+# print(Point.count)
+# print(b.count)
+# del d
+# print(b.x)
+# del b
+# del d
+
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x=x
+#         self.__y=y
+#
+# p1=Point(23,45)
+# # print(p1.__x, p1.__y)
+# # print(Point.__dict__)
+# # print(p1.__dict__)
+# p1.__x=9000
+# p1.__y="hjk"
+# print(p1.__dict__)
+# p1.__x=9000435
+# p1.__y="hjk34234"
+# print(p1.__x, p1.__y)
+# print(p1.__dict__)
+
+#
+# class Point:
+#     # __slots__=["x", "y", "z"] # or (,,,)
+#     def __init__(self, x=0, y=0):
+#         self.__x=x
+#         self.__y=y
+#     def __get_x(self):
+#         print("Get.")
+#         return self.__x
+#     def __set_x(self, x):
+#         print("Set.")
+#         self.__x = x
+#     def __del_x(self):
+#         del self.__x
+#
+#     # coords_x=property(__get_x, __set_x, __del_x)
+#
+# p1 =Point(34, 67)
+# p1.coords_x = 1000
+# print(p1.__dict__)
+# print(p1.coords_x)
+# del p1.coords_x
+# print(p1.__dict__)
+#
+# # p1.z=900
+# # print(p1.__dict__)
+
+
+
+
+#
+#
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x=x
+#         self.__y=y
+#
+#     @property
+#     def coord_x(self):
+#         print("Get.")
+#         return self.__x
+#     @coord_x.setter
+#     def coord_x(self, x):
+#         print("Set.")
+#         self.__x = x
+#     @coord_x.deleter
+#     def coord_x(self):
+#         del self.__x
+#     # coords_x=property(__get_x, __set_x, __del_x)
+#
+# p1 =Point(5, 10)
+# p1.coord_x = 100
+# print(p1.coord_x)
+# print(p1.__dict__)
+# del p1.coord_x
+# print(p1.__dict__)
+# p1.coord_x=7
+# print(p1.__dict__)
+#
+# # p1.z=900
+# # print(p1.__dict__)
+
+
+# ------------------------
+
+
+#
+# class Person:
+#     def __init__(self, name="name", age=0):
+#         self.__name=name
+#         self._age=age
+#
+#     @property
+#     def d_name(self):
+#         print("Get.")
+#         return self.__name
+#     @d_name.setter
+#     def d_name(self, name):
+#         print("Set.")
+#         self.__name = name
+#     @d_name.deleter
+#     def d_name(self):
+#         print("Del")
+#         del self.__name
+#     # coords_x=property(__get_x, __set_x, __del_x)
+#
+# p1 =Person("Viola", 10)
+# print(p1.__dict__)
+# p1.d_name = "Lesly"
+# print(p1.d_name)
+# print(p1.__dict__)
+# del p1.d_name
+# print(p1.__dict__)
+# p1.d_name="Antony"
+# print(p1.__dict__)
+
+
+
+# class Point:
+#     __count =0
+#     def __init__(self, x=0, y=0):
+#         self.__x =x
+#         self.__y =y
+#         Point.__count+=1
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+# p1=Point()
+# p2=Point()
+# print(p1.get_count())
+# p2=Point()
+# print(p1.get_count())
+
+
+# class Point:
+#     @staticmethod
+#     def inc(x):
+#         return x+1
+#
+# p1=Point()
+# print(p1.inc(2))
+
+
+#----------------------------------------------
+
+
+# class Date:
+#     def __init__(self, mass):
+#         self.mass = mass
+#     def string_to_db(self):
+#         if type(self.mass) == int or type(self.mass) == float:
+#             res = round(self.mass * 2.204, 3)
+#         else:
+#             res = "Incorrect input.."
+#         return str(res) + " pounds."
+#
+# a=Date(89)
+# print(a.string_to_db())
+# b=Date("hj")
+# print(b.string_to_db())
+
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#     def a(self):
+#         print(self.x + 1000, " -Self")
+#     def b(self):
+#         print('---------')
+#         self.a()
+#         print(f"{self.y * 0.333}")
+# s=Point(12,100)
+# s.b()
+
+
+
+
+
+
+
+
+
+# def func(x):
+#     if type(x)==str:
+#         return True
+#     else:
+#         return False
+#
+# s=func("e")
+# if s==False:
+#     print("1")
+# else:
+#     print("2")
+
+
+
+#---------------------------------------------------------
+#
+# class Person:
+#     # def __init__(self, name , age ):
+#     #     self.__name = name
+#     #     self.__age = age
+#     @property
+#     def coord_name(self):  # __get_x
+#         print("Вызов __get_name")
+#         return self.__name
+#     @coord_name.setter
+#     def coord_name(self, n):  # __set_x
+#         print("Вызов __set_name")
+#         self.__name = n
+#     @coord_name.deleter
+#     def coord_name(self):  # __del_x
+#         print("Удаление свойства")
+#         del self.__name
+#
+#     # coord_x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Person()
+# p1.coord_name="Kelly"
+# print(p1.__dict__)
+# print(p1.coord_name)
+# del p1.coord_name
+# print(p1.__dict__)
+# # p1 = Person("Ilona", 24)
+# # print(p1.__dict__, "---DICT")
+# # p1.coord_name = "Kelly"
+# # print(p1.coord_name)
+# # print(p1.__dict__,"---DICT")
+# # del p1.coord_name
+# # print(p1.__dict__,"---DICT")
+# # p1.coord_name = "Hansa"
+
+#-------------------------------------------------------------
+#
+# class Rect:
+#     def __init__(self, h, w):
+#         self.h=h
+#         self.w=w
+#
+#     def show_rect(self):
+#         print(f"Rectrangle: {self.h} - {self.w}")
+#
+# class RectFon(Rect):
+#     def __init__(self, w,h, bg):
+#         super().__init__(h,w)
+#         self.fon=bg
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Rectrangle: {self.fon} ")
+#
+# class RectBorder(Rect):
+#     def __init__(self, w,h, bord):
+#         super().__init__(h,w)
+#         self.bord=bord
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Rectrangle: {self.bord} ")
+#
+#
+# shape1=RectFon(45, 65, "red")
+# shape1.show_rect()
+#
+# shape2=RectFon(600, 300, "1px solid red")
+# shape2.show_rect()
+
+#---------------------------------------------------------------------------------------
+
+#
+# class Vector(list):
+#     def __str__(self):
+#         return " ".join(map(str, self))
+#
+#
+# v = Vector ([1,2,3])
+# print(v)
+#
+
+
+
+
+# class Vector(a):
+#     def __str__(self):
+#         return str(a)
+#
+#
+# v = Vector(78)
+# print(v)
+
+
+#--------------------------------------------------------------
+
+from abc import ABC, abstractmethod
+#
+# class Check(ABC):
+#     def draw(self):
+#         print("Нарисовал фигуру.")
+#
+#     @abstractmethod
+#     def move(self):
+#         # pass
+#         print("Method move() in base class")
+#
+# class Queen(Check):
+#     def move(self):
+#         super().move()
+#         print("Method move() in ch class...Movement of figure e2e4")
+#
+# # q=Check()
+# q=Queen()
+# q.draw()
+# q.move()
+
+
+#-----------------------------------------
+# class Currency(ABC): #---------------------------------
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#
+#     def print_value(self):
+#         print(self.value, end=" ")
+#
+# class Dollar(Currency):   #------------------------------
+#     rate_to_rub = 74.16
+#     suffix = "USD"
+#
+#     def convert_to_rub(self):
+#         rub = self.value * Dollar.rate_to_rub
+#         return rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end = " ")
+#
+#
+# class Euro(Currency):     #------------------------------
+#     rate_to_rub = 90.14
+#     suffix = "EUR"
+#
+#     def convert_to_rub(self):
+#         rub = self.value * Euro.rate_to_rub
+#         return rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end = " ")
+#
+#
+#
+# d=[Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# k=[Euro(5), Euro(10), Euro(50), Euro(100)]
+# print("*" * 20)
+# for elem in d:
+#     elem.print_value()
+#     print(f"= {elem.convert_to_rub():.2f} RUB")
+# for elem in k:
+#     elem.print_value()
+#     print(f"= {elem.convert_to_rub():.2f} RUB")
+
+
+
+# a=Dollar(10)
+# print(a.convert_to_rub())
+# print(Dollar.suffix)
+# print(Dollar.rate_to_rub)
+
+
+#------------------------------------------
+
+from abc import ABC, abstractmethod
+
+class Father(ABC):
+
+    @abstractmethod
+    def display1(self):
+        pass
+    @abstractmethod
+    def display2(self):
+        pass
+
+class Child()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
