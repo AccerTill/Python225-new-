@@ -38,7 +38,6 @@
 # print(f1.get_name())
 
 
-
 # ----------------------------------------------------------------
 #            HOME WORK of LESSON 23 (DZ 23)
 
@@ -72,8 +71,7 @@
 # r1.hypotenuse_search()
 
 
-
-#------------------------------------------------------------------
+# ------------------------------------------------------------------
 #           HOME WORK of LESSON 24 (DZ 24)
 
 # class Date:
@@ -155,78 +153,113 @@
 #                          DZ lesson 26
 
 # --------------------------------------------------------------
+#
+#
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#     def __str__(self):
+#         return f'({self.__x}, {self.__y})'
+#     def is_digit(self):
+#         if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
+#             print("Координаты должны быть числами")
+#             return False
+#         return True
+#     def is_int(self):
+#         if not isinstance(self.__x, int) or not isinstance(self.__y, int):
+#             print("Координаты должны быть целочисленными")
+#             return False
+#         return True
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#     def set_coords(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#
+# class Line(Prop):
+#     def draw_line(self) -> None:
+#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#     def set_coords(self, sp, ep):
+#         if sp.is_int() and ep.is_int():
+#             self._sp = sp
+#             self._ep = ep
+#
+# class Rect(Prop):
+#     def draw_rect(self) -> None:
+#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
+# # line только вещественные
+#
+# line = Line(Point(1, 2), Point(10, 20))
+# line.draw_line()
+# line.set_coords(Point(10.2, 20), Point(100, 200))
+# line.draw_line()
+# print("------------------")
+# # rect   и целочисленные и вещественные.
+# rect = Rect(Point(7, 9), Point(12, 15))
+# rect.draw_rect()
+# rect.set_coords(Point(30.5, 40.2), Point(50, 60))
+# rect.draw_rect()
 
 
-class Point:
-    def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
-    def __str__(self):
-        return f'({self.__x}, {self.__y})'
-    def is_digit(self):
-        if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
-            print("Координаты должны быть числами")
-            return False
-        return True
-    def is_int(self):
-        if not isinstance(self.__x, int) or not isinstance(self.__y, int):
-            print("Координаты должны быть целочисленными")
-            return False
-        return True
+# --------------------------------------------------------------
 
-class Prop:
-    def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
-        self._sp = sp
-        self._ep = ep
-        self._color = color
-        self._width = width
-    def set_coords(self, sp, ep):
-        if sp.is_digit() and ep.is_digit():
-            self._sp = sp
-            self._ep = ep
+#                          DZ lesson 27
 
-class Line(Prop):
-    def draw_line(self) -> None:
-        print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
-    def set_coords(self, sp, ep):
-        if sp.is_int() and ep.is_int():
-            self._sp = sp
-            self._ep = ep
+# --------------------------------------------------------------
 
-class Rect(Prop):
-    def draw_rect(self) -> None:
-        print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
+class Liquid:
+    def __init__(self, name, destiny):
+        self.name = name
+        self.destiny = destiny
 
-# line только вещественные
+    def set_destiny(self, destiny):
+        self.destiny = destiny
 
-line = Line(Point(1, 2), Point(10, 20))
-line.draw_line()
-line.set_coords(Point(10.2, 20), Point(100, 200))
-line.draw_line()
-print("------------------")
-# rect   и целочисленные и вещественные.
-rect = Rect(Point(7, 9), Point(12, 15))
-rect.draw_rect()
-rect.set_coords(Point(30.5, 40.2), Point(50, 60))
-rect.draw_rect()
+    def get_value(self, mass):
+        self.value = mass / self.destiny
+        return f"Value of {self.name}: {self.value:.2f} m^3"
+
+    def get_mass(self, value):
+        self.mass = self.destiny * value
+        return f"Mass of {self.name}: {self.mass:.2f} kg"
+
+    def info(self):
+        print(f'Name: {self.name},  Destiny: {self.destiny} '
+              f'kg/m^3,  Value {self.value} m^3, ', end=" ")
 
 
+class Alcohol(Liquid):
+    def __init__(self, name, destiny, concentrate, value):
+        super().__init__(name, destiny)
+        self.concentrate = concentrate
+        self.value = value
+
+    def info(self):
+        super().info()
+        print(f"Concentrate = {self.concentrate}")
+
+    def set_concentrate(self, concentrate):
+        self.concentrate = concentrate
 
 
+a1 = Alcohol("Wine RED", 1064.2, '12%', 5)
+a1.info()
+a1.set_destiny(1134.7)
+a1.set_concentrate("17%")
+a1.info()
+print(a1.get_value(3000))
+print(a1.get_mass(2))
 
+print("*" * 40)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+a1 = Alcohol("Wine White", 1034.9, '16%', 2)
+a1.info()
+print(a1.get_mass(3))

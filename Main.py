@@ -4464,7 +4464,6 @@ import os
 #         print('Переопределенный инициализатор Line')
 #         super().__init__(*args)
 #         self.__width = 5
-#
 #     def draw_line(self) -> None:
 #         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
 #
@@ -4472,7 +4471,6 @@ import os
 #     def __init__(self, sp, ep, color='red', width=1, bg='yellow'):
 #         super().__init__(sp, ep, color, width)
 #         self.background = bg
-#
 #     def draw_rect(self) -> None:
 #         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, '
 #               f'{self.get_width()}, background: {self.background}')
@@ -4490,76 +4488,74 @@ import os
 
 
 #----------------------------------------------------------
-class Figure:
-    def __init__(self, color):
-        self.__color = color
-
-    @property
-    def color(self):
-        return self.__color
-    @color.setter
-    def color(self, c):
-        self.__color = c
-
-class Rectangle(Figure):
-    def __init__(self, width, height, color):
-        super().__init__(color)
-        self.__width = width
-        self.__height = height
-
-    @property
-    def width(self):
-        return self.__width
-    @width.setter
-    def width(self, w):
-        if w > 0:
-            self.__width = w
-        else:
-            self.__width = 1
-            # raise ValueError
-
-    @property
-    def height(self):
-        return self.__height
-    @height.setter
-    def height(self, h):
-        if h > 0:
-            self.__height = h
-        else:
-            raise ValueError
-
-    def area(self):
-        print(f"Площадь {self.color} прямоугольника: ", end="")
-        return self.__width * self.__height
-
-
-rect = Rectangle(10, 20, 'green')
-# rect.width = -5
-print(rect.width)
-print(rect.height)
-print(rect.color)
-rect.color = 'red'
-print(rect.color)
-print(rect.area())
+# class Figure:
+#     def __init__(self, color):
+#         self.__color = color
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#     @color.setter
+#     def color(self, c):
+#         self.__color = c
+#
+# class Rectangle(Figure):
+#     def __init__(self, width, height, color):
+#         super().__init__(color)
+#         self.__width = width
+#         self.__height = height
+#
+#     @property
+#     def width(self):
+#         return self.__width
+#     @width.setter
+#     def width(self, w):
+#         if w > 0:
+#             self.__width = w
+#         else:
+#             self.__width = 1
+#             # raise ValueError
+#
+#     @property
+#     def height(self):
+#         return self.__height
+#     @height.setter
+#     def height(self, h):
+#         if h > 0:
+#             self.__height = h
+#         else:
+#             raise ValueError
+#
+#     def area(self):
+#         print(f"Площадь {self.color} прямоугольника: ", end="")
+#         return self.__width * self.__height
+#
+#
+# rect = Rectangle(10, 20, 'green')
+# # rect.width = -5
+# print(rect.width)
+# print(rect.height)
+# print(rect.color)
+# rect.color = 'red'
+# print(rect.color)
+# print(rect.area())
 
 #------------------------------------
 
-
+#
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
 #         self.__y = y
-#
 #     def __str__(self):
 #         return f'({self.__x}, {self.__y})'
 #
-#     def is_digit(self):
+#     def is_digit(self): #-------------  IS DIGIT  -----
 #         if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
 #             print("Координаты должны быть числами")
 #             return False
 #         return True
-#
-#     def is_int(self):
+#     def is_int(self): #--------  IS INT  ------------
 #         if not isinstance(self.__x, int) or not isinstance(self.__y, int):
 #             print("Координаты должны быть целочисленными")
 #             return False
@@ -4580,10 +4576,8 @@ print(rect.area())
 #
 #
 # class Line(Prop):
-#
 #     def draw_line(self) -> None:
 #         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
-#
 #     def set_coords(self, sp, ep):
 #         if sp.is_int() and ep.is_int():
 #             self._sp = sp
@@ -4591,7 +4585,6 @@ print(rect.area())
 #
 #
 # class Rect(Prop):
-#
 #     def draw_rect(self) -> None:
 #         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
 #
@@ -4605,8 +4598,14 @@ print(rect.area())
 # rect.draw_rect()
 # rect.set_coords(Point(30.5, 40.2), Point(50, 60))
 # rect.draw_rect()
+#
 
 
+#---------------------------------------------
+
+
+#
+#
 # class Rect:
 #     def __init__(self, w, h):
 #         self.width = w
@@ -4614,7 +4613,6 @@ print(rect.area())
 #
 #     def show_rect(self):
 #         print(f'Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}')
-#
 #
 # class RectFon(Rect):
 #     def __init__(self, w, h, bg):
@@ -4625,16 +4623,24 @@ print(rect.area())
 #         super().show_rect()
 #         print(f'Рамка: {self.fon}')
 #
-#
 # class RectBorder(Rect):
-#     pass
+#     def __init__(self, w, h, bd):
+#         super().__init__(w, h)
+#         self.border = bd
 #
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f'Border: {self.border}')
 #
-# shape1 = RectFon(400, 200, 'yellow')
-# shape1.show_rect()
+# #
+# # shape1 = RectFon(400, 200, 'yellow')
+# # shape1.show_rect()
 #
 # shape2 = RectBorder(600, 300, '1px solid red')
 # shape2.show_rect()
+#
+
+#-----------------------------------------------------------------------
 
 
 # class Rect:
@@ -4673,19 +4679,23 @@ print(rect.area())
 # shape1.show_rect()
 
 
+#-------------------------------------------------
+
+
 # class Vector(list):
 #     def __str__(self):
 #         return " ".join(map(str, self))
 #
-#
 # v = Vector([1, 2, 3, 4, 5])
-# print(v)
-# print(type(v))
-# q = Vector([5, 7, 3, 4, 5])
+# print(v, " - return res")
+# print(type(v), " - class")
+# q = Vector("Hello!")
 # print(q)
 
-# Перегрузка методов
 
+#-------------------------------------------------
+# Перегрузка методов
+#
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
@@ -4737,16 +4747,15 @@ print(rect.area())
 #
 # line = Line(Point(1, 2), Point(10, 20))
 # line.draw_line()
-#
 # line.set_coords(Point(10, 20), Point(100, 200))
 # line.draw_line()
-#
 # line.set_coords(Point(-10, -20))
 # line.draw_line()
+
 #---------------------------------------------------------------------------------------
 
 # Абстрактные методы
-
+#
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
@@ -4767,7 +4776,6 @@ print(rect.area())
 #             return False
 #         return True
 #
-#
 # class Prop:
 #     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
 #         self._sp = sp
@@ -4780,27 +4788,21 @@ print(rect.area())
 #             self._sp = sp
 #             self._ep = ep
 #
-#     def draw(self):  # абстрактный метод
+#     def draw(self):  # -------------------абстрактный метод
 #         raise NotImplementedError("В дочернем классе должен быть определен метод draw()")
 #
-#
 # class Line(Prop):
-#
 #     def draw(self) -> None:
 #         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
 #
-#
 # class Rect(Prop):
 #     pass
-#     # def draw(self) -> None:
-#     #     print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
-#
+#     def draw(self) -> None:
+#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
 #
 # class Ellipse(Prop):
-#
 #     def draw(self) -> None:
 #         print(f'Рисование эллипса: {self._sp}, {self._ep}, {self._color}, {self._width}')
-#
 #
 # figs = list()
 # figs.append(Line(Point(0, 0), Point(10, 10)))
@@ -4811,9 +4813,8 @@ print(rect.area())
 # for f in figs:
 #     f.draw()
 
-#--------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------
 # import math
-#
 #
 # class Table:
 #     def __init__(self, width=None, length=None, radius=None):
@@ -4836,11 +4837,9 @@ print(rect.area())
 #     def calc_area(self):
 #         return self._width * self._length
 #
-#
 # class RoundTable(Table):
 #     def calc_area(self):
 #         return round(math.pi * self._radius ** 2, 2)
-#
 #
 # t = SqTable(20, 10)
 # print(t.__dict__)
@@ -4854,29 +4853,29 @@ print(rect.area())
 # print(t2.__dict__)
 # print(t2.calc_area())
 
-#--------------------------------------------------------------------------
-# from abc import ABC, abstractmethod
+#-------------------------------------------------------------------
 #
+# from abc import ABC, abstractmethod
 #
 # class Chess(ABC):
 #     def draw(self):
 #         print("Нарисовал шахматную фигуру")
 #
-#     @abstractmethod
+#     @abstractmethod              # --------- реализуются в дочерних классах.
 #     def move(self):
 #         print("Метод move() в базовом классе")
-#
 #
 # class Queen(Chess):
 #     def move(self):
 #         super().move()
 #         print("Ферзь перемещен на e2e4")
 #
-#
 # q = Queen()
 # q.draw()
 # q.move()
-#------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------
 
 # from abc import ABC, abstractmethod
 #
@@ -4885,13 +4884,12 @@ print(rect.area())
 #     def __init__(self, value):
 #         self.value = value
 #
-#     @abstractmethod
-#     def convert_to_rub(self):
-#         pass
+#     # @abstractmethod
+#     # def convert_to_rub(self):
+#     #     pass
 #
 #     def print_value(self):
 #         print(self.value, end=" ")
-#
 #
 # class Dollar(Currency):
 #     rate_to_rub = 74.16
@@ -4900,11 +4898,9 @@ print(rect.area())
 #     def convert_to_rub(self):
 #         rub = self.value * Dollar.rate_to_rub
 #         return rub
-#
 #     def print_value(self):
 #         super().print_value()
 #         print(Dollar.suffix, end=' ')
-#
 #
 # class Euro(Currency):
 #     rate_to_rub = 90.14
@@ -4913,55 +4909,60 @@ print(rect.area())
 #     def convert_to_rub(self):
 #         rub = self.value * Euro.rate_to_rub
 #         return rub
-#
 #     def print_value(self):
 #         super().print_value()
 #         print(Euro.suffix, end=' ')
 #
-#
+# #
 # d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
 # e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+# #
+# # print('*' * 30)
+# # for elem in d:
+# #     elem.print_value()
+# #     print(f'= {elem.convert_to_rub():.2f} RUB')
+# #
+# # print('*' * 30)
+# # for elem in e:
+# #     elem.print_value()
+# #     print(f'= {elem.convert_to_rub():.2f} RUB')
 #
-# print('*' * 30)
-# for elem in d:
-#     elem.print_value()
-#     print(f'= {elem.convert_to_rub():.2f} RUB')
-#
-# print('*' * 30)
-# for elem in e:
-#     elem.print_value()
-#     print(f'= {elem.convert_to_rub():.2f} RUB')
+# print ("*" * 20)
+# for i in e:
+#     i.print_value()
+#     print("=", i.convert_to_rub(), "RUB")
 
+
+
+#-------------------------------------------------------
 
 # Интерфейс
-# from abc import ABC, abstractmethod
-#
-#
-# class Father(ABC):
-#     @abstractmethod
-#     def display1(self):
-#         pass
-#
-#     @abstractmethod
-#     def display2(self):
-#         pass
-#
-#
-# class Child(Father):
-#     def display1(self):
-#         print("display1()")
-#
-#
-# class GrandChild(Child):
-#     def display2(self):
-#         print("display2()")
-#
-#
-# gc = GrandChild()
-# gc.display1()
-# gc.display2()
+
+from abc import ABC, abstractmethod
 
 
+class Father(ABC):
+    @abstractmethod
+    def display1(self):
+        pass
+    @abstractmethod
+    def display2(self):
+        pass
+
+class Child(Father):
+    def display1(self):
+        print("display1()")
+
+class GrandChild(Child):
+    def display2(self):
+        print("display2()")
+
+gc = GrandChild()
+gc.display1()
+gc.display2()
+
+
+#----------------------------------------------------------
 # class Liquid:
 #     def __init__(self, name, density):
 #         self.name = name
