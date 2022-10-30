@@ -2125,33 +2125,89 @@ from abc import ABC, abstractmethod
 
 #------------------------------------------
 
-from abc import ABC, abstractmethod
+# class A:
+#     data = 9003
+#
+#     def __init__(self, name):
+#         self.name = name
+#     def info(self):
+#         print(self.name)
+#
+#     class B:
+#         def __init__(self, name, obj):
+#             self.inner_name = name
+#             self.obj = obj
+#
+#         def inner_info(self):
+#             print("!", self.inner_name)
+#
+# a=A("Kelly")
+# print(a.name)
+# a.info()
+# inner_a = a.B("Lilu", 89)
+# inner_a.inner_info()
+# h=A.B("Stephan", 876)
+# print(h.inner_name)
 
-class Father(ABC):
 
-    @abstractmethod
-    def display1(self):
+#---------------------------
+#
+# class A:
+#     def __init__(self):
+#         self.name = "Yellow"
+#         self.kkk = self.B()
+#     def check(self):
+#         print("check")
+#
+#     class B:
+#         def __init__(self):
+#             self.name = "Pale red"
+#
+# a=A()
+# print(a.name)
+# a.check()
+# f=A.B()
+# print(f.name)
+# g=a.kkk
+# print(g.name)
+
+
+#---------------------------------------------------------------------
+
+class A:
+    # def __init__(self):
+    #     print("Инициализатор класса А")
         pass
-    @abstractmethod
-    def display2(self):
-        pass
+class AA:
+    # def __init__(self):
+    #     print("Инициализатор класса АA")
+    def hi(self):
+        print("AA")
+class B(A):
+    def __init__(self):
+        # super().__init__()
+        print("Инициализатор класса B")
+    # def hi(self):
+    #     print("B")
+class C(AA):
+    def __init__(self):
+        super().__init__()
+    #     print("Инициализатор класса C")
+    # def hi(self):
+    #     print("C")
+class D(B, C):
+    def __init__(self):
+        B.__init__(self)
+        C.__init__(self)
+        print("Инициализатор класса D")
+    # def hi(self):
+    #     print("D")
+   # pass
 
-class Child()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+d = D()
+print(D.mro())
+print(D.__mro__)
+d.hi()
 
 
 

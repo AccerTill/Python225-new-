@@ -214,52 +214,84 @@
 #                          DZ lesson 27
 
 # --------------------------------------------------------------
+#
+# class Liquid:
+#     def __init__(self, name, destiny):
+#         self.name = name
+#         self.destiny = destiny
+#
+#     def set_destiny(self, destiny):
+#         self.destiny = destiny
+#
+#     def get_value(self, mass):
+#         self.value = mass / self.destiny
+#         return f"Value of {self.name}: {self.value:.2f} m^3"
+#
+#     def get_mass(self, value):
+#         self.mass = self.destiny * value
+#         print("Mass of", value, "m^3", f" {self.name}: {self.mass:.2f} kg", )
+#
+#     def info(self):
+#         print(f'Name: {self.name},  Destiny: {self.destiny} '
+#               f'kg/m^3,  Value: {self.value} m^3, ', end=" ")
+#
+#
+# class Alcohol(Liquid):
+#     def __init__(self, name, destiny, concentrate, value):
+#         super().__init__(name, destiny)
+#         self.concentrate = concentrate
+#         self.value = value
+#
+#     def info(self):
+#         super().info()
+#         print(f"Alc: {self.concentrate}")
+#
+#     def set_concentrate(self, concentrate):
+#         self.concentrate = concentrate
+#
+#
+# a1 = Alcohol("Wine RED", 1064.2, '12%', 7)
+# a1.info()
+# a1.set_destiny(1134.7)
+# a1.set_concentrate("17%")
+# a1.info()
+# print(a1.get_value(3000))
+# a1.get_mass(2)
+# print("*" * 40)
+# #
+# # a1 = Alcohol("Wine White", 1034.9, '16%', 2)
+# # a1.info()
+# # print(a1.get_mass(3))
 
-class Liquid:
-    def __init__(self, name, destiny):
+
+# --------------------------------------------------------------
+
+#                          DZ lesson 28
+
+# --------------------------------------------------------------
+
+# ---------------------------     1    -------------------------
+
+class Student:
+    def __init__(self, name):
         self.name = name
-        self.destiny = destiny
-
-    def set_destiny(self, destiny):
-        self.destiny = destiny
-
-    def get_value(self, mass):
-        self.value = mass / self.destiny
-        return f"Value of {self.name}: {self.value:.2f} m^3"
-
-    def get_mass(self, value):
-        self.mass = self.destiny * value
-        return f"Mass of {self.name}: {self.mass:.2f} kg"
+        self.comp = self.Computer()
 
     def info(self):
-        print(f'Name: {self.name},  Destiny: {self.destiny} '
-              f'kg/m^3,  Value {self.value} m^3, ', end=" ")
+        print(f'Student: {self.name} => ', end=' ')
+        print(self.comp.show())
 
+    class Computer:
+        def __init__(self):
+            self.model = "HP"
+            self.processor = "i7+"
+            self.memory = 16
 
-class Alcohol(Liquid):
-    def __init__(self, name, destiny, concentrate, value):
-        super().__init__(name, destiny)
-        self.concentrate = concentrate
-        self.value = value
+        def show(self):
+            return f'Model: {self.model}, Processor: {self.processor}, ' \
+                   f'Memory: {self.memory}'
 
-    def info(self):
-        super().info()
-        print(f"Concentrate = {self.concentrate}")
-
-    def set_concentrate(self, concentrate):
-        self.concentrate = concentrate
-
-
-a1 = Alcohol("Wine RED", 1064.2, '12%', 5)
-a1.info()
-a1.set_destiny(1134.7)
-a1.set_concentrate("17%")
-a1.info()
-print(a1.get_value(3000))
-print(a1.get_mass(2))
-
-print("*" * 40)
-
-a1 = Alcohol("Wine White", 1034.9, '16%', 2)
-a1.info()
-print(a1.get_mass(3))
+s1 = Student("Kelly")
+s2 = Student("Alex")
+s1.info()
+s2.info()

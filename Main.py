@@ -4935,31 +4935,31 @@ import os
 
 
 #-------------------------------------------------------
-
-# Интерфейс
-
-from abc import ABC, abstractmethod
-
-
-class Father(ABC):
-    @abstractmethod
-    def display1(self):
-        pass
-    @abstractmethod
-    def display2(self):
-        pass
-
-class Child(Father):
-    def display1(self):
-        print("display1()")
-
-class GrandChild(Child):
-    def display2(self):
-        print("display2()")
-
-gc = GrandChild()
-gc.display1()
-gc.display2()
+#
+# # Интерфейс
+#
+# from abc import ABC, abstractmethod
+#
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+# class Child(Father):
+#     def display1(self):
+#         print("display1()")
+#
+# class GrandChild(Child):
+#     def display2(self):
+#         print("display2()")
+#
+# gc = GrandChild()
+# gc.display1()
+# gc.display2()
 
 
 #----------------------------------------------------------
@@ -5005,9 +5005,10 @@ gc.display2()
 # a.edit_strength(20)
 # print(a.strength)
 
-
+#----------------------------------------------------------------
+#
 # Вложенные классы
-
+#
 # class MyOuter:
 #     age = 18
 #
@@ -5027,45 +5028,50 @@ gc.display2()
 #             self.obj = obj
 #
 #         def inner_method(self):
-#             print("Я метод внутреннего класса", MyOuter.age, self.obj.name)
+#             print("Я метод внутреннего класса", MyOuter.age,
+#                   self.obj.name)
 #             MyOuter.outer_class_method()
 #             self.obj.outer_obj_method()
 #
 #
-# out = MyOuter('внешний')
-# inner = out.MyInner("внутренний", out)
+# out = MyOuter('Внешний.')
+# inner = out.MyInner("Внутренний.", out) #--- FIRST METHOD
+# print(inner.inner_name, "%%%")
 # inner.inner_method()
+#
+# f=MyOuter.MyInner("kelly", 23) #--- SECOND METHOD
+# print(f.inner_name)
 
 
+#----------------------------------------------------------
 # class Color:
 #     def __init__(self):
 #         self.name = 'Green'
 #         self.lg = self.LightGreen()
-#
 #     def show(self):
 #         print(f"Name: {self.name}")
 #
 #     class LightGreen:
 #         def __init__(self):
 #             self.name = 'Light Green'
-#
 #         def display(self):
 #             print(f"Name: {self.name}")
 #
-#
 # outer = Color()
 # outer.show()
+# f=Color.LightGreen()
+# print(f.name)
 # g = outer.lg
 # g.display()
 # print(g.name)
 
-
+#---------------------------------------------------------
+# print("-"*30)
 # class Employee:
 #     def __init__(self):
 #         self.name = 'Employee'
 #         self.intern = self.Intern()
 #         self.head = self.Head()
-#
 #     def show(self):
 #         print("Employee List:")
 #         print(f'Name: {self.name}')
@@ -5074,7 +5080,6 @@ gc.display2()
 #         def __init__(self):
 #             self.name = 'Smith'
 #             self.id = '657'
-#
 #         def display(self):
 #             print(f'Name: {self.name}')
 #             print(f'Id: {self.id}')
@@ -5083,54 +5088,54 @@ gc.display2()
 #         def __init__(self):
 #             self.name = 'Alba'
 #             self.id = '007'
-#
 #         def display(self):
 #             print(f'Name: {self.name}')
 #             print(f'Id: {self.id}')
 #
-#
 # outer = Employee()
 # outer.show()
-#
 # d1 = outer.intern
 # d2 = outer.head
 # d1.display()
 # d2.display()
+#
+# print("-"*30)
 
-
+#---------------------------------------------------
+# print("-"*30)
 # class Outer:
 #     def __init__(self):
 #         self.inner = self.Inner()
-#
 #     def show(self):
 #         print("Class Outer")
 #
 #     class Inner:
 #         def __init__(self):
 #             self.inner_inner = self.InnerClass()
-#
 #         def show(self):
 #             print("Class Inner")
 #
 #         class InnerClass:
-#
 #             def show(self):
 #                 print("Class InnerClass")
 #
-#
 # outer = Outer()
 # outer.show()
-# # inner1 = outer.inner
-# # inner1.show()
+# inner1 = outer.inner
+# inner1.show()
 # inner2 = outer.inner.inner_inner
 # inner2.show()
+#
+# print("-"*30)
 
-
+#-----------------------------------------------------
+# print("-"*30)
+#
 # class Computer:
 #     def __init__(self):
 #         self.name = "PC001"
-#         # self.os = self.OS()
-#         # self.cpu = self.CPU()
+#         self.os = self.OS()
+#         self.cpu = self.CPU()
 #
 #     class OS:
 #         def system(self):
@@ -5143,29 +5148,29 @@ gc.display2()
 #         def model(self):
 #             return "Core-i7"
 #
-#
-# # comp = Computer()
+# comp = Computer()
 # # my_os = comp.os
 # # my_cpu = comp.cpu
 # my_os = Computer.OS()
 # my_cpu = Computer.CPU()
-# # print(comp.name)
+# print(comp.name)
 # print(my_os.system())
 # print(my_cpu.make())
 # print(my_cpu.model())
 
-
+#-------------------------------------------------
+#
+# print("-"*30)
+#
 # class Base:
 #     def __init__(self):
 #         self.db = self.Inner()
-#
 #     def display(self):
 #         print("Базовый класс")
 #
 #     class Inner:
 #         def display1(self):
 #             print("Вложенный класс в базовый")
-#
 #
 # class Sub_class(Base):
 #     def __init__(self):
@@ -5174,93 +5179,90 @@ gc.display2()
 #
 #     class Inner(Base.Inner):
 #         def display2(self):
-#             print("Вложенный класс в дочерний")
+#             print("Вложенный класс в дочерний @#$%")
 #
 #
 # a = Sub_class()
 # a.display()
-#
-# # b = a.db
+# b = a.db
 # b = Sub_class.Inner()
-# b.display1()
-# b.display2()
+# # b.display1()
+# # b.display2()
 
+#---------------------------------------------------------------
 # Множественное наследование
-
+#
 # class Creature:
 #     def __init__(self, name):
 #         self.name = name
-#
+#     def show(self):
+#         print("#$%^&")
+#         # print(self.Animal())
 #
 # class Animal(Creature):
 #     def sleep(self):
 #         print(self.name + " is sleeping")
 #
-#
 # class Pet(Creature):
 #     def play(self):
 #         print(self.name + " is playing")
-#
 #
 # class Dog(Animal, Pet):
 #     def bark(self):
 #         print(self.name + " is barking")
 #
-#
 # b = Dog("Buddy")
 # b.sleep()
 # b.play()
 # b.bark()
+# # b.show()
+# s=Creature('Bally')
+# s.show()
+#-------------------------------------------------------
 
+class A:
+    def __init__(self):
+        print("Инициализатор класса А")
+    def hi(self):
+        print("A")
+    # pass
 
-# class A:
-#     # def __init__(self):
-#     #     print("Инициализатор класса А")
-#     # def hi(self):
-#     #     print("A")
-#     pass
-#
-#
 # class AA:
-#     # def __init__(self):
-#     #     print("Инициализатор класса АA")
+#     def __init__(self):
+#         print("Инициализатор класса АA")
 #     def hi(self):
 #         print("AA")
-#
-#
-# class B(A):
-#     # def __init__(self):
-#     #     # super().__init__()
-#     #     print("Инициализатор класса B")
-#     # def hi(self):
-#     #     print("B")
-#     pass
-#
-#
-# class C(AA):
-#     # def __init__(self):
-#     #     # super().__init__()
-#     #     print("Инициализатор класса C")
-#     def hi(self):
-#         print("C")
-#
-#
-# class D(B, C):
-#     # def __init__(self):
-#     #     B.__init__(self)
-#     #     C.__init__(self)
-#     #     print("Инициализатор класса D")
-#     # def hi(self):
-#     #     print("D")
-#     pass
-#
-#
-# d = D()
+
+class B(A):
+    def __init__(self):
+        super().__init__()
+        print("Инициализатор класса B")
+    def hi(self):
+        print("B")
+    # pass
+
+class C(A):
+    def __init__(self):
+        super().__init__()
+        print("Инициализатор класса C")
+    def hi(self):
+        print("C")
+
+class D(B, C):
+    def __init__(self):
+        B.__init__(self)
+        C.__init__(self)
+        print("Инициализатор класса D")
+    def hi(self):
+        print("D")
+    pass
+
+d = D()
 # print(D.mro())
 # print(D.__mro__)
 # d.hi()
 
-
+#--------------------------------------------------------------------
 # class Student:
 #     def __init__(self, name):
 #         self.name = name
