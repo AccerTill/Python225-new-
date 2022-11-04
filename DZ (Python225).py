@@ -272,26 +272,244 @@
 
 # ---------------------------     1    -------------------------
 
-class Student:
-    def __init__(self, name):
-        self.name = name
-        self.comp = self.Computer()
+# class Student:
+#     def __init__(self, name):
+#         self.name = name
+#         self.comp = self.Computer()
+#
+#     def info(self):
+#         print(f'Student: {self.name} => ', end=' ')
+#         print(self.comp.show())
+#
+#     class Computer:
+#         def __init__(self):
+#             self.model = "HP"
+#             self.processor = "i7+"
+#             self.memory = 16
+#
+#         def show(self):
+#             return f'Model: {self.model}, Processor: {self.processor}, ' \
+#                    f'Memory: {self.memory}'
+#
+# s1 = Student("Kelly")
+# s2 = Student("Alex")
+# s1.info()
+# s2.info()
 
-    def info(self):
-        print(f'Student: {self.name} => ', end=' ')
-        print(self.comp.show())
 
-    class Computer:
-        def __init__(self):
-            self.model = "HP"
-            self.processor = "i7+"
-            self.memory = 16
+# -----------------------------------------------------------------------------------
+#                          DZ lesson 29
+#                              ЗАДАЧА №1
+#       Елена, решил вторую задачу самостоятельно кроме методов __setitem__. Эти методы посмотрю из ваших лекций
+# -----------------------------------------------------------------------------------
+#
+#
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#
+#         self.sec = sec % self.__DAY
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __iadd__(self, other):  # +=
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec - other.sec)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec * other.sec)
+#
+#     def __floordiv__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec // other.sec)
+#
+#     def __mod__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec % other.sec)
+#
+#     def __eq__(self, other):  # ----------------------------- Compare-
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __gt__(self, other):
+#         return self.sec > other.sec  # -------------------------------
+#
+#     def get_format_time(self):
+#         s = self.sec % 60  # секунды
+#         m = (self.sec // 60) % 60  # минуты
+#         h = (self.sec // 3600) % 24  # часы
+#         return f'{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}'
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
+#
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         elif item == "min":
+#             return (self.sec // 60) % 60
+#         elif item == "sec":
+#             return self.sec % 60
+#         return "Неверный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("Key must be string")
+#         if not isinstance(value, int):
+#             raise ValueError("KValue must be digit.")
+#
+#         s = self.sec % 60  # секунды
+#         m = (self.sec // 60) % 60  # минуты
+#         h = (self.sec // 3600) % 24  # часы
+#
+#         if key == "hour":
+#             self.sec = s + 60 * m + value * 3600
+#         if key == "min":
+#             self.sec = s + 60 * value + h * 3600
+#         if key == "sec":
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(80000)
+# print(c1.get_format_time())
+# print(c1["hour"], c1["min"], c1["sec"])
+#
+# c1['hour'] = 10
+# c1['min'] = 20
+# c1['sec'] = 30
+# print(c1["hour"], c1["min"], c1["sec"])
 
-        def show(self):
-            return f'Model: {self.model}, Processor: {self.processor}, ' \
-                   f'Memory: {self.memory}'
+# ---------------------------------------------------------------
+# # c1 = Clock(200)
+# # print(c1.get_format_time())
+# # c2 = Clock(200)
+# # print(c2.get_format_time())
+# # # c1 = c1 + c2
+# # # print(c1.get_format_time(), "+")    #   the same with lower
+# # # c1+=c2
+# # # print(c1.get_format_time(), "+=")
+# # c4 = Clock(300)
+# # print(c4.get_format_time())
+# # c3=c4-c1
+# # print(c3.get_format_time(), "-")
+# # c3=c4*c2
+# # print(c3.get_format_time(), "*")
+# # c3=c4//c1
+# # print(c3.get_format_time(), "//")
+# # c3=c4%c2
+# # print(c3.get_format_time(), "%")
+# #---------------------------------------------------------------
+# # c1 = Clock(100)
+# # print(c1.get_format_time())
+# # c2 = Clock(50)
+# # print(c2.get_format_time())
+#
+# # if c2<c1:
+# #     print("Time second is more than first time.")
+#
+# # if c1==c2:
+# #     print("The same time c1 and c2.")
+# # if c1!=c2:
+# #     print("Not same time c1 and c2.")
+#
+# # if c1>c2:
+# #     print("c1>c2.")
+# # else:
+# #     print("Not c1 > c2.")
 
-s1 = Student("Kelly")
-s2 = Student("Alex")
-s1.info()
-s2.info()
+
+
+# --------------------------------------------------------------------------
+
+#                                     ЗАДАЧА №1
+
+# --------------------------------------------------------------------------
+
+
+
+# class Point3D:
+#
+#     def __init__(self, x, y, z):
+#         if type(x) == int or float and type(y) == int or float and type(z) == int or float:
+#             self.x = x
+#             self.y = y
+#             self.z = z
+#         else:
+#             raise TypeError("Incorrect type.")
+#
+#     def get_info(self):
+#         return f'x = {self.x} y = {self.y} z = {self.z}'
+#
+#     def __add__(self, other):
+#         if not isinstance(other, (Point3D)):
+#             raise ArithmeticError("Must be int or clock.")
+#         if isinstance(other, Point3D):
+#             return Point3D(self.x + other.x, self.y + other.y, self.z + other.z)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, (Point3D)):
+#             raise ArithmeticError("Must be int or clock.")
+#         if isinstance(other, Point3D):
+#             return Point3D(self.x - other.x, self.y - other.y, self.z - other.z)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, (Point3D)):
+#             raise ArithmeticError("Must be int or clock.")
+#         if isinstance(other, Point3D):
+#             return Point3D(self.x * other.x, self.y * other.y, self.z * other.z)
+#
+#     def __truediv__(self, other):
+#         if not isinstance(other, (Point3D)):
+#             raise ArithmeticError("Must be int or clock.")
+#         if isinstance(other, Point3D):
+#             return Point3D(round(self.x / other.x, 2), round(self.y / other.y, 2),
+#                            round(self.z / other.z, 2))
+#
+#     def __eq__(self, other):
+#         return self.x == other.x and self.y == other.y and self.z == other.z
+#
+#     # def __setitem__(self, key, value): #- присвоение.
+#     #     self.key = value
+#
+#
+# first1 = Point3D(12, 13, 18)
+# first2 = Point3D(6, 3, 9)
+# first3 = first1 + first2
+# print("Сложение координат:  ", first3.get_info())
+# first3 = first1 - first2
+# print("Вычитание координат: ", first3.get_info())
+# first3 = first1 * first2
+# print("Умножение координат: ", first3.get_info())
+# first3 = first1 / first2
+# print("Деление координат: ", first3.get_info())
+# if first1 == first2:
+#     print("Координаты равны")
+# else:
+#     print("Координаты не равны")
+#
+# print('-' * 40)
+#
+# first1.x = 20
+# print("first1.x = ", first1.x)

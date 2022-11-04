@@ -839,7 +839,6 @@ import re
 import os
 import time
 
-
 # print("Current directory: ", os.getcwd())
 # print(os.listdir())   # list of folders in current directory
 
@@ -1030,8 +1029,6 @@ import time
 # print(p2.__dict__)
 # print()
 # print(Point.__dict__)
-
-
 
 
 # class Point:
@@ -1278,7 +1275,6 @@ import time
 # print(car_b.car_count)
 
 
-
 # class Car:
 #     @staticmethod
 #     def get_class_details():
@@ -1369,9 +1365,6 @@ import time
 # a1.cycle_method()
 
 
-
-
-
 # class A:
 #     def a_method(self):
 #         print("AAA")
@@ -1385,10 +1378,6 @@ import time
 # s1=C()
 # s1.a_method()
 # s1.b_method()
-
-
-
-
 
 
 # class Car:
@@ -1407,8 +1396,6 @@ import time
 # a1.start(27)
 
 #
-
-
 
 
 # class Vehicle:
@@ -1455,9 +1442,6 @@ import time
 # print(a1.model())
 
 
-
-
-
 # class Change:
 #     @staticmethod
 #     def inc(x):
@@ -1467,8 +1451,6 @@ import time
 #         return x-1
 #
 # print(Change.inc(5), Change.dec(8))
-
-
 
 
 #
@@ -1489,10 +1471,6 @@ import time
 # print(a1.middle(a))
 
 
-
-
-
-
 # class Person:
 #     def __init__(self, name , age ):
 #         self.__name = name
@@ -1510,7 +1488,7 @@ import time
 #         # print("Удаление свойства")
 #         del self.__name
 
-    # coord_x = property(__get_x, __set_x, __del_x)
+# coord_x = property(__get_x, __set_x, __del_x)
 
 #
 # p1 = Person("Ilona", 24)
@@ -1568,7 +1546,7 @@ import time
 # print(1 / 0.45359237)
 
 
-#-------------------------------------------------------------
+# -------------------------------------------------------------
 #
 # class Date:
 #     def __init__(self, day=0, month=0, year=0):
@@ -1605,10 +1583,7 @@ import time
 #
 
 
-
 # ---------------------------------
-
-
 
 
 # class Point:
@@ -1795,8 +1770,6 @@ import time
 # # print(p1.__dict__)
 
 
-
-
 #
 #
 # class Point:
@@ -1864,7 +1837,6 @@ import time
 # print(p1.__dict__)
 
 
-
 # class Point:
 #     __count =0
 #     def __init__(self, x=0, y=0):
@@ -1891,7 +1863,7 @@ import time
 # print(p1.inc(2))
 
 
-#----------------------------------------------
+# ----------------------------------------------
 
 
 # class Date:
@@ -1910,7 +1882,6 @@ import time
 # print(b.string_to_db())
 
 
-
 # class Point:
 #     def __init__(self, x, y):
 #         self.x = x
@@ -1923,13 +1894,6 @@ import time
 #         print(f"{self.y * 0.333}")
 # s=Point(12,100)
 # s.b()
-
-
-
-
-
-
-
 
 
 # def func(x):
@@ -1945,8 +1909,7 @@ import time
 #     print("2")
 
 
-
-#---------------------------------------------------------
+# ---------------------------------------------------------
 #
 # class Person:
 #     # def __init__(self, name , age ):
@@ -1983,7 +1946,7 @@ import time
 # # print(p1.__dict__,"---DICT")
 # # p1.coord_name = "Hansa"
 
-#-------------------------------------------------------------
+# -------------------------------------------------------------
 #
 # class Rect:
 #     def __init__(self, h, w):
@@ -2018,7 +1981,7 @@ import time
 # shape2=RectFon(600, 300, "1px solid red")
 # shape2.show_rect()
 
-#---------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 
 #
 # class Vector(list):
@@ -2031,8 +1994,6 @@ import time
 #
 
 
-
-
 # class Vector(a):
 #     def __str__(self):
 #         return str(a)
@@ -2042,9 +2003,11 @@ import time
 # print(v)
 
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 
 from abc import ABC, abstractmethod
+
+
 #
 # class Check(ABC):
 #     def draw(self):
@@ -2066,7 +2029,7 @@ from abc import ABC, abstractmethod
 # q.move()
 
 
-#-----------------------------------------
+# -----------------------------------------
 # class Currency(ABC): #---------------------------------
 #     def __init__(self, value):
 #         self.value = value
@@ -2116,14 +2079,13 @@ from abc import ABC, abstractmethod
 #     print(f"= {elem.convert_to_rub():.2f} RUB")
 
 
-
 # a=Dollar(10)
 # print(a.convert_to_rub())
 # print(Dollar.suffix)
 # print(Dollar.rate_to_rub)
 
 
-#------------------------------------------
+# ------------------------------------------
 
 # class A:
 #     data = 9003
@@ -2150,7 +2112,7 @@ from abc import ABC, abstractmethod
 # print(h.inner_name)
 
 
-#---------------------------
+# ---------------------------
 #
 # class A:
 #     def __init__(self):
@@ -2172,48 +2134,586 @@ from abc import ABC, abstractmethod
 # print(g.name)
 
 
-#---------------------------------------------------------------------
-
-class A:
-    # def __init__(self):
-    #     print("Инициализатор класса А")
-        pass
-class AA:
-    # def __init__(self):
-    #     print("Инициализатор класса АA")
-    def hi(self):
-        print("AA")
-class B(A):
-    def __init__(self):
-        # super().__init__()
-        print("Инициализатор класса B")
-    # def hi(self):
-    #     print("B")
-class C(AA):
-    def __init__(self):
-        super().__init__()
-    #     print("Инициализатор класса C")
-    # def hi(self):
-    #     print("C")
-class D(B, C):
-    def __init__(self):
-        B.__init__(self)
-        C.__init__(self)
-        print("Инициализатор класса D")
-    # def hi(self):
-    #     print("D")
-   # pass
-
-d = D()
-print(D.mro())
-print(D.__mro__)
-d.hi()
-
-
-
+# ---------------------------------------------------------------------
+#
+# class A:
+#     # def __init__(self):
+#     #     print("Инициализатор класса А")
+#         pass
+# class AA:
+#     # def __init__(self):
+#     #     print("Инициализатор класса АA")
+#     def hi(self):
+#         print("AA")
+# class B(A):
+#     def __init__(self):
+#         # super().__init__()
+#         print("Инициализатор класса B")
+#     # def hi(self):
+#     #     print("B")
+# class C(AA):
+#     def __init__(self):
+#         super().__init__()
+#     #     print("Инициализатор класса C")
+#     # def hi(self):
+#     #     print("C")
+# class D(B, C):
+#     def __init__(self):
+#         B.__init__(self)
+#         C.__init__(self)
+#         print("Инициализатор класса D")
+#     # def hi(self):
+#     #     print("D")
+#    # pass
+#
+# d = D()
+# print(D.mro())
+# print(D.__mro__)
+# d.hi()
+#
 
 
+# -----------------------------
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#     def __str__(self):
+#         return f'({self.x}, {self.y})'
+#
+# class Styles:
+#     def __init__(self, color='red', width=1, *args):
+#         print("Инициализатор Styles")
+#         self._color = color
+#         self._width = width
+#         super().__init__(*args)
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point, *args):
+#         print("Инициализатор Pos")
+#         self._sp = sp
+#         self._ep = ep
+#         # Styles.__init__(self, *args)
+#         super().__init__(*args)
+#
+# class Line( Pos, Styles):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep},"
+#               f" {self._color}, {self._width}")
+#
+#
+# l1=Line(Point(10,10), Point(100,100), 'green', 5)
+# l1.draw()
+# print(Line.__mro__)
+#
+
+# ----------------------------------------------
+# Миксины (примеси)
+#
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+# class LoggerMixin:
+#     def log(self, message, filename='logfile.txt'):
+#         with open(filename, 'a') as fh:
+#             fh.write(message)
+#
+#     def display(self, message):
+#         Displayer.display(message)
+#         self.log(message)
+#
+# class MySubclass(LoggerMixin, Displayer):
+#     def log(self, message, filename=''):
+#         super().log(message, filename='subclasslog.txt')
+#
+# subclass = MySubclass()
+# subclass.display("Эта строка будет отображаться и записываться в файл")
+
+# ----------------------------------------------------------
+
+#
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         super().__init__()
+#         print("Инициализатор Goods")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+# class MixinLog:
+#     ID = 0
+#     def __init__(self):
+#         print("Инициализатор MixinLog")
+#         self.ID += 1
+#         self.id = self.ID
+#     def save_log(self):
+#         print(f"{self.id}: товар было продан в 00:00 часов")
+#
+# class Notebook(Goods, MixinLog):
+#     pass
+#
+#
+# n = Notebook("HP", 1.5, 35000)
+# n.print_info()
+# # print(n.id)
+# n.save_log()
+# print(Notebook.__mro__)
 
 
+# -------------------------------------------------------------
+
+# Перегрузка операторов
+
+# 24*60*60 = 86400 (число секунд в одном дне)
+#
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec - other.sec)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Must be type of Clock.")
+#         return Clock(self.sec * other.sec)
+#
+#     # def __imul__(self, other):
+#     #     if not isinstance(other, Clock):
+#     #         raise ArithmeticError("Must be type of Clock.")
+#     #     return Clock(self.sec * other.sec)
+#
+#     def __floordiv__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec // other.sec)
+#     #
+#     def __mod__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError()
+#         return Clock(self.sec % other.sec)
+#
+#     def __eq__(self, other):
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __gt__(self, other):
+#         return self.sec > other.sec
+#
+#     def get_format_time(self):
+#         s = self.sec % 60  # секунды
+#         m = (self.sec // 60) % 60  # минуты
+#         h = (self.sec // 3600) % 24  # часы
+#         return f'{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}'
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     # def __getitem__(self, item):
+#     #     if not isinstance(item, str):
+#     #         raise ValueError("Ключ должен быть строкой")
+#     #
+#     #     if item == "hour":
+#     #         return (self.sec // 3600) % 24
+#     #     elif item == "min":
+#     #         return (self.sec // 60) % 60
+#     #     elif item == "sec":
+#     #         return self.sec % 60
+#     #
+#     #     return "Неверный ключ"
+#
+# c1 = Clock(100)
+# # print(c1.sec)
+# print(c1.get_format_time())
+# c2 = Clock(50)
+# print(c2.get_format_time())
+# #----------------------------
+# # if c1 == c2:
+# #     print("Time is the same!")
+# # if c1 != c2:
+# #     print("Time is NOT the same!")
+#
+# if c2 < c1:
+#     print("Первое время меньше")
+# # if c1 != c2:
+# #     print("Time is NOT the same!")
+#
+#
 
 
+# a=[1,2,3,4,5]
+# b=list(a)
+# c=list(b)
+# print(c)
+# print(type(b))
+# print(type(a))
+
+# ------------------------------------------------------------------------------
+#
+# class Point:
+#     MAX_COORD = 108
+#     MIN_COORD = 0
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def set_coord(self, x, y):
+#         if self.MIN_COORDS <= x <= self.MAX_COORDS:
+#             self.x = x
+#             self.y = y
+#
+#     # def set_bound(self, left):
+#     #     self.MIN_COORD = left
+#
+#     # @classmethod
+#     # def set_bound(cls, left):
+#     #     cls.MIN_COORD = left
+#
+#     def __getattribute__(self, item): #-------------------
+#         if item == "x":
+#             raise ValueError ("Access is Forbidden")
+#         else:
+#             print("__getattribute__ is WORKING")
+#             return object.__getattribute__(self,item)
+#
+#     def __setattr__(self, key, value): #------------------
+#         if key == "z":
+#             raise AttributeError ("Forbidden name.")
+#         else:
+#             # print("__settattr__")
+#             object.__setattr__(self, key, value)
+#             # self.x = value # recursion
+#             # self.__dict__[key] = value
+#
+#     def __getattr__(self, item):
+#         # print("__getattr__: " + item)
+#         return False
+#
+#     def __delattr__(self, item):
+#         print("__delattr__: " + item)
+#         object.__delattr__(self, item)
+#
+# pt1 = Point(1, 3)
+# pt2 = Point(4, 9)
+# print(Point.MAX_COORD)
+# pt1.y=89
+# print(pt1.__dict__)
+# # print(pt1.yy)
+# print(pt1.MAX_COORD)
+# del pt1.x
+# print(pt1.__dict__)
+# # a=pt1.y
+# # print(a)
+# # print(pt1.x)
+# # pt1.set_bound(-100)
+# # print(pt1.__dict__)
+# # print(Point.__dict__)
+
+
+#
+#
+# class Book:
+#     def __init__(self, name= " ", autor = " ", pages = 0, year = 0):
+#         self.name = name
+#         self.autor =autor
+#         self.pages = pages
+#         self.year = year
+#
+#     def __setattr__(self, key, value):
+#         if key in "name autor" and type(value) != str:
+#             raise TypeError("Fault type name autor...")
+#         elif key in "pages year" and type(value) != int:
+#             raise TypeError("Fault type PAGES YEAR...")
+#         else:
+#             object.__setattr__(self, key, value)
+#
+# book = Book("Balakirev", "OOP", 78, 2018)
+# print(book.__dict__)
+# # book.name = "Pushkin"
+# # book.year = 1765
+# # print(book.__dict__)
+
+
+# ----------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------
+# import random
+#
+# class RandomPassword:
+#     pass_collection = []
+#     def __init__(self, min_length, max_length):
+#         self.psw_chars='1234567890)(*&^%$#@!_><?":{}[]'
+#         self.min = min_length
+#         self.max = max_length
+#
+#     def __call__(self):
+#         self.password = "".join([random.choice(self.psw_chars)for _ in range(random.randint(self.min, self.max))])
+#         self.pass_collection.append(self.password)
+#         return self.pass_collection
+#
+# r1=RandomPassword(5,10)
+# p=r1()
+# print(p)
+
+# ------------------------------------------------------------------------------------
+# class FileAcceptor:
+#     temp =[]
+#     g=0
+#     def __init__(self,check):
+#         self.names = ["boat.jpg", "moon.bmp", "horse.pg"]
+#         self.check = check
+#
+#     def __call__(self):
+#         # for i in self.names:
+#         #     if i.split('.')[1] in self.check:
+#         #         self.temp.append(i)
+#         # return self.temp
+#          return filter(lambda x : x.split('.')[1] in self.check, self.names)
+#
+#
+# acc= FileAcceptor("jpg png")
+# a=acc()
+# print(*a)
+
+
+# -----------------------------------REPR   STR----
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return f"{self.name}"
+#
+# # c1=Cat("Murzik")
+# # print(c1)
+# # print(str(c1))
+#
+# c2=Cat('Liam')
+# print(c2)
+# print(str(c2))
+
+
+# -------------------------------LEN - ABS--------------
+
+# class Point:
+#     def __init__(self, *args):
+#         self.__coords = args
+#     def __len__(self):
+#         return len(self.__coords)
+#     def __abs__(self):
+#         return list(map(abs, self.__coords))
+#
+# p = Point(1, -2)
+# print(len(p))
+# print(abs(p))
+
+# ------------------------------------------------------
+#
+# class Book:
+#     def __init__(self, title, author, pages):
+#         self.title = title
+#         self.author = author
+#         self.pages = pages
+#
+#     def __str__(self):
+#         return f"{self.title}, {self.author}, {self.pages}"
+#
+## book = Book("Island", "Smith", 34)
+# print(book)
+#
+# a,b,c = list(map(str, input(":").split()))
+# book = Book(a,b,c)
+# print(book)
+# ------------------------------------------------------
+#
+# class WordString:
+#     def __init__(self, string):
+#         self.string = string
+#
+#     @property
+#     def inst(self):
+#         return self.string
+#     @inst.setter
+#     def inst(self, string):
+#         self.string = string
+#
+#     def __len__(self):
+#         self.res=self.string.split()
+#         print(self.res)
+#         print(self.res[1])
+#         return len(self.res)
+#
+#
+# wordstring = WordString("Hello, Python!")
+# wordstring.string = "Boom, burum!"
+# print(wordstring.__dict__)
+# print(len(wordstring))
+#
+#
+# a='Hello, Python!'
+# b=a.split()
+# print(b)
+
+
+# ---__-------------------------------------PANDAS----------------
+
+
+# import pandas as pd
+#
+# df = pd.DataFrame({'name':['Taras', "Ivan", "Stas"], 'surname':
+#     ["Shevchenco", "Kozak", "Gerb"], 'heigth': [184,170,176]})
+#
+# print(df)
+# print("*"*20)
+#
+# # df_tall = df[df['heigth']>175]
+# # print(df_tall)
+# # print("*"*20)
+#
+# # df_tall = df[df['name']=="Taras"]
+# # print(df_tall)
+# # print("*"*20)
+#
+# # df_tall_named = df[((df['heigth']>175) | (df["name"] == 'Taras'))
+# #                    & (df['surname'] == "Shevchenko")]
+# # print("*"*20)
+# # print(df_tall_named)
+#
+# max_heigth = 175
+# chosen_name ="Taras"
+# df_tall_name_sec = df.query('heigth > @max_heigth & name == @chosen_name')
+# print(df_tall_name_sec)
+# print("*"*20)
+#
+# #-OR
+#
+# df_tall_named_trd = df.query('heigth < 175 & `name` != "Taras Shevchenko"')
+# print(df_tall_named_trd)
+
+
+# -------------------------ADD  -------------------------------------
+
+
+# n=7
+# a="j"
+# b=a.rjust(3,"*")
+# print(b)
+# c=str(n).ljust(4,"^")
+# print(c)
+
+
+# --------------------------------------------------------
+# class A:
+#     def __init__(self, x):
+#         self.x = x
+#
+#     def sum(self):
+#         return(f'{self.change(self.x)}')
+#
+#     @classmethod
+#     def change(cls, x):
+#         return str(x) * 3
+#
+#     def __add__(self, other):
+#         return A(self.x + other)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, (int, A)):
+#             raise ArithmeticError("Must be int!")
+#         sc = other
+#         if isinstance(other, A):
+#             sc=other.x
+#         return A(self.x + sc)
+#
+#     # def __radd__(self, other):
+#     #     return self + other
+#     #
+#     # def __iadd__(self, other):
+#     #     print("!")
+#     #     if not isinstance(other, (int, A)):
+#     #         raise ArithmeticError("Must be int.")
+#     #     sc = other
+#     #     if isinstance(other, A):
+#     #         sc=other.x
+#     #     self.x +=sc
+#     #     return self
+#
+# a1=A(6)
+# a2=A(10)
+# # a=a1+10
+# a=a1+a2
+# print(a())
+# # a=a1+a2
+# # a=10+a2
+# # a=a1+a2+a1
+# # a1+=a2
+# # a.x=a.x+2
+# # a1=A(10)
+# # a2=A(1)
+# # a=a+a1+a2
+# # # a=101+a
+# # a+=100
+# # print(a.sum())
+
+
+# ---------------------------------------------------
+
+class Point3D:
+
+    def __init__(self, x, y, z):
+        if type(x) == int and type(y) == int and type(z) == int:
+            self.x = x
+            self.y = y
+            self.z = z
+        else:
+            raise TypeError("Incorrect type.")
+
+    def get_info(self):
+        return f'x = {self.x} y = {self.y} z = {self.z}'
+
+    def __add__(self, other):
+        if not isinstance(other, (Point3D)):
+            raise ArithmeticError("Must be int or clock.")
+        if isinstance(other, Point3D):
+            return Point3D(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __sub__(self, other):
+        if not isinstance(other, (Point3D)):
+            raise ArithmeticError("Must be int or clock.")
+        if isinstance(other, Point3D):
+            return Point3D(self.x - other.x, self.y - other.y, self.z - other.z)
+
+
+first1 = Point3D(12, 13, 18)
+first2 = Point3D(6, 3, 9)
+first3 = first1 + first2
+print("Сложение координат:  ", first3.get_info())
+first3 = first1 - first2
+print("Вычитание координат: ", first3.get_info())
+
+
+# first1.x=first1.x+10
+# first1= first1+10
+# print(first1.get_info())
