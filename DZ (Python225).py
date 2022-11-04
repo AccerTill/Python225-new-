@@ -443,16 +443,14 @@
 
 # --------------------------------------------------------------------------
 
-#                                     ЗАДАЧА №1
+#                                     ЗАДАЧА №2
 
 # --------------------------------------------------------------------------
-
-
-
+#
 # class Point3D:
 #
 #     def __init__(self, x, y, z):
-#         if type(x) == int or float and type(y) == int or float and type(z) == int or float:
+#         if type(x) == int and type(y) == int and type(z) == int:
 #             self.x = x
 #             self.y = y
 #             self.z = z
@@ -474,25 +472,6 @@
 #         if isinstance(other, Point3D):
 #             return Point3D(self.x - other.x, self.y - other.y, self.z - other.z)
 #
-#     def __mul__(self, other):
-#         if not isinstance(other, (Point3D)):
-#             raise ArithmeticError("Must be int or clock.")
-#         if isinstance(other, Point3D):
-#             return Point3D(self.x * other.x, self.y * other.y, self.z * other.z)
-#
-#     def __truediv__(self, other):
-#         if not isinstance(other, (Point3D)):
-#             raise ArithmeticError("Must be int or clock.")
-#         if isinstance(other, Point3D):
-#             return Point3D(round(self.x / other.x, 2), round(self.y / other.y, 2),
-#                            round(self.z / other.z, 2))
-#
-#     def __eq__(self, other):
-#         return self.x == other.x and self.y == other.y and self.z == other.z
-#
-#     # def __setitem__(self, key, value): #- присвоение.
-#     #     self.key = value
-#
 #
 # first1 = Point3D(12, 13, 18)
 # first2 = Point3D(6, 3, 9)
@@ -500,16 +479,8 @@
 # print("Сложение координат:  ", first3.get_info())
 # first3 = first1 - first2
 # print("Вычитание координат: ", first3.get_info())
-# first3 = first1 * first2
-# print("Умножение координат: ", first3.get_info())
-# first3 = first1 / first2
-# print("Деление координат: ", first3.get_info())
-# if first1 == first2:
-#     print("Координаты равны")
-# else:
-#     print("Координаты не равны")
 #
-# print('-' * 40)
 #
-# first1.x = 20
-# print("first1.x = ", first1.x)
+# # first1.x=first1.x+10
+# # first1= first1+10
+# # print(first1.get_info())
