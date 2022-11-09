@@ -550,10 +550,10 @@ class Triangle(Shape):
 s = Square("Square", 'Green', 3)
 s.draw1()
 print()
-r = Rectangle("Rectangle", 'Green', 3, 7)
+r = Rectangle("Rectangle", 'Yellow', 3, 7)
 r.draw1()
 print()
-t = Triangle("Triangle", 'Green', 11, 6, 6)
+t = Triangle("Triangle", 'Violet', 11, 6, 6)
 t.draw1()
 
 
