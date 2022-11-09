@@ -496,26 +496,29 @@ class Shape:
 
     def draw1(self):
         if type(self)==Square:
-            print(f"=={self.name}== \nSize:{self.size} \nColor: {self.color}")
+            print(f"=={self.name}== \nSize: {self.size} \nColor: {self.color}")
             print(f'Perimeter = {self.size * 4} ')
-            print(f'Square = {self.size * 2} ')
+            print(f'Square = {self.size ** 2} ')
+            print()
             for i in range(self.size):
                 print("*" * self.size)
         elif type(self)==Rectangle:
-            print(f"=={self.name}== \nLength:{self.size1} \nWidth:{self.size2} \nColor: {self.color}")
+            print(f"=={self.name}== \nLength: {self.size1} \nWidth: {self.size2} \nColor: {self.color}")
             print(f'Perimeter = {(self.size1 + self.size2) * 2} ')
             print(f'Square = {self.size1 * self.size2} ')
+            print()
             for i in range(self.size1):
                 print("*" * self.size2)
         elif type(self)==Triangle:
-            print(f"=={self.name}== \nSize1:{self.size1} \nSize2:{self.size2} "
-                  f"\nSize3:{self.size2}  \nColor: {self.color}")
+            print(f"=={self.name}== \nSize1: {self.size1} \nSize2: {self.size2} "
+                  f"\nSize3: {self.size2}  \nColor: {self.color}")
             print(f'Perimeter = {self.size1 + self.size2 + self.size3} ')
 
             self.bottom = self.size2 / 2
             self.high = (self.size1 ** 2 + self.bottom ** 2) ** (0.5)
             self.tr_square = self.bottom * self.high
             print(f'Square of Triangle = {self.tr_square :.{2}f}')
+            print()
 
             for i in range(1, self.size2 + 1):  # painting of triangle
                 self.a = " " * (self.size2 - i)
