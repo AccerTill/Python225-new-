@@ -2680,40 +2680,143 @@ from abc import ABC, abstractmethod
 
 # ---------------------------------------------------
 
-class Point3D:
+# class Point3D:
+#
+#     def __init__(self, x, y, z):
+#         if type(x) == int and type(y) == int and type(z) == int:
+#             self.x = x
+#             self.y = y
+#             self.z = z
+#         else:
+#             raise TypeError("Incorrect type.")
+#
+#     def get_info(self):
+#         return f'x = {self.x} y = {self.y} z = {self.z}'
+#
+#     def __add__(self, other):
+#         if not isinstance(other, (Point3D)):
+#             raise ArithmeticError("Must be int or clock.")
+#         if isinstance(other, Point3D):
+#             return Point3D(self.x + other.x, self.y + other.y, self.z + other.z)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, (Point3D)):
+#             raise ArithmeticError("Must be int or clock.")
+#         if isinstance(other, Point3D):
+#             return Point3D(self.x - other.x, self.y - other.y, self.z - other.z)
+#
+#
+# first1 = Point3D(12, 13, 18)
+# first2 = Point3D(6, 3, 9)
+# first3 = first1 + first2
+# print("Сложение координат:  ", first3.get_info())
+# first3 = first1 - first2
+# print("Вычитание координат: ", first3.get_info())
+#
+#
+# # first1.x=first1.x+10
+# # first1= first1+10
+# # print(first1.get_info())
 
-    def __init__(self, x, y, z):
-        if type(x) == int and type(y) == int and type(z) == int:
-            self.x = x
-            self.y = y
-            self.z = z
-        else:
-            raise TypeError("Incorrect type.")
+#------------------------------------------------------------------------
+# class Animal:
+#     def __init__(self,kind):
+#         self.kind = kind
+#
+#     def sound1(self):
+#         print(self.kind,':', end = ' ')
+#
+# class Cat(Animal):
+#     def __init__(self, x, age, kind):
+#         super().__init__(kind)
+#         self.x = x
+#         self.age = age
+#
+#     # def __str__(self):
+#     #     return self.x
+#
+#     def sound(self):
+#         super().sound1()
+#         print(f'{self.x} - I am cat {self.age} I am meowing.')
+#
+# class Dog(Animal):
+#
+#     def __init__(self, x, age, kind):
+#         super().__init__(kind)
+#         self.x = x
+#         self.age=age
+#
+#     # def __str__(self):
+#     #     return self.x
+#
+#     def sound(self):
+#         super().sound1()
+#         print(f'{self.x} - I am dog {self.age} I am barking.')
+#
+#
+# cat= Cat("Miau...", "2.3 year", ' Cats')
+# dog = Dog ("Gau!", "1,5 year old", ' Dogs')
+#
+# cat.sound()
+# dog.sound()
+# # a=[cat,dog]
+# # for i in a:
+# #     i.sound()
+#
+# # print("*" * 30)
+# # for j in a:
+# #     print(j)
 
-    def get_info(self):
-        return f'x = {self.x} y = {self.y} z = {self.z}'
+#------------------------------------------------------------------------
+#
+class Human:
+    def __init__(self, lastname, name, age):
+        self.name = name
+        self.lastname = lastname
+        self.age = age
 
-    def __add__(self, other):
-        if not isinstance(other, (Point3D)):
-            raise ArithmeticError("Must be int or clock.")
-        if isinstance(other, Point3D):
-            return Point3D(self.x + other.x, self.y + other.y, self.z + other.z)
+    def info(self):
+        print(end = "" f'{self.lastname} {self.name} {self.age} ')
 
-    def __sub__(self, other):
-        if not isinstance(other, (Point3D)):
-            raise ArithmeticError("Must be int or clock.")
-        if isinstance(other, Point3D):
-            return Point3D(self.x - other.x, self.y - other.y, self.z - other.z)
+class Student(Human):
+    def __init__(self, lastname, name, age, direction, group, rating):
+        super().__init__(lastname, name, age)
+        self.direction = direction
+        self.group = group
+        self.rating = rating
+
+    def info(self):
+        super().info()
+        print(f'{self.direction} {self.group} {self.rating}')
+
+class Teacher(Human):
+    def __init__(self, lastname, name, age, spec, exp):
+        super().__init__(lastname, name, age)
+        self.exp = exp
+        self.spec = spec
+
+    def info(self):
+        super().info()
+        print(f'{self.spec} {self.exp}')
 
 
-first1 = Point3D(12, 13, 18)
-first2 = Point3D(6, 3, 9)
-first3 = first1 + first2
-print("Сложение координат:  ", first3.get_info())
-first3 = first1 - first2
-print("Вычитание координат: ", first3.get_info())
+# class Graduate:
 
 
-# first1.x=first1.x+10
-# first1= first1+10
-# print(first1.get_info())
+s=Student("Vissner", "ALex", 23, "Python", "P534", 5)
+s.info()
+t=Teacher("Hopkins", "Viola", "25", 'Physic', 120)
+t.info()
+
+
+
+
+
+
+
+
+
+
+
+
+

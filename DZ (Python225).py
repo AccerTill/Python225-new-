@@ -440,7 +440,6 @@
 # #     print("Not c1 > c2.")
 
 
-
 # --------------------------------------------------------------------------
 
 #                                     ЗАДАЧА №2
@@ -484,3 +483,77 @@
 # # first1.x=first1.x+10
 # # first1= first1+10
 # # print(first1.get_info())
+
+# -----------------------------------------------------------------------------------
+
+#                                       DZ 30
+
+# -----------------------------------------------------------------------------------
+
+class Shape:
+    def __init__(self, color):
+        self.color = color
+
+    def draw1(self):
+        if type(self)==Square:
+            print(f"=={self.name}== \nSize:{self.size} \nColor: {self.color}")
+            print(f'Perimeter = {self.size * 4} ')
+            print(f'Square = {self.size * 2} ')
+            for i in range(self.size):
+                print("*" * self.size)
+        elif type(self)==Rectangle:
+            print(f"=={self.name}== \nLength:{self.size1} \nWidth:{self.size2} \nColor: {self.color}")
+            print(f'Perimeter = {(self.size1 + self.size2) * 2} ')
+            print(f'Square = {self.size1 * self.size2} ')
+            for i in range(self.size1):
+                print("*" * self.size2)
+        elif type(self)==Triangle:
+            print(f"=={self.name}== \nSize1:{self.size1} \nSize2:{self.size2} "
+                  f"\nSize3:{self.size2}  \nColor: {self.color}")
+            print(f'Perimeter = {self.size1 + self.size2 + self.size3} ')
+
+            self.bottom = self.size2 / 2
+            self.high = (self.size1 ** 2 + self.bottom ** 2) ** (0.5)
+            self.tr_square = self.bottom * self.high
+            print(f'Square of Triangle = {self.tr_square :.{2}f}')
+
+            for i in range(1, self.size2 + 1):  # painting of triangle
+                self.a = " " * (self.size2 - i)
+                self.b = "*" * (i - 1)
+                self.c = "*"
+                self.d = "*" * (i - 1)
+                print(f'{self.a}{self.b}{self.c}{self.d}')
+
+
+class Square(Shape):
+    def __init__(self, name, color, size):
+        super().__init__(color)
+        self.size = size
+        self.name = name
+
+class Rectangle(Shape):
+    def __init__(self, name, color, size1, size2):
+        super().__init__(color)
+        self.size1 = size1
+        self.size2 = size2
+        self.name = name
+
+class Triangle(Shape):
+    def __init__(self, name, color, size1, size2, size3):
+        super().__init__(color)
+        self.size1 = size1
+        self.size2 = size2
+        self.size3=size3
+        self.name = name
+
+
+s = Square("Square", 'Green', 3)
+s.draw1()
+print()
+r = Rectangle("Rectangle", 'Green', 3, 7)
+r.draw1()
+print()
+t = Triangle("Triangle", 'Green', 11, 6, 6)
+t.draw1()
+
+
