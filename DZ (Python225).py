@@ -626,21 +626,24 @@ class Order:
 
     def __set__(self, instance, value):
         if isinstance(value, int) and value < 0:
-            raise ValueError(f" - Size \"{value}\" must be more than zero.")
+            raise ValueError(f" - Size \"{value}\" Must be more than zero.")
         instance.__dict__[self.__name] = value
-        Order.count += 1
-        if Order.a == 0:
+        Order.count +=1
+        if Order.count == 1:
             Order.a = value
-        elif Order.a != 0 and self.b == 0:
+        elif Order.count ==2:
             Order.b = value
-        elif Order.a != 0 and self.b != 0:
+        elif Order.count == 3:
             Order.c = value
 
         if ((Order.a + Order.b) < Order.c or (Order.a + Order.c) < Order.b or (Order.c + Order.b) < Order.a) \
-                and Order.count % 3 == 0:
+                and Order.count == 3:
             print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) NOT EXISTS.')
-        elif Order.count % 3 == 0:
+            Order.count = 0
+
+        elif Order.count == 3:
             print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) EXISTS.')
+            Order.count = 0
 
 
 class Triangle:
@@ -657,5 +660,5 @@ class Triangle:
 t1 = Triangle(2, 5, 6)
 t2 = Triangle(5, 2, 8)
 t3 = Triangle(7, 3, 6)
-
-t4 = Triangle(2, -5, 6)
+#
+# t4 = Triangle(2, -5, 6)
