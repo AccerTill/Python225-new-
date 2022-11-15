@@ -338,8 +338,6 @@
 # a=[x for x in [ord(x) for x in input("-")]]
 # print(a)
 
-import random
-
 # # print(ord("a"))
 # # print(chr(1))
 #
@@ -405,8 +403,6 @@ import random
 
 # REGULAR METHODS
 
-
-import re
 
 # s="Я ищу совпадения в 2021 года. И я из найду в 2 счёта"
 # reg = 'Я ищу'
@@ -835,9 +831,6 @@ import re
 #             fw.write(line)
 
 # ------------------------------OS----------------------------------
-
-import os
-import time
 
 # print("Current directory: ", os.getcwd())
 # print(os.listdir())   # list of folders in current directory
@@ -2005,8 +1998,6 @@ import time
 
 # --------------------------------------------------------------
 
-from abc import ABC, abstractmethod
-
 #
 # class Check(ABC):
 #     def draw(self):
@@ -2840,7 +2831,6 @@ from abc import ABC, abstractmethod
 
 
 # ------------------------------
-import math
 
 
 # class Point:
@@ -3112,7 +3102,7 @@ import math
 # add(2, 2)
 
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 
 
 #
@@ -3172,11 +3162,11 @@ import math
 # p2.info()
 
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 
-#-----------------Декорирование классов------------------------
+# -----------------Декорирование классов------------------------
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 
 
 # def decorator(cls):
@@ -3198,12 +3188,12 @@ import math
 # print(obj.quad(4))
 # print(obj.doubler(4))
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 
 
-#--------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 
-#----Descriptors (Дескрипторы) (__get__, __set__, __delete__, __set_name__)
+# ----Descriptors (Дескрипторы) (__get__, __set__, __delete__, __set_name__)
 #
 #
 # class StringD:
@@ -3246,48 +3236,186 @@ import math
 # print(p.name.get())
 
 
-#--------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 
-#----Descriptors (Дескрипторы) (__get__, __set__, __delete__, __set_name__)
-
-class ValidString:
-    def __set_name__(self, owner, name):
-        self.__name = name
-
-    def __get__(self, instance, owner):
-        print("GET")
-        print(owner)
-        return instance.__dict__[self.__name]
-
-    def __set__(self, instance, value):
-        if not isinstance(value, str):
-            raise ValueError(f"{self.__name} - must be string")
-        instance.__dict__[self.__name] = value
-
-class Person:
-    name = ValidString()
-    surname = ValidString()
-
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-
-p = Person("Ivan", "Petrov")
-print(p.name)
-print(p.surname)
-
-p.name = 'Vadim'
-print(p.name)
-print(p.surname)
-print(p.__dict__)
-
-# p.name = 34
+# ----Descriptors (Дескрипторы) (__get__, __set__, __delete__, __set_name__)
+#
+# class ValidString:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f"{self.__name} - must be string")
+#         instance.__dict__[self.__name] = value
+#
+# class Person:
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+# p = Person("Ivan", "Petrov")
 # print(p.name)
+# print(p.surname)
+#
+# p.name = 'Vadim'
+# print(p.name)
+# print(p.surname)
+# print(p.__dict__)
+#
+# # p.name = 34
+# # print(p.name)
+
+# ---------------------------------------------------------
+# class Integer:
+#
+#     @classmethod
+#     def verify_coords(cls, coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f'Coord {coord} must be integer')
+#
+#     def __set_name__(self, owner, name):
+#         # print(")(*&^")
+#         # print(owner.__dict__)
+#         self.name ="_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self,  instance, value):
+#         self.verify_coords(value)
+#         # instance.__dict__[self.name]=value
+#         setattr(instance, self.name, value)
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+# p1 = Point3D(1,2,5)
+# print(p1.__dict__)
+# print(p1.x)
+
+
+# --------------------------------------------------------------------
+
+# ---------------------Метаклассы-------------------------
+
+# --------------------------------------------------------------------
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+# class MyList(list):
+#
+#     def get_length(self):
+#         return len(self)
+#
+#     def pr(self):
+#         print(self, "---")
+
+
+# MyList = type(
+#     'MyList',
+#     (list,),
+#     dict(get_length = lambda self: len(self))
+# )
+
+#  --------------------THE SAME RESULT!
+# MyList = type(
+#     'MyList',
+#     (list,),
+#     dict(get_length = lambda self: len(self))
+# )
+#
+#
+# lst = MyList()
+# # print(lst.__dict__)
+# lst.append(5)
+# lst.append(7)
+# lst[0] = 3
+# print(lst, lst.get_length())
+
+# type(
+# имя класса
+# кортеж родительских классов
+# словарь, содержащий атрибуты и их значения
+# )
+
+
+
+# super(MyMetaClass, cls).__init__(*args, **kwargs)
+
+#--------------------------------------------------------------
+# class MyMetaClass(type):
+#     def __new__(cls, *args, **kwargs):
+#         print('Создание нового объекта', args[0])
+#         return super(MyMetaClass, cls).__new__(cls, *args, **kwargs)
+#
+#     def __init__(cls, *args, **kwargs):
+#         print('Инициализация класса', args[0])
+#         super(MyMetaClass, cls).__init__(*args, **kwargs)
+#
+#
+# class Student(metaclass = MyMetaClass):
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+# stud = Student("Rogazza")
+# print("Name:", stud.get_name())
+# print("Type of object Student: ", type(stud))
+# print("Type of class Student: ", type(Student))
 
 
 
 
 
+
+
+
+#-----------------------------------------------------------
+
+#                          MODULES creating
+
+#------------------------------------------------------------
+
+import geometry.trian # both metoda are aviable
+import geometry.rect
+# import geometry.sq
+# import geometry
+# from geometry import *
+from geometry import rect, sq, trian # as tr
+
+
+r1 = rect.Rectangle(1, 2)
+r2 = rect.Rectangle(3, 4)
+s1 = sq.Square(10)
+s2 = geometry.sq.Square(20)
+t1 = trian.Triangle(1, 2, 3)
+t2 = geometry.trian.Triangle(4, 5, 6)
+
+shape = [r1, r2, s1, s2, t1, t2]
+for g in shape:
+    print(g.get_perimetr())
+
+# import sys
+# sys.path
 
 
 

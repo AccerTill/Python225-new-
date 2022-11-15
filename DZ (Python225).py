@@ -558,14 +558,66 @@
 # t.draw1()
 
 
-
 # -----------------------------------------------------------------------------------
 
 #                                       DZ 31
 
 # -----------------------------------------------------------------------------------
+#
+# class Order:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if  isinstance(value, int) and value < 0:
+#             raise ValueError(f"{self.__name} - must be more than zero.")
+#         instance.__dict__[self.__name] = value
+#
+# class Goods:
+#     name = Order()
+#     price = Order()
+#     quantity = Order()
+#
+#     def __init__(self, name, price, quantity):
+#         self.name = name
+#         self.price = price
+#         self.quantity = quantity
+#
+# g = Goods("Apple", 12, -6)
+# print(g.name)
+# print(g.price)
+# print(g.quantity)
+# # g.name ="Cucumber"
+# # print(g.name)
+# # g.price = -2
+#
+# # g2 = Goods("Pear", -12, 6)
+# # print(g2.name)
+# # print(g2.price)
+# # print(g2.quantity)
 
+
+# ------------------------------------------------------------------------------------------------------------
+
+#                                       DZ 32
+
+# Елена, при первом решении проверку положительного значения вывел в дескрипторе Order, а метод проверки
+# существования треугольника по длине сторон в классе Triangle. Они работали только по отдельности.
+# Один метод приходилось удалять из кода. Чтоб сразу работало все в дескрипторе ввел три переменных
+# и счетчик срабатывающий  на каждом третьем значении
+
+
+# -------------------------------------------------------------------------------------------------------------
+#
 class Order:
+    count = 0
+    a = 0
+    b = 0
+    c = 0
+
     def __set_name__(self, owner, name):
         self.__name = name
 
@@ -573,35 +625,37 @@ class Order:
         return instance.__dict__[self.__name]
 
     def __set__(self, instance, value):
-        if  isinstance(value, int) and value < 0:
-            raise ValueError(f"{self.__name} - must be more than zero.")
+        if isinstance(value, int) and value < 0:
+            raise ValueError(f" - Size \"{value}\" must be more than zero.")
         instance.__dict__[self.__name] = value
+        Order.count += 1
+        if Order.a == 0:
+            Order.a = value
+        elif Order.a != 0 and self.b == 0:
+            Order.b = value
+        elif Order.a != 0 and self.b != 0:
+            Order.c = value
 
-class Goods:
-    name = Order()
-    price = Order()
-    quantity = Order()
-
-    def __init__(self, name, price, quantity):
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-
-g = Goods("Apple", 12, 6)
-print(g.name)
-print(g.price)
-print(g.quantity)
-# g.name ="Cucumber"
-# print(g.name)
-# g.price = -2
-
-# g2 = Goods("Pear", -12, 6)
-# print(g2.name)
-# print(g2.price)
-# print(g2.quantity)
+        if ((Order.a + Order.b) < Order.c or (Order.a + Order.c) < Order.b or (Order.c + Order.b) < Order.a) \
+                and Order.count % 3 == 0:
+            print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) NOT EXISTS.')
+        elif Order.count % 3 == 0:
+            print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) EXISTS.')
 
 
+class Triangle:
+    size1 = Order()
+    size2 = Order()
+    size3 = Order()
+
+    def __init__(self, size1, size2, size3):
+        self.size1 = size1
+        self.size2 = size2
+        self.size3 = size3
 
 
+t1 = Triangle(2, 5, 6)
+t2 = Triangle(5, 2, 8)
+t3 = Triangle(7, 3, 6)
 
-
+t4 = Triangle(2, -5, 6)
