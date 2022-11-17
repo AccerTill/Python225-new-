@@ -271,7 +271,7 @@
 # --------------------------------------------------------------
 
 # ---------------------------     1    -------------------------
-
+#
 # class Student:
 #     def __init__(self, name):
 #         self.name = name
@@ -612,53 +612,137 @@
 
 # -------------------------------------------------------------------------------------------------------------
 #
-class Order:
-    count = 0
-    a = 0
-    b = 0
-    c = 0
-
-    def __set_name__(self, owner, name):
-        self.__name = name
-
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.__name]
-
-    def __set__(self, instance, value):
-        if isinstance(value, int) and value < 0:
-            raise ValueError(f" - Size \"{value}\" Must be more than zero.")
-        instance.__dict__[self.__name] = value
-        Order.count +=1
-        if Order.count == 1:
-            Order.a = value
-        elif Order.count ==2:
-            Order.b = value
-        elif Order.count == 3:
-            Order.c = value
-
-        if ((Order.a + Order.b) < Order.c or (Order.a + Order.c) < Order.b or (Order.c + Order.b) < Order.a) \
-                and Order.count == 3:
-            print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) NOT EXISTS.')
-            Order.count = 0
-
-        elif Order.count == 3:
-            print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) EXISTS.')
-            Order.count = 0
-
-
-class Triangle:
-    size1 = Order()
-    size2 = Order()
-    size3 = Order()
-
-    def __init__(self, size1, size2, size3):
-        self.size1 = size1
-        self.size2 = size2
-        self.size3 = size3
-
-
-t1 = Triangle(2, 5, 6)
-t2 = Triangle(5, 2, 8)
-t3 = Triangle(7, 3, 6)
+# class Order:
+#     count = 0
+#     a = 0
+#     b = 0
+#     c = 0
 #
-# t4 = Triangle(2, -5, 6)
+#
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if isinstance(value, int) and value < 0:
+#             raise ValueError(f" - Size \"{value}\" Must be more than zero.")
+#         instance.__dict__[self.__name] = value
+#         # print(instance.__dict__)
+#         # print(self.__name, "-" ,value, "- NAME")
+#
+#         Order.count +=1
+#         if Order.count == 1:
+#             Order.a = value
+#         elif Order.count ==2:
+#             Order.b = value
+#         elif Order.count == 3:
+#             Order.c = value
+#
+#         if ((Order.a + Order.b) < Order.c or (Order.a + Order.c) < Order.b
+#             or (Order.c + Order.b) < Order.a) and Order.count == 3:
+#             print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) NOT EXISTS.')
+#             Order.count = 0
+#             print(instance.__dict__)
+#
+#         elif Order.count == 3:
+#             print(f'Triangle with sizes ({Order.a}, {Order.b}, {Order.c}) EXISTS.')
+#             Order.count = 0
+#             print(instance.__dict__)
+#
+# class Triangle:
+#     size1 = Order()
+#     size2 = Order()
+#     size3 = Order()
+#
+#     def __init__(self, size1, size2, size3):
+#         self.size1 = size1
+#         self.size2 = size2
+#         self.size3 = size3
+#
+#
+# t1 = Triangle(2, 5, 6)
+# t2 = Triangle(5, 2, 8)
+# t3 = Triangle(7, 3, 6)
+# # #
+# # t4 = Triangle(2, -5, 6)
+
+
+# -------------------------------------------------------------------------------------
+
+#                                       DZ 33
+
+# Елена, не совсем понял условие задачи - через дочерние классы вывел расчетку трех
+# типов работников. Ниже код как разбивал по файлам и если вы видите мои файлы то
+# все в папке "employee".
+
+# --------------------------------------------------------------------------------------
+
+
+# ---------------- File #1 (Employee.py)---------------------
+
+
+from employee import Workers as w
+
+class Employee:
+    def __init__(self, code, name):
+        self.code = code
+        self.name = name
+
+    def show_salary(self):
+        print("-" * 20)
+        print(f"TYPE OF WORKER: {type(self).__name__}.")
+        if type(self) == w.Admin:
+            print(f'Code:{self.code} \nName{ self.name} \nWeek salary: {self.week_salary}\n')
+        if type(self) == w.Worker:
+            print(f'Code:{self.code} \nName {self.name} \nWeek salary: {self.hours * self.pay_hours}\n ')
+        if type(self) == w.Trade:
+            print(
+                f'Code:{self.code} \nName{self.name} \nWeek salary: '
+                f'{self.week_salary + self.percent * self.overal_marge}')
+
+
+# ---------------- File #2 (Workers.py)---------------------
+
+from employee import Employee as e
+
+
+class Admin(e.Employee):
+    def __init__(self, code, name, week_salary):
+        super().__init__(code, name)
+        self.week_salary = week_salary
+
+
+class Worker(e.Employee):
+    def __init__(self, code, name, hours, pay_hours):
+        super().__init__(code, name)
+        self.hours = hours
+        self.pay_hours = pay_hours
+
+
+class Trade(e.Employee):
+    def __init__(self, code, name, week_salary, percent, overal_marge):
+        super().__init__(code, name)
+        self.week_salary = week_salary
+        self.percent = percent
+        self.overal_marge = overal_marge
+
+
+# ---------------- File #3 (Current_salary.py)---------------------
+
+from employee import Workers as w
+
+
+employee1 = w.Admin(12, "Valery Zadorozny", 1500)
+employee1.show_salary()
+
+employee2 = w.Worker(14, "Kelly Moon", 34, 25)
+employee2.show_salary()
+
+employee3 = w.Trade(17, "George Smith", 1200, 0.04, 10203)
+employee3.show_salary()
+
+
+
+

@@ -3356,10 +3356,9 @@
 # )
 
 
-
 # super(MyMetaClass, cls).__init__(*args, **kwargs)
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 # class MyMetaClass(type):
 #     def __new__(cls, *args, **kwargs):
 #         print('Создание нового объекта', args[0])
@@ -3383,44 +3382,262 @@
 # print("Type of class Student: ", type(Student))
 
 
-
-
-
-
-
-
-#-----------------------------------------------------------
+# -----------------------------------------------------------
 
 #                          MODULES creating
 
-#------------------------------------------------------------
+# ------------------------------------------------------------
 
-import geometry.trian # both metoda are aviable
-import geometry.rect
-# import geometry.sq
-# import geometry
-# from geometry import *
-from geometry import rect, sq, trian # as tr
-
-
-r1 = rect.Rectangle(1, 2)
-r2 = rect.Rectangle(3, 4)
-s1 = sq.Square(10)
-s2 = geometry.sq.Square(20)
-t1 = trian.Triangle(1, 2, 3)
-t2 = geometry.trian.Triangle(4, 5, 6)
-
-shape = [r1, r2, s1, s2, t1, t2]
-for g in shape:
-    print(g.get_perimetr())
-
-# import sys
-# sys.path
-
-
+# import geometry.trian # both metoda are aviable
+# import geometry.rect
+# # import geometry.sq
+# # import geometry
+# # from geometry import *
+# from geometry import rect, sq, trian # as tr
+#
+#
+# r1 = rect.Rectangle(1, 2)
+# r2 = rect.Rectangle(3, 4)
+# s1 = sq.Square(10)
+# s2 = geometry.sq.Square(20)
+# t1 = trian.Triangle(1, 2, 3)
+# t2 = geometry.trian.Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+# for g in shape:
+#     print(g.get_perimetr())
+#
+# # import sys
+# # sys.path
 
 
+# ----------------------------------------------------
+# ----------------------IMPORT MODULES---------------
+# ----------------------------------------------------
 
+
+# from car import electrocar as el
+#
+# f=[el.ElectroCar("Tesla", "T", 2018, 99000), el.ElectroCar("Tesla", "TTT", 2019, 93400)]
+# ff=list(map(lambda x: x.description_battery(), f))
+# print(ff)
+#
+# def main():
+#     e_car = el.ElectroCar("Tesla", "T", 2018, 99000)
+#     e_car.show_car()
+#     e_car.description_battery()
+#
+#
+# if  __name__ == '__main__':
+#     main()
+
+
+# ----------------------------------------------------
+
+
+#-----------------------------------------------------
+
+
+from math import pi
+
+
+# class Rectangle:
+#     def __init__(self, l, h):
+#         self.l = l
+#         self.h = h
+#
+#     def get_rect_perimeter(self):
+#         res = self.l * 2 + self.h * 2
+#         print(f'Perimeter of Rectangle: {res}')
+#         return res
+#
+#     def get_rect_area(self):
+#         res = self.l * self.h
+#         print(f'Square of Rectangle: {res}')
+#         return res
+#
+#     def print_rect(self):
+#         print(f"Sides: {self.l}, {self.h}")
+#         return {self.l, self.h}
+#
+# class Circle:
+#     def __init__(self, r):
+#         self.r = r
+#
+#     def get_circle_circumference(self):
+#         res = 2 * pi * self.r
+#         print(f'Perimeter of Circle: {round(res, 2)}', "***")
+#         return res
+#
+#     def get_circle_area(self):
+#         res = pi * self.r ** 2
+#         print(f'Square of Circle: {res}')
+#         return res
+#
+#     def print_circle(self):
+#         print(f"Radius of current Circle: {self.r}")
+#         return self.r
+#
+# class Cylinder(Rectangle, Circle):
+#     def __init__(self, r, h):
+#         Circle.__init__(self, r)
+#         Rectangle.__init__(self, self.get_circle_circumference(), h)
+#
+#     def get_volume(self):
+#         res = self.get_circle_area() * self.h
+#         print(f"Volume: {res}")
+#         return res
+#
+#     def print_cylinder(self):
+#         print(f"Radius of bottom: {self.r}, High: {self.h}")
+
+#------
+
+from shapes import cylinder, circle, rectangle
+
+
+if  __name__ == '__main__':
+
+    cylinders = [cylinder.Cylinder(4, 7), cylinder.Cylinder(2, 5),
+                 cylinder.Cylinder(9, 3), cylinder.Cylinder(5, 5)]
+    circles = [circle.Circle(4), circle.Circle(2), circle.Circle(6),
+               circle.Circle(8), circle.Circle(1)]
+    rects = [rectangle.Rectangle(3, 7), rectangle.Rectangle(2, 7),
+             rectangle.Rectangle(19, 12)]
+
+
+    circle_max_s = max(circles, key = lambda c: c.get_circle_area())
+    print("Max circle square:", f'{round( circle_max_s.get_circle_area(),2)}')
+
+    rect_min_p=min(rects, key = lambda s: s.get_rect_perimeter())
+    print(f'Rectangle with less perimters: {rect_min_p.print_rect()}'
+          f' = {rect_min_p.get_rect_perimeter()}')
+
+    cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
+    cylinders_v_average = sum(cylinders_v)/len(cylinders_v)
+    print(f"Average volume of cylinders: {round(cylinders_v_average, 2)}")
+
+
+
+
+#-----------------------------------------------------------------------------
+
+#                                   SERIALISATION
+#                                and DESERIALISATION
+
+#-----------------------------------------------------------------------------
+
+
+
+# Упаковка данных
+# Сериализация
+# Десериализация
+
+# В стандартной библиотеке Python
+# marshal (.pyc)
+# pickle
+# json
+
+#------------------------------------------------------
+# dump() - сохраняет данные в файл
+# load() - считывает из файла
+#
+# dumps()
+# loads()
+#------------------------------------------------------
+#                             PICKLE
+#------------------------------------------------------
+
+import pickle
+
+# filename = "basket.txt"
+# shop_list = {
+#     "fruits": ['apple', "mango"],
+#     "vegetables": ['carrot'],
+#     'buget': 100
+# }
+#
+# with open(filename, "wb") as fh:
+#     pickle.dump(shop_list, fh)
+#
+# with open(filename, "rb") as fh:
+#     shop_list_2=pickle.load(fh)
+#
+# print(shop_list_2)
+
+#-----------------------------------------------------
+
+# class Test:
+#     num = 35
+#     st = 'Hello'
+#     lst = [1,2,3]
+#     dct = {'first': "a", 'second' : 2, "third": [1,2,3]
+#            }
+#     tpl =(23,22)
+#
+#     def __str__(self):
+#         return f'Number: {Test.num}\nString: {Test.st}\nList:' \
+#                f' {Test.lst}\nDict:{Test.dct}\nCortege: {Test.tpl} '
+#
+# obj =Test()
+# print(obj)
+#
+# d_save = pickle.dumps(obj)
+# print(f'Serialisation in string: \n{d_save}\n')
+#
+# d_read = pickle.loads(d_save)
+# print(f'Serialisation in string: \n{d_read}\n')
+
+
+
+#class Employee:
+    def __init__(self, code, name):
+        self.code = code
+        self.name = name
+
+    def show_salary(self):
+        print("-" * 20)
+        print(f"TYPE OF WORKER: {type(self).__name__}.")
+        if type(self) == Admin:
+            print(f'Code:{self.code} \nName{self.name} \nWeek salary: {self.week_salary}\n')
+        if type(self) == Worker:
+            print(f'Code:{self.code} \nName{self.name} \nWeek salary: {self.hours * self.pay_hours}\n ')
+        if type(self) == Trade:
+            print(
+                f'Code:{self.code} \nName{self.name} \nWeek salary: '
+                f'{self.week_salary + self.percent * self.overal_marge}')
+
+
+class Admin(Employee):
+    def __init__(self, code, name, week_salary):
+        super().__init__(code, name)
+        self.week_salary = week_salary
+
+
+class Worker(Employee):
+    def __init__(self, code, name, hours, pay_hours):
+        super().__init__(code, name)
+        self.hours = hours
+        self.pay_hours = pay_hours
+
+
+class Trade(Employee):
+    def __init__(self, code, name, week_salary, percent, overal_marge):
+        super().__init__(code, name)
+        self.week_salary = week_salary
+        self.percent = percent
+        self.overal_marge = overal_marge
+
+
+employee1 = Admin(12, "Valery Zadorozny", 1500)
+employee1.show_salary()
+# print(type(employee1).__name__)
+
+employee2 = Worker(14, "Kelly Moon", 34, 25)
+employee2.show_salary()
+
+employee3 = Trade(17, "George Smith", 1200, 0.04, 10203)
+employee3.show_salary()
 
 
 

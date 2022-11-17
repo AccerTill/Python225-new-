@@ -5066,13 +5066,13 @@ import os
 
 # ---------------------------------------------------------
 # print("-"*30)
-# class Employee:
+# class employee:
 #     def __init__(self):
-#         self.name = 'Employee'
+#         self.name = 'employee'
 #         self.intern = self.Intern()
 #         self.head = self.Head()
 #     def show(self):
-#         print("Employee List:")
+#         print("employee List:")
 #         print(f'Name: {self.name}')
 #
 #     class Intern:
@@ -5091,7 +5091,7 @@ import os
 #             print(f'Name: {self.name}')
 #             print(f'Id: {self.id}')
 #
-# outer = Employee()
+# outer = employee()
 # outer.show()
 # d1 = outer.intern
 # d2 = outer.head
