@@ -611,7 +611,7 @@
 
 
 # -------------------------------------------------------------------------------------------------------------
-#
+# #
 # class Order:
 #     count = 0
 #     a = 0
@@ -666,8 +666,8 @@
 # t2 = Triangle(5, 2, 8)
 # t3 = Triangle(7, 3, 6)
 # # #
-# # t4 = Triangle(2, -5, 6)
-
+# t4 = Triangle(2, -5, 6)
+#
 
 # -------------------------------------------------------------------------------------
 
@@ -682,67 +682,113 @@
 
 # ---------------- File #1 (Employee.py)---------------------
 
-
-from employee import Workers as w
-
-class Employee:
-    def __init__(self, code, name):
-        self.code = code
-        self.name = name
-
-    def show_salary(self):
-        print("-" * 20)
-        print(f"TYPE OF WORKER: {type(self).__name__}.")
-        if type(self) == w.Admin:
-            print(f'Code:{self.code} \nName{ self.name} \nWeek salary: {self.week_salary}\n')
-        if type(self) == w.Worker:
-            print(f'Code:{self.code} \nName {self.name} \nWeek salary: {self.hours * self.pay_hours}\n ')
-        if type(self) == w.Trade:
-            print(
-                f'Code:{self.code} \nName{self.name} \nWeek salary: '
-                f'{self.week_salary + self.percent * self.overal_marge}')
-
-
-# ---------------- File #2 (Workers.py)---------------------
-
-from employee import Employee as e
-
-
-class Admin(e.Employee):
-    def __init__(self, code, name, week_salary):
-        super().__init__(code, name)
-        self.week_salary = week_salary
-
-
-class Worker(e.Employee):
-    def __init__(self, code, name, hours, pay_hours):
-        super().__init__(code, name)
-        self.hours = hours
-        self.pay_hours = pay_hours
-
-
-class Trade(e.Employee):
-    def __init__(self, code, name, week_salary, percent, overal_marge):
-        super().__init__(code, name)
-        self.week_salary = week_salary
-        self.percent = percent
-        self.overal_marge = overal_marge
-
-
-# ---------------- File #3 (Current_salary.py)---------------------
-
-from employee import Workers as w
-
-
-employee1 = w.Admin(12, "Valery Zadorozny", 1500)
-employee1.show_salary()
-
-employee2 = w.Worker(14, "Kelly Moon", 34, 25)
-employee2.show_salary()
-
-employee3 = w.Trade(17, "George Smith", 1200, 0.04, 10203)
-employee3.show_salary()
-
+#
+# from employee import Workers as w
+#
+# class Employee:
+#     def __init__(self, code, name):
+#         self.code = code
+#         self.name = name
+#
+#     def show_salary(self):
+#         print("-" * 20)
+#         print(f"TYPE OF WORKER: {type(self).__name__}.")
+#         if type(self) == w.Admin:
+#             print(f'Code:{self.code} \nName{ self.name} \nWeek salary: {self.week_salary}\n')
+#         if type(self) == w.Worker:
+#             print(f'Code:{self.code} \nName {self.name} \nWeek salary: {self.hours * self.pay_hours}\n ')
+#         if type(self) == w.Trade:
+#             print(f'Code:{self.code} \nName{self.name} \nWeek salary: '
+#                 f'{self.week_salary + self.percent * self.overal_marge}')
+#
+#
+# # ---------------- File #2 (Workers.py)---------------------
+#
+# from employee import Employee as e
+#
+#
+# class Admin(e.Employee):
+#     def __init__(self, code, name, week_salary):
+#         super().__init__(code, name)
+#         self.week_salary = week_salary
+#
+#
+# class Worker(e.Employee):
+#     def __init__(self, code, name, hours, pay_hours):
+#         super().__init__(code, name)
+#         self.hours = hours
+#         self.pay_hours = pay_hours
+#
+#
+# class Trade(e.Employee):
+#     def __init__(self, code, name, week_salary, percent, overal_marge):
+#         super().__init__(code, name)
+#         self.week_salary = week_salary
+#         self.percent = percent
+#         self.overal_marge = overal_marge
+#
+#
+# # ---------------- File #3 (Current_salary.py)---------------------
+#
+# from employee import Workers as w
+#
+#
+# employee1 = w.Admin(12, "Valery Zadorozny", 1500) # код, имя, недельная зарплата.
+# employee1.show_salary()
+#
+# # w.Admin(12, "Valery Zadorozny", 1500).show_salary() # код, имя, недельная зарплата.
+# employee2 = w.Worker(14, "Kelly Moon", 34, 25) # код. имя, количество часов, почасовая ставка
+# employee2.show_salary()
+# employee3 = w.Trade(17, "George Smith", 1200, 0.04, 10203) # - код. имя. недельный заработок. процент. сумма продаж
+# employee3.show_salary()
 
 
+# -------------------------------------------------------------------------------------------
 
+#                                       DZ 34
+
+# Елена, для ключа в словаре ввел аналогичный прописанному уже ранее в задаче генератор ключа.
+
+# --------------------------------------------------------------------------------------------
+
+import json
+from random import choice
+
+
+def gen_person():
+    name = ''
+    tel = ''
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+    while len(name) != 7:
+        name += choice(letters)
+    while len(tel) != 10:
+        tel += choice(nums)
+
+    person = { 'name': name, 'tel': tel  }
+    return person
+
+
+def write_json(person_dict):
+
+    dict_key = " "
+    letters = "!@#$%^&*()}{?><{}:1234567890"
+
+    while len(dict_key) != 4:  # --------generator of dict keys
+        dict_key += choice(letters)
+
+    try:
+        data = json.load(open("persons.json"))
+        print("DATA", data)
+    except FileNotFoundError:
+        data = {}
+
+    data[dict_key] = person_dict
+    print("final_data", data)
+
+    with open('persons.json', 'w') as f:
+        json.dump(data, f, indent=2)
+
+for i in range(5):
+    write_json(gen_person())

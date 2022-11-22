@@ -3435,11 +3435,10 @@
 # ----------------------------------------------------
 
 
-#-----------------------------------------------------
+# -----------------------------------------------------
 
 
-from math import pi
-
+# from math import pi
 
 # class Rectangle:
 #     def __init__(self, l, h):
@@ -3491,42 +3490,39 @@ from math import pi
 #     def print_cylinder(self):
 #         print(f"Radius of bottom: {self.r}, High: {self.h}")
 
-#------
-
-from shapes import cylinder, circle, rectangle
-
-
-if  __name__ == '__main__':
-
-    cylinders = [cylinder.Cylinder(4, 7), cylinder.Cylinder(2, 5),
-                 cylinder.Cylinder(9, 3), cylinder.Cylinder(5, 5)]
-    circles = [circle.Circle(4), circle.Circle(2), circle.Circle(6),
-               circle.Circle(8), circle.Circle(1)]
-    rects = [rectangle.Rectangle(3, 7), rectangle.Rectangle(2, 7),
-             rectangle.Rectangle(19, 12)]
-
-
-    circle_max_s = max(circles, key = lambda c: c.get_circle_area())
-    print("Max circle square:", f'{round( circle_max_s.get_circle_area(),2)}')
-
-    rect_min_p=min(rects, key = lambda s: s.get_rect_perimeter())
-    print(f'Rectangle with less perimters: {rect_min_p.print_rect()}'
-          f' = {rect_min_p.get_rect_perimeter()}')
-
-    cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
-    cylinders_v_average = sum(cylinders_v)/len(cylinders_v)
-    print(f"Average volume of cylinders: {round(cylinders_v_average, 2)}")
-
-
+# ------
+#
+# from shapes import cylinder, circle, rectangle
+#
+#
+# if  __name__ == '__main__':
+#
+#     cylinders = [cylinder.Cylinder(4, 7), cylinder.Cylinder(2, 5),
+#                  cylinder.Cylinder(9, 3), cylinder.Cylinder(5, 5)]
+#     circles = [circle.Circle(4), circle.Circle(2), circle.Circle(6),
+#                circle.Circle(8), circle.Circle(1)]
+#     rects = [rectangle.Rectangle(3, 7), rectangle.Rectangle(2, 7),
+#              rectangle.Rectangle(19, 12)]
+#
+#
+#     circle_max_s = max(circles, key = lambda c: c.get_circle_area())
+#     print("Max circle square:", f'{round( circle_max_s.get_circle_area(),2)}')
+#
+#     rect_min_p=min(rects, key = lambda s: s.get_rect_perimeter())
+#     print(f'Rectangle with less perimters: {rect_min_p.print_rect()}'
+#           f' = {rect_min_p.get_rect_perimeter()}')
+#
+#     cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
+#     cylinders_v_average = sum(cylinders_v)/len(cylinders_v)
+#     print(f"Average volume of cylinders: {round(cylinders_v_average, 2)}")
 
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 #                                   SERIALISATION
 #                                and DESERIALISATION
 
-#-----------------------------------------------------------------------------
-
+# -----------------------------------------------------------------------------
 
 
 # Упаковка данных
@@ -3538,17 +3534,17 @@ if  __name__ == '__main__':
 # pickle
 # json
 
-#------------------------------------------------------
+# ------------------------------------------------------
 # dump() - сохраняет данные в файл
 # load() - считывает из файла
 #
 # dumps()
 # loads()
-#------------------------------------------------------
+# ------------------------------------------------------
 #                             PICKLE
-#------------------------------------------------------
+# ------------------------------------------------------
 
-import pickle
+# import pickle
 
 # filename = "basket.txt"
 # shop_list = {
@@ -3565,7 +3561,7 @@ import pickle
 #
 # print(shop_list_2)
 
-#-----------------------------------------------------
+# -----------------------------------------------------
 
 # class Test:
 #     num = 35
@@ -3588,56 +3584,282 @@ import pickle
 # d_read = pickle.loads(d_save)
 # print(f'Serialisation in string: \n{d_read}\n')
 
+# -------------------------------------------------------
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 25
+#         self.b = 'test'
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f'{self.a} {self.b} {self.c(2)}'
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         # print("$", state)
+#         self.c = lambda x: x * x
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1) # getstate
+# item3 = pickle.loads(item2) # setstate
+# print(item3.__dict__)
+# print(item3)
 
 
-#class Employee:
-    def __init__(self, code, name):
-        self.code = code
-        self.name = name
+# -----------------------------------------------
 
-    def show_salary(self):
-        print("-" * 20)
-        print(f"TYPE OF WORKER: {type(self).__name__}.")
-        if type(self) == Admin:
-            print(f'Code:{self.code} \nName{self.name} \nWeek salary: {self.week_salary}\n')
-        if type(self) == Worker:
-            print(f'Code:{self.code} \nName{self.name} \nWeek salary: {self.hours * self.pay_hours}\n ')
-        if type(self) == Trade:
-            print(
-                f'Code:{self.code} \nName{self.name} \nWeek salary: '
-                f'{self.week_salary + self.percent * self.overal_marge}')
+# class TextReader:
+#     def __init__(self, filename):
+#         self.filename = filename
+#         self.file = open(filename)
+#         self.count = 0
+#
+#     def read_line(self):
+#         self.count +=1
+#         line = self.file.readline()
+#         if not line:
+#             return None
+#         if line.endswith('\n'):
+#             line = line[:-1]
+#         return f"{self.count}: {line}"
+#
+#     def __getstate__(self):
+#         state = self.__dict__.copy()
+#         del state['file']
+#         return state
+#
+#     def __setstate__(self, state):
+#         self.__dict__.update(state)
+#         file = open(self.filename)
+#         for i in range(0, self.count):
+#             file.readline()
+#         self.file = file
+#
+#
+# reader = TextReader("hello.txt")
+# print(reader.read_line())
+# print(reader.read_line())
+# # new_reader = pickle.dumps(reader)
+# new_reader = pickle.loads(pickle.dumps(reader))
+# print(new_reader.read_line())
+
+# ------------------------------------------------------------------
 
 
-class Admin(Employee):
-    def __init__(self, code, name, week_salary):
-        super().__init__(code, name)
-        self.week_salary = week_salary
+# --------           JSON               ----------
+# import json
+
+# data = {
+#     'file_name': 'Jane',
+#     'last_name': "Doe",
+#     'hobbies': ('running', 'sky diving', 'singing'),
+#     'age': 35,
+#     'children': [
+#         {
+#             'first_name': 'Bob',
+#             'age': 8
+#         }
+#     ]
+# }
+
+# with open('data_file.json', 'w') as fw:
+#     json.dump(data, fw, indent = 7)
+#
+# with open('data_file.json', 'r') as fw:
+#     date = json.load(fw)
+#     print(data)
 
 
-class Worker(Employee):
-    def __init__(self, code, name, hours, pay_hours):
-        super().__init__(code, name)
-        self.hours = hours
-        self.pay_hours = pay_hours
+# json_string = json.dumps(data, sort_keys = True)
+# print(json_string)
+# json_string1 = json.dumps(data, sort_keys = False)
+# print(json_string1)
+
+#
+# data = json.loads(json_string)
+# print(data)
 
 
-class Trade(Employee):
-    def __init__(self, code, name, week_salary, percent, overal_marge):
-        super().__init__(code, name)
-        self.week_salary = week_salary
-        self.percent = percent
-        self.overal_marge = overal_marge
+  # -----------------RUSSIAN TEXT-------------------------
 
 
-employee1 = Admin(12, "Valery Zadorozny", 1500)
-employee1.show_salary()
-# print(type(employee1).__name__)
+# x = {
+#     "name": "Виктор"
+# }
+# y = {
+#     "name": "Виктор"
+# }
+#
+# print(json.dumps(x))
+# print(json.loads(json.dumps(x)))
+# print(json.dumps(y, ensure_ascii = False)) # for russian text
 
-employee2 = Worker(14, "Kelly Moon", 34, 25)
-employee2.show_salary()
 
-employee3 = Trade(17, "George Smith", 1200, 0.04, 10203)
-employee3.show_salary()
+
+
+
+# data = {
+#     'file_name': 'Jane',        # tuples are not supported in JSON formal (see lower)
+#
+#     ('second_name', "surname"): ("Dan", "Doe"),
+#
+#     'hobbies': ('running', 'sky diving', 'singing'),
+#
+#     'age': 35,
+#
+#     'children': [
+#         {
+#             'first_name': 'Alice',
+#             'age': 8
+#         },
+#         {
+#             'first_name': 'Bob',
+#             'age': 8
+#         }
+#     ]
+# }
+# print(data)
+# with open('data_file.json', 'w') as fw:
+#     json.dump(data, fw, indent = 4)
+
+
+
+#------------------------------------------------------------
+# import json
+# from random import choice
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums =['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+#
+#     while len(name) !=7:
+#         name+=choice(letters)
+#     # print(name)
+#
+#     while len(tel) !=10:
+#         tel +=choice(nums)
+#     # print(tel)
+#
+#     person = {
+#         'name': name, 'tel': tel
+#     }
+#     return person
+#
+# persons=[]
+# for i in range(0, 5):
+#     persons.append(gen_person())
+# print(persons)
+#
+# with open('person.json', 'w') as f:
+#     json.dump(persons, f, indent = 5)
+
+
+#--------------------------------------------------------------
+# import json
+# from random import choice
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums =['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+#
+#     while len(name) !=7:
+#         name+=choice(letters)
+#     # print(name)
+#
+#     while len(tel) !=10:
+#         tel +=choice(nums)
+#     # print(tel)
+#
+#     person = {
+#         'name': name, 'tel': tel
+#     }
+#     return person
+#
+# def write_json(person_dict):
+#     count = 0
+#     try:
+#         count += 1
+#         data = json.load(open("persons.json"))
+#         print("---", data)
+#     except FileNotFoundError:
+#         count += 1
+#         data = {}
+#
+#
+#     data[str(count)]=person_dict
+#
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+# for i in range(5):
+#     write_json(gen_person())
+
+
+
+#------------------------------------------------------------
+
+import json
+from random import choice
+
+def gen_person():
+    name = ''
+    tel = ''
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    nums =['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+    while len(name) !=7:
+        name+=choice(letters)
+    while len(tel) !=10:
+        tel +=choice(nums)
+
+    person = {
+        'name': name, 'tel': tel
+    }
+    return person #-------------- end function
+
+
+def write_json(person_dict):
+
+    dict_key = " "
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    while len(dict_key) !=4:
+        dict_key+=choice(letters)
+
+    try:
+        data = json.load(open("persons.json"))
+        print("DATA",  data)
+    except FileNotFoundError:
+
+        data = {}
+
+    data[dict_key] = person_dict
+    print("final_data", data)
+
+    with open('persons.json', 'w') as f:
+        json.dump(data, f, indent=5)
+
+for i in range(5):
+    write_json(gen_person())
+
+
+
+
+
+
+
+
+
+
 
 
 
