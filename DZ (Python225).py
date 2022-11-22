@@ -780,12 +780,12 @@ def write_json(person_dict):
 
     try:
         data = json.load(open("persons.json"))
-        print("DATA", data)
+        # print("DATA", data)
     except FileNotFoundError:
         data = {}
 
     data[dict_key] = person_dict
-    print("final_data", data)
+    # print("final_data", data)
 
     with open('persons.json', 'w') as f:
         json.dump(data, f, indent=2)
