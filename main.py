@@ -3653,6 +3653,8 @@
 
 
 # --------           JSON               ----------
+
+
 # import json
 
 # data = {
@@ -3686,7 +3688,7 @@
 # print(data)
 
 
-  # -----------------RUSSIAN TEXT-------------------------
+# -----------------RUSSIAN TEXT-------------------------
 
 
 # x = {
@@ -3699,9 +3701,6 @@
 # print(json.dumps(x))
 # print(json.loads(json.dumps(x)))
 # print(json.dumps(y, ensure_ascii = False)) # for russian text
-
-
-
 
 
 # data = {
@@ -3729,8 +3728,7 @@
 #     json.dump(data, fw, indent = 4)
 
 
-
-#------------------------------------------------------------
+# ------------------------------------------------------------
 # import json
 # from random import choice
 #
@@ -3762,7 +3760,7 @@
 #     json.dump(persons, f, indent = 5)
 
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 # import json
 # from random import choice
 #
@@ -3805,66 +3803,302 @@
 #     write_json(gen_person())
 
 
-
-#------------------------------------------------------------
+# ------------------------------------------------------------
 
 import json
 from random import choice
-
-def gen_person():
-    name = ''
-    tel = ''
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-    nums =['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-
-    while len(name) !=7:
-        name+=choice(letters)
-    while len(tel) !=10:
-        tel +=choice(nums)
-
-    person = {
-        'name': name, 'tel': tel
-    }
-    return person #-------------- end function
-
-
-def write_json(person_dict):
-
-    dict_key = " "
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-    while len(dict_key) !=4:
-        dict_key+=choice(letters)
-
-    try:
-        data = json.load(open("persons.json"))
-        print("DATA",  data)
-    except FileNotFoundError:
-
-        data = {}
-
-    data[dict_key] = person_dict
-    print("final_data", data)
-
-    with open('persons.json', 'w') as f:
-        json.dump(data, f, indent=5)
-
-for i in range(5):
-    write_json(gen_person())
-
-
-
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums =['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+#
+#     while len(name) !=7:
+#         name+=choice(letters)
+#     while len(tel) !=10:
+#         tel +=choice(nums)
+#
+#     person = {
+#         'name': name, 'tel': tel
+#     }
+#     return person #-------------- end function
+#
+#
+# def write_json(person_dict):
+#
+#     dict_key = " "
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     while len(dict_key) !=4:
+#         dict_key+=choice(letters)
+#
+#     try:
+#         data = json.load(open("persons.json"))
+#         print("DATA",  data)
+#     except FileNotFoundError:
+#
+#         data = {}
+#
+#     data[dict_key] = person_dict
+#     print("final_data", data)
+#
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=5)
+#
+# for i in range(5):
+#     write_json(gen_person())
+#
 
 
+# ----------------------------------------------------------
+# import json
+#
+# class Student:
+#     def __init__(self, name, marks): #  st1 = Student('Nelly', [5, 4, 3, 4, 5, 3])
+#                                      #  Student.dump_to_json(st1, 'student.json')
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         a = ''
+#         for i in self.marks:
+#             a += str(i) + ", "
+#         return f"Студент: {self.name} {a[:-2]}"
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     @classmethod
+#     def dump_to_json(cls, stud, filename): #  st1 = Student('Nelly', [5, 4, 3, 4, 5, 3])
+#                                            #  Student.dump_to_json(st1, 'student.json')
+#         # print("stud: ", stud)
+#         # print("stud name: ", stud.name)
+#         try:
+#             data = json.load(open(filename))
+#         except FileNotFoundError:
+#             data = []
+#
+#         data.append({'name': stud.name, 'marks': stud.marks})
+#         with open(filename, 'w') as f:
+#             json.dump(data, f, indent=2)
+#
+#     @classmethod
+#     def load_from_file(cls, filename):
+#         with open(filename, 'r') as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         a = ''
+#         for i in self.students:
+#             a += str(i) + "\n"
+#         return f"Группа: {self.group}\n{a}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @classmethod
+#     def change_group(cls, group1, group2, index):
+#         return group2.add_student(group1.remove_student(index))
+#
+#     @classmethod
+#     def dump_group(cls, file, group):
+#         try:
+#             data = json.load(open(file))
+#         except FileNotFoundError:
+#             data = []
+#
+#         with open(file, 'w') as f:
+#             stud_list = []
+#             for i in group.students:
+#                 stud_list.append([i.name, i.marks])
+#             data.append(stud_list)
+#             json.dump(data, f, indent=2)
+#     #
+#     # @classmethod
+#     # def upload_group(cls, file):
+#     #     with open(file, "r") as f:
+#     #         print(json.load(f))
+#
+#
+# st1 = Student('Nelly', [5, 4, 3, 4, 5, 3])
+# st2 = Student('Nickki', [2, 3, 5, 4, 2])
+# st3 = Student('Britt', [3, 5, 3, 2, 5, 4])
+# sts = [st1, st2]
+# # Student.load_from_file('student.json')
+#
+# Student.dump_to_json(st1, 'student.json') #-----------------------
+# Student.dump_to_json(st3, 'student.json') #-----------------------
+#
+# my_group = Group(sts, "ГК Python")
+# print(my_group)
+# Group.dump_group('group.json', my_group)
+# print(my_group)
+# # my_group.add_student(st3)
+# # print(my_group)
+# # my_group.remove_student(1)
+# # print(my_group)
+#
+# group22 = [st3]
+# my_group2 = Group(group22, "ГК Web")
+# print(my_group2)
+#
+# # Group.change_group(my_group, my_group2, 0)
+# # print(my_group)
+# # print(my_group2)
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # print(st1)
+# # print(st1.average_mark())
+# # Group.dump_group('group.json', my_group2)
+# # Group.upload_group('group.json')
+
+# -----------------------------------------------------------
 
 
 
+#------------------------------------------------------------------------------------------------
+import json
+
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def __str__(self):
+        a = ''
+        for i in self.marks:
+            a += str(i) + ", "
+        return f"Студент: {self.name} {a[:-2]}"
+
+    def add_mark(self, mark):
+        self.marks.append(mark)
+
+    def delete_mark(self, index):
+        self.marks.pop(index)
+
+    def edit_mark(self, index, new_mark):
+        self.marks[index] = new_mark
+
+    def average_mark(self):
+        return round(sum(self.marks) / len(self.marks), 2)
+
+    @classmethod
+    def dump_to_json(cls, stud, filename):   #  st1 = Student('Nelly', [5, 4, 3, 4, 5, 3])
+                                           #  Student.dump_to_json(st1, 'student.json')
+        try:
+            data = json.load(open(filename))
+        except FileNotFoundError:
+            data = []
+
+        data.append({'name': stud.name, 'marks': stud.marks})
+        with open(filename, 'w') as f:
+            json.dump(data, f, indent=2)
+
+    @classmethod
+    def load_from_file(cls, filename):
+        with open(filename, 'r') as f:
+            print(json.load(f))
+
+
+class Group:
+    def __init__(self, students, group):
+        self.students = students
+        self.group = group
+
+    def __str__(self):
+        a = ''
+        for i in self.students:
+            a += str(i) + "\n"
+        return f"Группа: {self.group}\n{a}"
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def remove_student(self, index):
+        return self.students.pop(index)
+
+    @classmethod
+    def change_group(cls, group1, group2, index):
+        return group2.add_student(group1.remove_student(index))
+
+    @classmethod #------------------------------------------------------
+    def dump_group(cls, file, group):
+        try:
+            data = json.load(open(file))
+        except FileNotFoundError:
+            data = []
+
+        with open(file, 'w') as f:
+            stud_list = []
+            for i in group.students:
+                stud_list.append([i.name, i.marks])
+            data.append(stud_list)
+            json.dump(data, f, indent=2)
+
+    @classmethod            #  -------  reading of information
+    def upload_group(cls, file):
+        with open(file, "r") as f:
+            print(json.load(f))
+
+
+st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+sts = [st1, st2]
+# Student.load_from_file('student.json')
+
+# Student.dump_to_json(st1, 'student.json') # ---------------------
+# Student.dump_to_json(st3, 'student.json') #----------------------
+
+my_group = Group(sts, "ГК Python")
+print(my_group)
+Group.dump_group('group.json', my_group)
+group22 = [st3]
+my_group2 = Group(group22, "ГК Web")
+print(my_group2)
+# Group.dump_group('group.json', my_group) # ------- writing first group !
+Group.dump_group('group.json', my_group2)  # ------- writing second group !
+Group.upload_group('group.json')
 
 
 
-
-
-
-
+# my_group.add_student(st3)
+# print(my_group)
+# my_group.remove_student(1)
+# print(my_group)
+# Group.change_group(my_group, my_group2, 0)
+# print(my_group)
+# print(my_group2)
+# print(st1)
+# st1.add_mark(4)
+# print(st1)
+# st1.delete_mark(3)
+# print(st1)
+# st1.edit_mark(2, 4)
+# print(st1)
+# print(st1.average_mark())
 
 
 

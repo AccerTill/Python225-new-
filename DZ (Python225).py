@@ -750,45 +750,150 @@
 # Елена, для ключа в словаре ввел аналогичный прописанному уже ранее в задаче генератор ключа.
 
 # --------------------------------------------------------------------------------------------
+#
+# import json
+# from random import choice
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = { 'name': name, 'tel': tel  }
+#     return person
+#
+# def write_json(person_dict):
+#
+#     dict_key = " "
+#     letters = "!@#$%^&*()}{?><{}"
+#
+#     while len(dict_key) != 10:  # --------generator of dict keys
+#         dict_key += choice(letters)
+#
+#     try:
+#         data = json.load(open("persons.json"))
+#         print("DATA", data)
+#     except FileNotFoundError:
+#         data = {}
+#
+#     data[dict_key] = person_dict
+#     print("final_data", data)
+#
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+# for i in range(5):
+#     write_json(gen_person())
 
+
+# -------------------------------------------------------------------------------------------
+
+#                                       DZ 35
+
+# Eлена, если необходимо есть сразу конфигуратор начальной базы (строка 871 либо можно
+# начать с пустой и ввести страны и столицы самостоятельно.
+
+# --------------------------------------------------------------------------------------------
 import json
-from random import choice
 
 
-def gen_person():
-    name = ''
-    tel = ''
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+class Countries:
+    overal_data = "Countries_data.json"
 
-    while len(name) != 7:
-        name += choice(letters)
-    while len(tel) != 10:
-        tel += choice(nums)
+    def __init__(self):
+        self.data = {}
 
-    person = { 'name': name, 'tel': tel  }
-    return person
+    def add_country(self, country, capital):                # 1  (ADDING)
+        self.writing_into_json(country, capital)
+
+    def delete_country(self, key):                          # 2 (DELETING)
+        with open(self.overal_data, 'r') as d:
+            self.deleting_data = json.load(d)
+            print("Data for deleting:", self.deleting_data)
+            if key in self.deleting_data:
+                print("Deleting process")
+                del self.deleting_data[key]
+                with open(self.overal_data, "w") as w:
+                    json.dump(self.deleting_data, w, indent=4)
+            else:
+                print("Incorrect key")
+
+    def search_country(self, key):                           # 3 (SEARCHING)
+        if key in self.reading_from_json():
+            print(f'{key} presented in base')
+        else:
+            print(f" No {key} not presented in base")
+
+    def edit_country(self, country, capital):                # 4 (EDITING)
+        with open(self.overal_data, 'r') as d:
+            self.deleting_data = json.load(d)
+            print("Data for deleting:", self.deleting_data)
+            if country in self.deleting_data:
+                print("Editing process")
+                self.deleting_data[country] = capital
+                with open(self.overal_data, "w") as w:
+                    json.dump(self.deleting_data, w, indent=4)
+            else:
+                print("Incorrect key")
+
+    def show_info(self):                                     # 5 (SHOW_INFO)
+        for i in self.reading_from_json():
+            print(i, " - ", self.reading_from_json()[i])
+
+    def reading_from_json(self):
+        with open(self.overal_data, 'r') as r:
+            self.json_string = json.load(r)
+            return self.json_string
+
+    def writing_into_json(self, country, capital):
+        try:
+            self.data_temp = json.load(open(self.overal_data))
+            # print("Data-temp", self.data_temp)
+        except FileNotFoundError:
+            self.data_temp = {}
+
+        self.data_temp[country] = capital
+        print("Final_data", self.data_temp)
+
+        with open(self.overal_data, "w") as f:
+            json.dump(self.data_temp, f, indent=4)
 
 
-def write_json(person_dict):
 
-    dict_key = " "
-    letters = "!@#$%^&*()}{?><{}:1234567890"
+country = Countries()
+# country.add_country("Spain", "Madrid")   # -----Configuration of first database if necessary.
+# country.add_country("France", "Paris")
+# country.add_country("Australia", "Sydney")
 
-    while len(dict_key) != 4:  # --------generator of dict keys
-        dict_key += choice(letters)
-
-    try:
-        data = json.load(open("persons.json"))
-        # print("DATA", data)
-    except FileNotFoundError:
-        data = {}
-
-    data[dict_key] = person_dict
-    # print("final_data", data)
-
-    with open('persons.json', 'w') as f:
-        json.dump(data, f, indent=2)
-
-for i in range(5):
-    write_json(gen_person())
+operation = 1
+while operation in [1, 2, 3, 4, 5, 6]:
+    print()
+    operation = int(input("Input your operation from 1 till "
+                          "5 \nor 6 for stop: "))
+    if operation not in [1, 2, 3, 4, 5, 6]:
+        print("Incorrect input.")
+    elif operation == 1:
+        a = input('Input new country: ')
+        b = input('Input new capitol: ')
+        country.add_country(a, b)
+    elif operation == 2:
+        a = input("Input country for deleting: ")
+        country.delete_country(a)
+    elif operation == 3:
+        a = input("Input country for searching: ")
+        country.search_country(a)
+    elif operation == 4:
+        a = input('Input country for edit: ')
+        b = input('Input capitol for edit: ')
+        country.edit_country(a, b)
+    elif operation == 5:
+        country.show_info()
+    elif operation == 6:
+        print("Stop operation.")
+        break
