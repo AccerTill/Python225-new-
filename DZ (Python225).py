@@ -502,6 +502,7 @@
 #             print()
 #             for i in range(self.size):
 #                 print("*" * self.size)
+
 #         elif type(self)==Rectangle:
 #             print(f"=={self.name}== \nLength: {self.size1} \nWidth: {self.size2} \nColor: {self.color}")
 #             print(f'Perimeter = {(self.size1 + self.size2) * 2} ')
@@ -509,6 +510,7 @@
 #             print()
 #             for i in range(self.size1):
 #                 print("*" * self.size2)
+
 #         elif type(self)==Triangle:
 #             print(f"=={self.name}== \nSize1: {self.size1} \nSize2: {self.size2} "
 #                   f"\nSize3: {self.size2}  \nColor: {self.color}")
@@ -800,100 +802,144 @@
 # начать с пустой и ввести страны и столицы самостоятельно.
 
 # --------------------------------------------------------------------------------------------
-import json
+# import json
+#
+# class Countries:
+#
+#     def __init__(self, json_name):
+#         self.data = {}
+#         self.overal_data = json_name
+#         try:
+#             self.data_temp = json.load(open(self.overal_data))
+#             print(f"File:   {self.overal_data}   has been opened.")
+#         except FileNotFoundError:
+#             self.data_temp = self.data
+#             print(f"New file:   {self.overal_data}   has been created.")
+#         with open(self.overal_data, "w") as f:
+#             json.dump(self.data_temp, f, indent=4)
+#
+#
+#
+#     def add_country(self, country, capital):                # 1  (ADDING)
+#         self.writing_into_json(country, capital)
+#
+#
+#     def delete_country(self, key):                          # 2 (DELETING)
+#         with open(self.overal_data, 'r') as d:
+#             self.deleting_data = json.load(d)
+#             if key in self.deleting_data:
+#                 print(f"Deleting {key} process")
+#                 del self.deleting_data[key]
+#                 with open(self.overal_data, "w") as w:
+#                     json.dump(self.deleting_data, w, indent=4)
+#             else:
+#                 print("Incorrect country")
+#
+#
+#     def search_country(self, country):                           # 3 (SEARCHING)
+#         if country in self.reading_from_json():
+#             print(f'{country} presented in base')
+#         else:
+#             print(f"{country} not presented in base")
+#
+#
+#     def edit_country(self, country, capital):                # 4 (EDITING)
+#         with open(self.overal_data, 'r') as d:
+#             self.deleting_data = json.load(d)
+#             if country in self.deleting_data:
+#                 self.deleting_data[country] = capital
+#                 with open(self.overal_data, "w") as w:
+#                     json.dump(self.deleting_data, w, indent=4)
+#             else:
+#                 print("Incorrect inputs")
+#
+#
+#     def show_info(self):                                     # 5 (SHOW_INFO)
+#         print("Countries and Capitals: ")
+#         for i in self.reading_from_json():
+#             print(i, " - ", self.reading_from_json()[i])
+#
+#
+#     def reading_from_json(self):
+#         with open(self.overal_data, 'r') as r:
+#             self.json_string = json.load(r)
+#             return self.json_string
+#
+#
+#     def writing_into_json(self, country, capital):
+#         try:
+#             self.data_temp = json.load(open(self.overal_data))
+#         except FileNotFoundError:
+#             self.data_temp = {}
+#         self.data_temp[country] = capital
+#         with open(self.overal_data, "w") as f:
+#             json.dump(self.data_temp, f, indent=4)
+#             print("File saved.")
+#
+#
+# country = Countries("Countries_new.json")  # -----Configuration of first database if necessary.
+# # country.add_country("Spain", "Madrid")
+# # country.add_country("France", "Paris")
+# # country.add_country("Australia", "Sydney")
+#
+#
+# print("Press: \n1 for adding \n2 for deleting\n3 for "
+#       "searching\n4 for editing\n5 for show\n6 for exit.")
+#
+# operation = 1
+# while operation in [1, 2, 3, 4, 5, 6]:
+#     print("-" * 40)
+#
+#     operation = int(input("Input your operation: "))
+#     if operation not in [1, 2, 3, 4, 5, 6]:
+#         print("Incorrect input.")
+#     elif operation == 1:
+#         a = input('Input new country: ').strip()
+#         b = input('Input new capitol: ').strip()
+#         country.add_country(a, b)
+#     elif operation == 2:
+#         a = input("Input country for deleting: ").strip()
+#         country.delete_country(a)
+#     elif operation == 3:
+#         a = input("Input country for searching: ").strip()
+#         country.search_country(a)
+#     elif operation == 4:
+#         a = input('Input country for edit: ').strip()
+#         b = input('Input capitol for edit: ').strip()
+#         country.edit_country(a, b)
+#     elif operation == 5:
+#         print()
+#         country.show_info()
+#         print()
+#     elif operation == 6 :
+#         print("Stop operation.")
+#         break
+
+# -------------------------------------------------------------------------------------------
+
+#                                       DZ 36
+
+# ----------------------------------------------------------------------------------------
+import csv
 
 
-class Countries:
-    overal_data = "Countries_data.json"
-
-    def __init__(self):
-        self.data = {}
-
-    def add_country(self, country, capital):                # 1  (ADDING)
-        self.writing_into_json(country, capital)
-
-    def delete_country(self, key):                          # 2 (DELETING)
-        with open(self.overal_data, 'r') as d:
-            self.deleting_data = json.load(d)
-            print("Data for deleting:", self.deleting_data)
-            if key in self.deleting_data:
-                print("Deleting process")
-                del self.deleting_data[key]
-                with open(self.overal_data, "w") as w:
-                    json.dump(self.deleting_data, w, indent=4)
-            else:
-                print("Incorrect key")
-
-    def search_country(self, key):                           # 3 (SEARCHING)
-        if key in self.reading_from_json():
-            print(f'{key} presented in base')
-        else:
-            print(f" No {key} not presented in base")
-
-    def edit_country(self, country, capital):                # 4 (EDITING)
-        with open(self.overal_data, 'r') as d:
-            self.deleting_data = json.load(d)
-            print("Data for deleting:", self.deleting_data)
-            if country in self.deleting_data:
-                print("Editing process")
-                self.deleting_data[country] = capital
-                with open(self.overal_data, "w") as w:
-                    json.dump(self.deleting_data, w, indent=4)
-            else:
-                print("Incorrect key")
-
-    def show_info(self):                                     # 5 (SHOW_INFO)
-        for i in self.reading_from_json():
-            print(i, " - ", self.reading_from_json()[i])
-
-    def reading_from_json(self):
-        with open(self.overal_data, 'r') as r:
-            self.json_string = json.load(r)
-            return self.json_string
-
-    def writing_into_json(self, country, capital):
-        try:
-            self.data_temp = json.load(open(self.overal_data))
-            # print("Data-temp", self.data_temp)
-        except FileNotFoundError:
-            self.data_temp = {}
-
-        self.data_temp[country] = capital
-        print("Final_data", self.data_temp)
-
-        with open(self.overal_data, "w") as f:
-            json.dump(self.data_temp, f, indent=4)
+with open('data3.csv') as f:
+    a=csv.reader(f, delimiter=";")
+    for i in a:
+        print(i)
 
 
 
-country = Countries()
-# country.add_country("Spain", "Madrid")   # -----Configuration of first database if necessary.
-# country.add_country("France", "Paris")
-# country.add_country("Australia", "Sydney")
 
-operation = 1
-while operation in [1, 2, 3, 4, 5, 6]:
-    print()
-    operation = int(input("Input your operation from 1 till "
-                          "5 \nor 6 for stop: "))
-    if operation not in [1, 2, 3, 4, 5, 6]:
-        print("Incorrect input.")
-    elif operation == 1:
-        a = input('Input new country: ')
-        b = input('Input new capitol: ')
-        country.add_country(a, b)
-    elif operation == 2:
-        a = input("Input country for deleting: ")
-        country.delete_country(a)
-    elif operation == 3:
-        a = input("Input country for searching: ")
-        country.search_country(a)
-    elif operation == 4:
-        a = input('Input country for edit: ')
-        b = input('Input capitol for edit: ')
-        country.edit_country(a, b)
-    elif operation == 5:
-        country.show_info()
-    elif operation == 6:
-        print("Stop operation.")
-        break
+
+
+
+
+
+
+
+
+
+
+
+
