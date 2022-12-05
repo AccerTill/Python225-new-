@@ -6957,28 +6957,28 @@ import csv
 #         count += 1
 
 #
-with open('student.csv', 'w') as f:
-    writer = csv.writer(f, delimiter=";", lineterminator='\r')
-    writer.writerow(["Имя", "Класс", "Возраст"])
-    writer.writerow(["Женя", "9", "15"])
-    writer.writerow(["Саша", "5", "12"])
-    writer.writerow(["Маша", "11", "18"])
-
-
-data = [['hostname', 'vendor', 'model', 'location'],
-        ['sw1', 'Cisco', '3750', 'London, Best str'],
-        ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
-        ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
-        ['sw4', 'Cisco', '3650', 'London, Best str']]
-
-with open('data_new.csv', 'w') as f:
-    writer = csv.writer(f, delimiter=",", lineterminator='\r', quoting=csv.QUOTE_ALL)
-    # for row in data:
-    #     writer.writerow(row)
-    writer.writerows(data)
-
-with open('data_new.csv') as f:
-    print(f.read())
+# with open('student.csv', 'w') as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator='\r')
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Женя", "9", "15"])
+#     writer.writerow(["Саша", "5", "12"])
+#     writer.writerow(["Маша", "11", "18"])
+#
+#
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open('data_new.csv', 'w') as f:
+#     writer = csv.writer(f, delimiter=",", lineterminator='\r', quoting=csv.QUOTE_ALL)
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+#
+# with open('data_new.csv') as f:
+#     print(f.read())
 
 
 # with open('student1.csv', 'w') as f:

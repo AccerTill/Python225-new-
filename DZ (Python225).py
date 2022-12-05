@@ -920,21 +920,58 @@
 #                                       DZ 36
 
 # ----------------------------------------------------------------------------------------
+# import csv
+#
+#
+# with open('data3.csv') as f:
+#     a=csv.reader(f, delimiter=";")
+#     for i in a:
+#         print(i)
+
+
+
+
+# -------------------------------------------------------------------------------------------
+
+#                                       DZ 37
+
+# Елена, так как сразу через find_all в переменной saxophones не мог выделить ссылку из тега "а"
+# ( не смог понять почему - делала как в примере на лекции, но выдавало None) решил через
+# вложенный второй цикл.
+
+# ----------------------------------------------------------------------------------------
+
+import requests
+from bs4 import BeautifulSoup
+import lxml
 import csv
 
+url ="https://shop-avallon.ru/catalog/wind-instruments/saksofony/" \
+     "?utm_source=none&utm_medium=cpc&utm_campaign=74234833&utm_content=premium.2&utm_term=" \
+     "---autotargeting&_openstat=ZGlyZWN0LnlhbmRleC5ydTs3NDIzNDgzMzsxMjc3MTY4MDQwMDt5YW5kZXgucnU6c" \
+     "HJlbWl1bQ&yclid=11910330624978452479"
 
-with open('data3.csv') as f:
-    a=csv.reader(f, delimiter=";")
-    for i in a:
-        print(i)
+r = requests.get(url)
+r.encoding = 'utf - 8'
+soup = BeautifulSoup(r.text, "lxml")
 
+def write_csv(data):
+    with open('Saxophones.csv', 'a') as f:
+        writer = csv.writer(f, lineterminator = '\n', delimiter=';')
+        writer.writerow((data['name'], data['url']))
 
+saxophones=soup.find_all('div', class_='tpl-block-list-objects tpl-block-492-list')
 
+for i in saxophones:
+    name= i.find_all('a', class_= "main__hits-card-title")
+    for j in name:
+        text = j.text
+        print(text)
+        url = j['href']
+        print("URL :", url)
 
-
-
-
-
+        data = {'name': text, 'url': url}
+        write_csv(data)
 
 
 
