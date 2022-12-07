@@ -811,13 +811,15 @@
 #         self.overal_data = json_name
 #         try:
 #             self.data_temp = json.load(open(self.overal_data))
-#             print(f"File:   {self.overal_data}   has been opened.")
+#             print(f"File:   {self.overal_data} - has been opened.")
 #         except FileNotFoundError:
 #             self.data_temp = self.data
-#             print(f"New file:   {self.overal_data}   has been created.")
+#             print(f"New file:   {self.overal_data} - has been created.")
 #         with open(self.overal_data, "w") as f:
 #             json.dump(self.data_temp, f, indent=4)
 #
+#     # def __str__(self):
+#     #     return f'{self.overal_data} - new file'
 #
 #
 #     def add_country(self, country, capital):                # 1  (ADDING)
@@ -856,6 +858,7 @@
 #
 #     def show_info(self):                                     # 5 (SHOW_INFO)
 #         print("Countries and Capitals: ")
+#         print("----------------------")
 #         for i in self.reading_from_json():
 #             print(i, " - ", self.reading_from_json()[i])
 #
@@ -882,17 +885,19 @@
 # # country.add_country("France", "Paris")
 # # country.add_country("Australia", "Sydney")
 #
+# # print(country)
+#
 #
 # print("Press: \n1 for adding \n2 for deleting\n3 for "
 #       "searching\n4 for editing\n5 for show\n6 for exit.")
 #
 # operation = 1
-# while operation in [1, 2, 3, 4, 5, 6]:
+# while operation in range(1,1000):
 #     print("-" * 40)
 #
 #     operation = int(input("Input your operation: "))
 #     if operation not in [1, 2, 3, 4, 5, 6]:
-#         print("Incorrect input.")
+#         print("Incorrect input. Must be from 1 till 6.")
 #     elif operation == 1:
 #         a = input('Input new country: ').strip()
 #         b = input('Input new capitol: ').strip()
@@ -915,11 +920,12 @@
 #         print("Stop operation.")
 #         break
 
-# -------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------
 
 #                                       DZ 36
 
-# ----------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------
 # import csv
 #
 #
@@ -931,7 +937,7 @@
 
 
 
-# -------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 
 #                                       DZ 37
 
@@ -939,42 +945,150 @@
 # (не смог понять почему - делал как в примере на лекции, но выдавало None) решил через
 # вложенный второй цикл.
 
-# ----------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------
+#
+# import requests
+# from bs4 import BeautifulSoup
+# import lxml
+# import csv
+#
+# url ="https://shop-avallon.ru/catalog/wind-instruments/saksofony/" \
+#      "?utm_source=none&utm_medium=cpc&utm_campaign=74234833&utm_content=premium.2&utm_term=" \
+#      "---autotargeting&_openstat=ZGlyZWN0LnlhbmRleC5ydTs3NDIzNDgzMzsxMjc3MTY4MDQwMDt5YW5kZXgucnU6c" \
+#      "HJlbWl1bQ&yclid=11910330624978452479"
+#
+# # url ="https://shop-avallon.ru/catalog/wind-instruments/saksofony/"
+#
+# r = requests.get(url)
+# r.encoding = 'utf - 8'
+# soup = BeautifulSoup(r.text, "lxml")
+#
+# def write_csv(data):
+#     with open('Saxophones.csv', 'a') as f:
+#         writer = csv.writer(f, lineterminator = '\n', delimiter=';')
+#         writer.writerow((data['name'], data['url']))
+#
+# saxophones=soup.find_all('div', class_='tpl-block-list-objects tpl-block-492-list')
+#
+# for i in saxophones:
+#     name= i.find_all('a', class_= "main__hits-card-title")
+#     for j in name:
+#         text = j.text
+#         print(text)
+#         url = j['href']
+#         print("URL :", url)
+#
+#         data = {'name': text, 'url': url}
+#         write_csv(data)
+#
 
-import requests
-from bs4 import BeautifulSoup
-import lxml
-import csv
+#--------------------------------------------------------------------------------
 
-url ="https://shop-avallon.ru/catalog/wind-instruments/saksofony/" \
-     "?utm_source=none&utm_medium=cpc&utm_campaign=74234833&utm_content=premium.2&utm_term=" \
-     "---autotargeting&_openstat=ZGlyZWN0LnlhbmRleC5ydTs3NDIzNDgzMzsxMjc3MTY4MDQwMDt5YW5kZXgucnU6c" \
-     "HJlbWl1bQ&yclid=11910330624978452479"
+#                                       DZ 38
 
-r = requests.get(url)
-r.encoding = 'utf - 8'
-soup = BeautifulSoup(r.text, "lxml")
+# Елена, вы уже решили - код с вашим решением.
+#--------------------------------------------------------------------------------
 
-def write_csv(data):
-    with open('Saxophones.csv', 'a') as f:
-        writer = csv.writer(f, lineterminator = '\n', delimiter=';')
-        writer.writerow((data['name'], data['url']))
-
-saxophones=soup.find_all('div', class_='tpl-block-list-objects tpl-block-492-list')
-
-for i in saxophones:
-    name= i.find_all('a', class_= "main__hits-card-title")
-    for j in name:
-        text = j.text
-        print(text)
-        url = j['href']
-        print("URL :", url)
-
-        data = {'name': text, 'url': url}
-        write_csv(data)
-
-
-
+# import json
+#
+# data = {"Россия": "Москва"}
+#
+#
+# def load_data(func):
+#     def wrap(*args, filename):
+#         try:
+#             data = json.load(open(filename))
+#         except FileNotFoundError:
+#             data = {}
+#         func(*args, filename)
+#         print("Файл сохранен")
+#     return wrap
+#
+#
+# class CountryCapital:
+#     def __init__(self, country, capital):
+#         self.country = country
+#         self.capital = capital
+#         data[self.country] = self.capital
+#
+#     def __str__(self):
+#         return f'{self.country}: {self.capital}'
+#
+#     @classmethod
+#     @load_data
+#     def add_country(cls, new_country, new_capital, filename):
+#
+#         data[new_country] = new_capital
+#
+#         with open(filename, "w") as f:
+#             json.dump(data, f, indent=2, ensure_ascii=False)
+#
+#     @classmethod
+#     @load_data
+#     def delete_country(cls, del_country, filename):
+#         if del_country in data:
+#             del data[del_country]
+#
+#             with open(filename, "w") as f:
+#                 json.dump(data, f, indent=2, ensure_ascii=False)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#     @classmethod
+#     @load_data
+#     def search_data(cls, country, filename):
+#         if country in data:
+#             print(f"Страна {country} столица {data[country]} есть в словаре!")
+#         else:
+#             print(f"Страна {country} отсутствует в словаре")
+#
+#     @classmethod
+#     @load_data
+#     def change_capital(cls, country, new_value, filename):
+#
+#         if country in data:
+#             data[country] = new_value
+#
+#             with open(filename, "w") as f:
+#                 json.dump(data, f, indent=2, ensure_ascii=False)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#     @classmethod
+#     def load_from_file(cls, filename):
+#         with open(filename, 'r') as f:
+#             print(json.load(f))
+#
+#
+# index = ''
+# filename1 = 'list_capital.json'
+# with open(filename1, "w") as fw:
+#     json.dump(data, fw, indent=2, ensure_ascii=False)
+#
+# while index != 6:
+#     try:
+#         print("*" * 40)
+#         index = int(input('Выбор действия:\n1 - добавление данных\n2 - удаление данных\n'
+#                           '3 - поиск данных\n4 - редактирование данных\n5 - просмотр данных\n'
+#                           '6 - завершение работы\nВвод: '))
+#         if index == 1:
+#             country_name = input("Введите название страны (с заглавной буквы): ")
+#             capital_name = input("Введите название столицы страны (с заглавной буквы): ")
+#             CountryCapital.add_country(country_name, capital_name, filename='list_capital.json')
+#         if index == 2:
+#             country_name = input("Введите страну для удаления (с заглавной буквы): ")
+#             CountryCapital.delete_country(country_name, filename='list_capital.json')
+#         if index == 3:
+#             country_name = input("Введите название страны (с заглавной буквы): ")
+#             CountryCapital.search_data(country_name, filename='list_capital.json')
+#         if index == 4:
+#             country_name = input("Введите название страны столицу которой хотите изменить (с заглавной буквы): ")
+#             new_capital = input("Введите новое название столицы: ")
+#             CountryCapital.change_capital(country_name, new_capital, filename='list_capital.json')
+#         if index == 5:
+#             CountryCapital.load_from_file(filename='list_capital.json')
+#     except IndexError:
+#         break
 
 
 

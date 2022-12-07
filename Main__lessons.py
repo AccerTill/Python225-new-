@@ -908,8 +908,8 @@
 #
 # print(randint(10, 15))
 # print(randrange(0, 10, 2))
-
-import random as r
+# import json
+# import random as r
 
 # print(r.randint(10, 15))
 # print(r.randrange(10))
@@ -1111,21 +1111,21 @@ import random as r
 # print("Произведение ненулевых элементов: ", m)
 
 
-import math
+import geometry
 
-# num1 = math.sqrt(16)
-# num2 = math.ceil(3.2)
-# num3 = math.floor(3.8)
+# num1 = geometry.sqrt(16)
+# num2 = geometry.ceil(3.2)
+# num3 = geometry.floor(3.8)
 #
 # print(num1)
 # print(num2)
 # print(num3)
 #
-# print(dir(math))
-# print(math.pi)
+# print(dir(geometry))
+# print(geometry.pi)
 
 # rd = int(input("Введите радиус окружности: "))
-# print("Длина окружности:", round(2 * math.pi * rd, 2))
+# print("Длина окружности:", round(2 * geometry.pi * rd, 2))
 
 import time
 
@@ -2291,7 +2291,7 @@ import time
 # print(d(student))
 
 
-# from math import pi
+# from geometry import pi
 #
 #
 # def square(figure_type, **kwargs):
@@ -2750,11 +2750,11 @@ import random
 # age = 25
 # print(f"Меня зовут {name}. Мне {age} лет.")
 
-# import math
+# import geometry
 #
 #
-# print(f"Значение числа pi: {round(math.pi, 2)}")
-# print(f"Значение числа pi: {math.pi:.3f}")
+# print(f"Значение числа pi: {round(geometry.pi, 2)}")
+# print(f"Значение числа pi: {geometry.pi:.3f}")
 
 # x = 10
 # y = 5
@@ -2777,7 +2777,7 @@ import random
 # print(square(5))
 # print(square.__doc__)
 
-# import math as m
+# import geometry as m
 #
 #
 # def cylinder(r, h):
@@ -3497,7 +3497,6 @@ import re
 
 import os
 
-
 # import os.path
 
 # print("Текущая директория:", os.getcwd())
@@ -3941,7 +3940,7 @@ import os
 # c1.print_info()
 
 
-# from math import sqrt
+# from geometry import sqrt
 #
 #
 # class Rectangle:
@@ -4343,7 +4342,6 @@ import os
 # print()
 # import re
 #
-# ----------------------------------------------------------
 #
 # class UserData:
 #     def __init__(self, fio, old, ps, weight):
@@ -4438,8 +4436,6 @@ import os
 # print(p1.__dict__)
 
 
-# ------------------------------------------------------------------------------------
-#
 # class Point:
 #     def __init__(self, x=0, y=0):
 #         self.__x = x
@@ -4447,6 +4443,7 @@ import os
 #
 #     def __str__(self):
 #         return f'({self.__x}, {self.__y})'
+#
 #
 # class Prop:
 #     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
@@ -4459,35 +4456,39 @@ import os
 #     def get_width(self):
 #         return self.__width
 #
+#
 # class Line(Prop):
 #     def __init__(self, *args):
 #         print('Переопределенный инициализатор Line')
 #         super().__init__(*args)
 #         self.__width = 5
+#
 #     def draw_line(self) -> None:
 #         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
 #
+#
 # class Rect(Prop):
+#
 #     def __init__(self, sp, ep, color='red', width=1, bg='yellow'):
 #         super().__init__(sp, ep, color, width)
 #         self.background = bg
+#
 #     def draw_rect(self) -> None:
-#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, '
-#               f'{self.get_width()}, background: {self.background}')
+#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self.get_width()}, {self.background}')
 #
 #
 # line = Line(Point(1, 2), Point(10, 20), 'green', 3)
 # line.draw_line()
-# print("&&&", line.__dict__ )
+# print(line.__dict__)
 # # print(line._width)
 # # print(type(line))
 # rect = Rect(Point(30, 40), Point(70, 80))
 # rect.draw_rect()
+#
 # # print(issubclass(Point, object))
 # # print(line.__dict__)
 
 
-# ----------------------------------------------------------
 # class Figure:
 #     def __init__(self, color):
 #         self.__color = color
@@ -4495,9 +4496,11 @@ import os
 #     @property
 #     def color(self):
 #         return self.__color
+#
 #     @color.setter
 #     def color(self, c):
 #         self.__color = c
+#
 #
 # class Rectangle(Figure):
 #     def __init__(self, width, height, color):
@@ -4508,6 +4511,7 @@ import os
 #     @property
 #     def width(self):
 #         return self.__width
+#
 #     @width.setter
 #     def width(self, w):
 #         if w > 0:
@@ -4519,6 +4523,7 @@ import os
 #     @property
 #     def height(self):
 #         return self.__height
+#
 #     @height.setter
 #     def height(self, h):
 #         if h > 0:
@@ -4540,22 +4545,22 @@ import os
 # print(rect.color)
 # print(rect.area())
 
-# ------------------------------------
 
-#
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
 #         self.__y = y
+#
 #     def __str__(self):
 #         return f'({self.__x}, {self.__y})'
 #
-#     def is_digit(self): #-------------  IS DIGIT  -----
+#     def is_digit(self):
 #         if not isinstance(self.__x, (int, float)) or not isinstance(self.__y, (int, float)):
 #             print("Координаты должны быть числами")
 #             return False
 #         return True
-#     def is_int(self): #--------  IS INT  ------------
+#
+#     def is_int(self):
 #         if not isinstance(self.__x, int) or not isinstance(self.__y, int):
 #             print("Координаты должны быть целочисленными")
 #             return False
@@ -4576,8 +4581,10 @@ import os
 #
 #
 # class Line(Prop):
+#
 #     def draw_line(self) -> None:
 #         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
 #     def set_coords(self, sp, ep):
 #         if sp.is_int() and ep.is_int():
 #             self._sp = sp
@@ -4585,6 +4592,7 @@ import os
 #
 #
 # class Rect(Prop):
+#
 #     def draw_rect(self) -> None:
 #         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
 #
@@ -4598,14 +4606,8 @@ import os
 # rect.draw_rect()
 # rect.set_coords(Point(30.5, 40.2), Point(50, 60))
 # rect.draw_rect()
-#
 
 
-# ---------------------------------------------
-
-
-#
-#
 # class Rect:
 #     def __init__(self, w, h):
 #         self.width = w
@@ -4613,6 +4615,7 @@ import os
 #
 #     def show_rect(self):
 #         print(f'Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}')
+#
 #
 # class RectFon(Rect):
 #     def __init__(self, w, h, bg):
@@ -4623,24 +4626,16 @@ import os
 #         super().show_rect()
 #         print(f'Рамка: {self.fon}')
 #
+#
 # class RectBorder(Rect):
-#     def __init__(self, w, h, bd):
-#         super().__init__(w, h)
-#         self.border = bd
+#     pass
 #
-#     def show_rect(self):
-#         super().show_rect()
-#         print(f'Border: {self.border}')
 #
-# #
-# # shape1 = RectFon(400, 200, 'yellow')
-# # shape1.show_rect()
+# shape1 = RectFon(400, 200, 'yellow')
+# shape1.show_rect()
 #
 # shape2 = RectBorder(600, 300, '1px solid red')
 # shape2.show_rect()
-#
-
-# -----------------------------------------------------------------------
 
 
 # class Rect:
@@ -4679,23 +4674,19 @@ import os
 # shape1.show_rect()
 
 
-# -------------------------------------------------
-
-
 # class Vector(list):
 #     def __str__(self):
 #         return " ".join(map(str, self))
 #
+#
 # v = Vector([1, 2, 3, 4, 5])
-# print(v, " - return res")
-# print(type(v), " - class")
-# q = Vector("Hello!")
+# print(v)
+# print(type(v))
+# q = Vector([5, 7, 3, 4, 5])
 # print(q)
 
-
-# -------------------------------------------------
 # Перегрузка методов
-#
+
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
@@ -4747,15 +4738,16 @@ import os
 #
 # line = Line(Point(1, 2), Point(10, 20))
 # line.draw_line()
+#
 # line.set_coords(Point(10, 20), Point(100, 200))
 # line.draw_line()
+#
 # line.set_coords(Point(-10, -20))
 # line.draw_line()
 
-# ---------------------------------------------------------------------------------------
 
 # Абстрактные методы
-#
+
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
@@ -4776,6 +4768,7 @@ import os
 #             return False
 #         return True
 #
+#
 # class Prop:
 #     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
 #         self._sp = sp
@@ -4788,21 +4781,27 @@ import os
 #             self._sp = sp
 #             self._ep = ep
 #
-#     def draw(self):  # -------------------абстрактный метод
+#     def draw(self):  # абстрактный метод
 #         raise NotImplementedError("В дочернем классе должен быть определен метод draw()")
 #
+#
 # class Line(Prop):
+#
 #     def draw(self) -> None:
 #         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
 #
+#
 # class Rect(Prop):
 #     pass
-#     def draw(self) -> None:
-#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#     # def draw(self) -> None:
+#     #     print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
 #
 # class Ellipse(Prop):
+#
 #     def draw(self) -> None:
 #         print(f'Рисование эллипса: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
 #
 # figs = list()
 # figs.append(Line(Point(0, 0), Point(10, 10)))
@@ -4813,8 +4812,8 @@ import os
 # for f in figs:
 #     f.draw()
 
-# ----------------------------------------------------------------------------------------------
-# import math
+# import geometry
+#
 #
 # class Table:
 #     def __init__(self, width=None, length=None, radius=None):
@@ -4837,9 +4836,11 @@ import os
 #     def calc_area(self):
 #         return self._width * self._length
 #
+#
 # class RoundTable(Table):
 #     def calc_area(self):
-#         return round(math.pi * self._radius ** 2, 2)
+#         return round(geometry.pi * self._radius ** 2, 2)
+#
 #
 # t = SqTable(20, 10)
 # print(t.__dict__)
@@ -4853,29 +4854,29 @@ import os
 # print(t2.__dict__)
 # print(t2.calc_area())
 
-# -------------------------------------------------------------------
-#
+
 # from abc import ABC, abstractmethod
-#
+
+
 # class Chess(ABC):
 #     def draw(self):
 #         print("Нарисовал шахматную фигуру")
 #
-#     @abstractmethod              # --------- реализуются в дочерних классах.
+#     @abstractmethod
 #     def move(self):
 #         print("Метод move() в базовом классе")
+#
 #
 # class Queen(Chess):
 #     def move(self):
 #         super().move()
 #         print("Ферзь перемещен на e2e4")
 #
+#
 # q = Queen()
 # q.draw()
 # q.move()
 
-
-# ------------------------------------------------------------------
 
 # from abc import ABC, abstractmethod
 #
@@ -4884,12 +4885,13 @@ import os
 #     def __init__(self, value):
 #         self.value = value
 #
-#     # @abstractmethod
-#     # def convert_to_rub(self):
-#     #     pass
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
 #
 #     def print_value(self):
 #         print(self.value, end=" ")
+#
 #
 # class Dollar(Currency):
 #     rate_to_rub = 74.16
@@ -4898,9 +4900,11 @@ import os
 #     def convert_to_rub(self):
 #         rub = self.value * Dollar.rate_to_rub
 #         return rub
+#
 #     def print_value(self):
 #         super().print_value()
 #         print(Dollar.suffix, end=' ')
+#
 #
 # class Euro(Currency):
 #     rate_to_rub = 90.14
@@ -4909,34 +4913,27 @@ import os
 #     def convert_to_rub(self):
 #         rub = self.value * Euro.rate_to_rub
 #         return rub
+#
 #     def print_value(self):
 #         super().print_value()
 #         print(Euro.suffix, end=' ')
 #
-# #
+#
 # d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
 # e = [Euro(5), Euro(10), Euro(50), Euro(100)]
-# #
-# # print('*' * 30)
-# # for elem in d:
-# #     elem.print_value()
-# #     print(f'= {elem.convert_to_rub():.2f} RUB')
-# #
-# # print('*' * 30)
-# # for elem in e:
-# #     elem.print_value()
-# #     print(f'= {elem.convert_to_rub():.2f} RUB')
 #
-# print ("*" * 20)
-# for i in e:
-#     i.print_value()
-#     print("=", i.convert_to_rub(), "RUB")
+# print('*' * 30)
+# for elem in d:
+#     elem.print_value()
+#     print(f'= {elem.convert_to_rub():.2f} RUB')
+#
+# print('*' * 30)
+# for elem in e:
+#     elem.print_value()
+#     print(f'= {elem.convert_to_rub():.2f} RUB')
 
 
-# -------------------------------------------------------
-#
-# # Интерфейс
-#
+# Интерфейс
 # from abc import ABC, abstractmethod
 #
 #
@@ -4944,24 +4941,27 @@ import os
 #     @abstractmethod
 #     def display1(self):
 #         pass
+#
 #     @abstractmethod
 #     def display2(self):
 #         pass
+#
 #
 # class Child(Father):
 #     def display1(self):
 #         print("display1()")
 #
+#
 # class GrandChild(Child):
 #     def display2(self):
 #         print("display2()")
+#
 #
 # gc = GrandChild()
 # gc.display1()
 # gc.display2()
 
 
-# ----------------------------------------------------------
 # class Liquid:
 #     def __init__(self, name, density):
 #         self.name = name
@@ -5004,10 +5004,9 @@ import os
 # a.edit_strength(20)
 # print(a.strength)
 
-# ----------------------------------------------------------------
-#
+
 # Вложенные классы
-#
+
 # class MyOuter:
 #     age = 18
 #
@@ -5027,58 +5026,54 @@ import os
 #             self.obj = obj
 #
 #         def inner_method(self):
-#             print("Я метод внутреннего класса", MyOuter.age,
-#                   self.obj.name)
+#             print("Я метод внутреннего класса", MyOuter.age, self.obj.name)
 #             MyOuter.outer_class_method()
 #             self.obj.outer_obj_method()
 #
 #
-# out = MyOuter('Внешний.')
-# inner = out.MyInner("Внутренний.", out) #--- FIRST METHOD
-# print(inner.inner_name, "%%%")
+# out = MyOuter('внешний')
+# inner = out.MyInner("внутренний", out)
 # inner.inner_method()
-#
-# f=MyOuter.MyInner("kelly", 23) #--- SECOND METHOD
-# print(f.inner_name)
 
 
-# ----------------------------------------------------------
 # class Color:
 #     def __init__(self):
 #         self.name = 'Green'
 #         self.lg = self.LightGreen()
+#
 #     def show(self):
 #         print(f"Name: {self.name}")
 #
 #     class LightGreen:
 #         def __init__(self):
 #             self.name = 'Light Green'
+#
 #         def display(self):
 #             print(f"Name: {self.name}")
 #
+#
 # outer = Color()
 # outer.show()
-# f=Color.LightGreen()
-# print(f.name)
 # g = outer.lg
 # g.display()
 # print(g.name)
 
-# ---------------------------------------------------------
-# print("-"*30)
-# class employee:
+
+# class Employee:
 #     def __init__(self):
-#         self.name = 'employee'
+#         self.name = 'Employee'
 #         self.intern = self.Intern()
 #         self.head = self.Head()
+#
 #     def show(self):
-#         print("employee List:")
+#         print("Employee List:")
 #         print(f'Name: {self.name}')
 #
 #     class Intern:
 #         def __init__(self):
 #             self.name = 'Smith'
 #             self.id = '657'
+#
 #         def display(self):
 #             print(f'Name: {self.name}')
 #             print(f'Id: {self.id}')
@@ -5087,54 +5082,54 @@ import os
 #         def __init__(self):
 #             self.name = 'Alba'
 #             self.id = '007'
+#
 #         def display(self):
 #             print(f'Name: {self.name}')
 #             print(f'Id: {self.id}')
 #
-# outer = employee()
+#
+# outer = Employee()
 # outer.show()
+#
 # d1 = outer.intern
 # d2 = outer.head
 # d1.display()
 # d2.display()
-#
-# print("-"*30)
 
-# ---------------------------------------------------
-# print("-"*30)
+
 # class Outer:
 #     def __init__(self):
 #         self.inner = self.Inner()
+#
 #     def show(self):
 #         print("Class Outer")
 #
 #     class Inner:
 #         def __init__(self):
 #             self.inner_inner = self.InnerClass()
+#
 #         def show(self):
 #             print("Class Inner")
 #
 #         class InnerClass:
+#
 #             def show(self):
 #                 print("Class InnerClass")
 #
+#
 # outer = Outer()
 # outer.show()
-# inner1 = outer.inner
-# inner1.show()
+# # inner1 = outer.inner
+# # inner1.show()
 # inner2 = outer.inner.inner_inner
 # inner2.show()
-#
-# print("-"*30)
 
-# -----------------------------------------------------
-# print("-"*30)
-#
+
 # class Computer:
 #     def __init__(self):
 #         self.name = "PC001"
-#         self.os = self.OS()
-#         self.cpu = self.CPU()
+#         # self.os = self.OS()
+#         # self.cpu = self.CPU()
 #
 #     class OS:
 #         def system(self):
@@ -5147,29 +5142,29 @@ import os
 #         def model(self):
 #             return "Core-i7"
 #
-# comp = Computer()
+#
+# # comp = Computer()
 # # my_os = comp.os
 # # my_cpu = comp.cpu
 # my_os = Computer.OS()
 # my_cpu = Computer.CPU()
-# print(comp.name)
+# # print(comp.name)
 # print(my_os.system())
 # print(my_cpu.make())
 # print(my_cpu.model())
 
-# -------------------------------------------------
-#
-# print("-"*30)
-#
+
 # class Base:
 #     def __init__(self):
 #         self.db = self.Inner()
+#
 #     def display(self):
 #         print("Базовый класс")
 #
 #     class Inner:
 #         def display1(self):
 #             print("Вложенный класс в базовый")
+#
 #
 # class Sub_class(Base):
 #     def __init__(self):
@@ -5178,90 +5173,93 @@ import os
 #
 #     class Inner(Base.Inner):
 #         def display2(self):
-#             print("Вложенный класс в дочерний @#$%")
+#             print("Вложенный класс в дочерний")
 #
 #
 # a = Sub_class()
 # a.display()
-# b = a.db
-# b = Sub_class.Inner()
-# # b.display1()
-# # b.display2()
-
-# ---------------------------------------------------------------
-# Множественное наследование
 #
+# # b = a.db
+# b = Sub_class.Inner()
+# b.display1()
+# b.display2()
+
+# Множественное наследование
+
 # class Creature:
 #     def __init__(self, name):
 #         self.name = name
-#     def show(self):
-#         print("#$%^&")
-#         # print(self.Animal())
+#
 #
 # class Animal(Creature):
 #     def sleep(self):
 #         print(self.name + " is sleeping")
 #
+#
 # class Pet(Creature):
 #     def play(self):
 #         print(self.name + " is playing")
+#
 #
 # class Dog(Animal, Pet):
 #     def bark(self):
 #         print(self.name + " is barking")
 #
+#
 # b = Dog("Buddy")
 # b.sleep()
 # b.play()
 # b.bark()
-# # b.show()
-# s=Creature('Bally')
-# s.show()
-# -------------------------------------------------------
+
 
 # class A:
-#     def __init__(self):
-#         print("Инициализатор класса А")
-#     def hi(self):
-#         print("A")
-#     # pass
+#     # def __init__(self):
+#     #     print("Инициализатор класса А")
+#     # def hi(self):
+#     #     print("A")
+#     pass
 #
-# # class AA:
-# #     def __init__(self):
-# #         print("Инициализатор класса АA")
-# #     def hi(self):
-# #         print("AA")
+#
+# class AA:
+#     # def __init__(self):
+#     #     print("Инициализатор класса АA")
+#     def hi(self):
+#         print("AA")
+#
 #
 # class B(A):
-#     def __init__(self):
-#         super().__init__()
-#         print("Инициализатор класса B")
-#     def hi(self):
-#         print("B")
-#     # pass
+#     # def __init__(self):
+#     #     # super().__init__()
+#     #     print("Инициализатор класса B")
+#     # def hi(self):
+#     #     print("B")
+#     pass
 #
-# class C(A):
-#     def __init__(self):
-#         super().__init__()
-#         print("Инициализатор класса C")
+#
+# class C(AA):
+#     # def __init__(self):
+#     #     # super().__init__()
+#     #     print("Инициализатор класса C")
 #     def hi(self):
 #         print("C")
 #
+#
 # class D(B, C):
-#     def __init__(self):
-#         B.__init__(self)
-#         C.__init__(self)
-#         print("Инициализатор класса D")
-#     def hi(self):
-#         print("D")
+#     # def __init__(self):
+#     #     B.__init__(self)
+#     #     C.__init__(self)
+#     #     print("Инициализатор класса D")
+#     # def hi(self):
+#     #     print("D")
 #     pass
 #
+#
 # d = D()
-# # print(D.mro())
-# # print(D.__mro__)
-# # d.hi()
+# print(D.mro())
+# print(D.__mro__)
+# d.hi()
 
-# --------------------------------------------------------------------
+
 # class Student:
 #     def __init__(self, name):
 #         self.name = name
@@ -5286,51 +5284,50 @@ import os
 # s1.show()
 # s2.show()
 
-# ----------------------------------------------------------
-#
+
 # class Point:
 #     def __init__(self, x=0, y=0):
 #         self.x = x
 #         self.y = y
+#
 #     def __str__(self):
 #         return f'({self.x}, {self.y})'
+#
 #
 # class Styles:
 #     def __init__(self, color='red', width=1, *args):
 #         print("Инициализатор Styles")
 #         self._color = color
 #         self._width = width
-#         # super().__init__(*args)
+#         super().__init__(*args)
+#
 #
 # class Pos:
 #     def __init__(self, sp: Point, ep: Point, *args):
 #         print("Инициализатор Pos")
 #         self._sp = sp
 #         self._ep = ep
-#         # Styles.__init__(self, *args)
 #         super().__init__(*args)
 #
-# class Line(Pos, Styles):
+#
+# class Line(Styles, Pos):
 #     def draw(self):
-#         print(f"Рисование линии: {self._sp}, {self._ep},"
-#               f" {self._color}, {self._width}")
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
 #
 #
-# l1 = Line(Point(10,10), Point(100, 100), 'green', 5)
-# # l1 = Line('green', 5, Point(10, 10), Point(100, 100))
+# l1 = Line('green', 5, Point(10, 10), Point(100, 100))
 # l1.draw()
-# # print(Line.__mro__)
-
-# ----------------------------------------------------------------
+# print(Line.__mro__)
 
 #  Миксины (примеси)
-#
+
 # class Displayer:
 #     @staticmethod
 #     def display(message):
 #         print(message)
 #
-# # class LoggerMixin:
+#
+# class LoggerMixin:
 #     def log(self, message, filename='logfile.txt'):
 #         with open(filename, 'a') as fh:
 #             fh.write(message)
@@ -5339,14 +5336,14 @@ import os
 #         Displayer.display(message)
 #         self.log(message)
 #
-# # class MySubclass(LoggerMixin, Displayer):
+#
+# class MySubclass(LoggerMixin, Displayer):
 #     def log(self, message, filename=''):
 #         super().log(message, filename='subclasslog.txt')
 #
-# # subclass = MySubclass()
+#
+# subclass = MySubclass()
 # subclass.display("Эта строка будет отображаться и записываться в файл")
-
-# ----------------------------------------------
 
 
 # class Goods:
@@ -5382,13 +5379,12 @@ import os
 # n.save_log()
 # print(Notebook.__mro__)
 
-# ------------------------------------------------------------------------------
 
 # Перегрузка операторов
+
 # 24*60*60 = 86400 (число секунд в одном дне)
 
-#
-# class Clock: #----------------------------------------------------------------
+# class Clock:
 #     __DAY = 86400
 #
 #     def __init__(self, sec: int):
@@ -5398,11 +5394,6 @@ import os
 #         self.sec = sec % self.__DAY
 #
 #     def __add__(self, other):
-#         if not isinstance(other, Clock):
-#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-#         return Clock(self.sec + other.sec)
-#
-#     def __iadd__(self, other): #           +=
 #         if not isinstance(other, Clock):
 #             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
 #         return Clock(self.sec + other.sec)
@@ -5427,14 +5418,14 @@ import os
 #             raise ArithmeticError()
 #         return Clock(self.sec % other.sec)
 #
-#     # def __eq__(self, other):
-#     #     return self.sec == other.sec
-#     #
-#     # def __ne__(self, other):
-#     #     return not self.__eq__(other)
-#     #
-#     # def __gt__(self, other):
-#     #     return self.sec > other.sec
+#     def __eq__(self, other):
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __gt__(self, other):
+#         return self.sec > other.sec
 #
 #     def get_format_time(self):
 #         s = self.sec % 60  # секунды
@@ -5444,43 +5435,59 @@ import os
 #
 #     @staticmethod
 #     def __get_form(x):
-#         return str(x)  if x > 9 else "0" + str(x)
+#         return str(x) if x > 9 else "0" + str(x)
 #
-#     # def __getitem__(self, item):
-#     #     if not isinstance(item, str):
-#     #         raise ValueError("Ключ должен быть строкой")
-#     #
-#     #     if item == "hour":
-#     #         return (self.sec // 3600) % 24
-#     #     elif item == "min":
-#     #         return (self.sec // 60) % 60
-#     #     elif item == "sec":
-#     #         return self.sec % 60
-#     #     return "Неверный ключ"
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
 #
-# c1 = Clock(50)
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         elif item == "min":
+#             return (self.sec // 60) % 60
+#         elif item == "sec":
+#             return self.sec % 60
+#
+#         return "Неверный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         if not isinstance(value, int):
+#             raise ValueError("Значение должно быть целым числом ")
+#         s = self.sec % 60  # секунды
+#         m = (self.sec // 60) % 60  # минуты
+#         h = (self.sec // 3600) % 24  # часы
+#         if key == "hour":
+#             self.sec = s + 60 * m + value * 3600
+#         elif key == "min":
+#             self.sec = s + 60 * value + h * 3600
+#         elif key == "sec":
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(80000)
 # print(c1.get_format_time())
-# c2 = Clock(100)
+# c1["hour"] = 12
+# c1["min"] = 20
+# c1["sec"] = 130
+# print(c1["hour"], c1["min"], c1["sec"])
+# print(c1.get_format_time())
+# c2 = Clock(50)
 # print(c2.get_format_time())
-# # c1 = c1 + c2
-# # print(c1.get_format_time(), "+")    #   the same with lower
-# c1+=c2
-# print(c1.get_format_time(), "+=")
+# c1 += c2
+# print(c1.get_format_time())
 # c4 = Clock(300)
 # print(c4.get_format_time())
-# c3=c4-c1
-# print(c3.get_format_time(), "-")
-# c3=c4*c1
-# print(c3.get_format_time(), "*")
-# c3=c4//c1
-# print(c3.get_format_time(), "//")
-# c3=c4%c2
-# print(c3.get_format_time(), "%")
+# c3 = c4 % c2
+# print(c3.get_format_time())
+# if c2 < c1:
+#     print("Время второе меньше")
+# if c1 != c2:
+#     print("Время не равно")
 
 
-# --------------------------------------------------------------------
 # class Student:
-#
 #     def __init__(self, name, marks):
 #         self.name = name
 #         self.marks = list(marks)
@@ -5490,31 +5497,30 @@ import os
 #             return self.marks[item]
 #         else:
 #             raise IndexError("Неверный индекс")
-#     #
+#
 #     def __setitem__(self, key, value):
 #         if not isinstance(key, int) or key < 0:
 #             raise TypeError("Индекс должен быть целым неотрицательным числом")
+#
 #         if key >= len(self.marks):
 #             off = key + 1 - len(self.marks)
 #             self.marks.extend([None] * off)
 #         self.marks[key] = value
-#     #
-    # def __delitem__(self, key):
-    #     if not isinstance(key, int):
-    #         raise TypeError("Индекс должен быть целым числом")
-    #     del self.marks[key]
-
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError("Индекс должен быть целым числом")
+#
+#         del self.marks[key]
+#
 #
 # s1 = Student("Сергей", [5, 5, 3, 4, 5])
-# # print(s1.marks[2])
 # print(s1[2])
 # s1[10] = 4
-
-# print(s1.marks)
 # del s1[2]
 # print(s1.marks)
 
-# ------------------------------------------------------------------------
+
 # class Point3D:
 #     CH = "Координата должна быть числом"
 #     RIGHT = "Правый операнд должен быть типом Point3D"
@@ -5651,7 +5657,6 @@ import os
 # print("Запись значения в координату x:", pt1['x'])
 
 
-#----------------------------------------------------------------------------------------------------------------
 # Полиморфизм
 
 # class Rectangle:
@@ -5732,7 +5737,7 @@ import os
 #     Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
 # ]
 
-#------------------------------------------------------------
+
 # class Dog:
 #     def __init__(self, name, age):
 #         self.name = name
@@ -5777,7 +5782,7 @@ import os
 #
 # cat = Cat("Пушок")
 # print(cat)
-#---------------------------------------------------------------------
+
 
 # class Point:
 #     def __init__(self, *args):
@@ -6473,75 +6478,6 @@ import os
 #     main()
 
 
-# from math import pi
-#
-#
-# class Rectangle:
-#     def __init__(self, l, h):
-#         self.l = l
-#         self.h = h
-#
-#     def get_rect_perimetr(self):
-#         res = self.l * 2 + self.h * 2
-#         print(f"Периметр прямоугольника: {res}")
-#         return res
-#
-#     def get_rect_area(self):
-#         res = self.l * self.h
-#         print(f"Площадь прямоугольника: {res}")
-#         return res
-#
-#     def print_rect(self):
-#         print(f"Стороны прямоугольника: {self.l}, {self.h}")
-#         return {self.l, self.h}
-#
-#
-# class Circle:
-#     def __init__(self, r):
-#         self.r = r
-#
-#     def get_circle_circumference(self):
-#         res = 2 * pi * self.r
-#         print(f"Длина окружности: {round(res, 2)}")
-#         return res
-#
-#     def get_circle_area(self):
-#         res = round(pi * self.r ** 2, 2)
-#         print(f"Площадь круга: {res}")
-#         return res
-#
-#     def print_circle(self):
-#         print(f"Радиус круга: {self.r}")
-#         return self.r
-#
-#
-# class Cylinder(Rectangle, Circle):
-#     def __init__(self, r, h):
-#         Circle.__init__(self, r)
-#         Rectangle.__init__(self, self.get_circle_circumference(), h)
-#
-#     def get_volume(self):
-#         res = self.get_circle_area() * self.h
-#         print(f"Объем: {res}")
-#         return res
-#
-#     def print_cylinder(self):
-#         print(f"Радиус основания: {self.r}, высота: {self.h}")
-#
-#
-# circles = [Circle(4), Circle(2), Circle(6), Circle(8), Circle(1)]
-# rects = [Rectangle(3, 7), Rectangle(2, 7), Rectangle(19, 12)]
-# cylinders = [Cylinder(4, 7), Cylinder(2, 5), Cylinder(9, 3), Cylinder(5, 5)]
-#
-# circle_max_s = max(circles, key=lambda c: c.get_circle_area())
-# rect_min_p = min(rects, key=lambda r: r.get_rect_perimetr())
-# cylinders_v = list(map(lambda c: c.get_volume(), cylinders))
-# cylinder_v_avr = sum(cylinders_v) / len(cylinders_v)
-# print(f"Окружность с наибольшей площадью: {circle_max_s.print_circle()} = {circle_max_s.get_circle_area()}")
-# print(f'Прямоугольник с наименьшим периметром: {rect_min_p.print_rect()} = {rect_min_p.get_rect_perimetr()}')
-# print(f"Средний объем цилиндров: {round(cylinder_v_avr, 2)}")
-
-
 # from shapes import rectangle, circle, cylinder
 #
 # circles = [circle.Circle(4), circle.Circle(2), circle.Circle(6), circle.Circle(8), circle.Circle(1)]
@@ -6585,7 +6521,7 @@ import pickle
 #
 # print(shop_list_2)
 
-#
+
 # class Test:
 #     num = 35
 #     st = "Привет"
@@ -6596,7 +6532,8 @@ import pickle
 #     def __str__(self):
 #         return f"Число: {Test.num}\nСтрока: {Test.st}\nСписок: {Test.lst}\nСловарь: {Test.dct}\nКортеж: {Test.tpl}"
 #
-## obj = Test()
+#
+# obj = Test()
 # # print(obj)
 #
 # d_save = pickle.dumps(obj)
@@ -6604,7 +6541,6 @@ import pickle
 #
 # d_read = pickle.loads(d_save)
 # print(f"Десереализация в строку:\n{d_read}\n")
-
 
 # class Test2:
 #     def __init__(self):
@@ -6712,9 +6648,9 @@ import pickle
 # print(json.loads(json.dumps(x)))
 # print(json.dumps(y, ensure_ascii=False))
 
-
-#-----------------------------------------------------------------
 # import json
+#
+#
 # from random import choice
 #
 #
@@ -6745,6 +6681,7 @@ import pickle
 #         data = json.load(open('persons.json'))
 #     except FileNotFoundError:
 #         data = {}
+#
 #     # data.append(person_dict)
 #     data[num] = person_dict
 #
@@ -6756,9 +6693,6 @@ import pickle
 #     write_json(gen_person()[0], gen_person()[1])
 # import json
 #
-
-# #------------------------------------------------------------------------------------------------
-# import json
 #
 # class Student:
 #     def __init__(self, name, marks):
@@ -6847,19 +6781,19 @@ import pickle
 # sts = [st1, st2]
 # # Student.load_from_file('student.json')
 #
-# Student.dump_to_json(st1, 'student.json')
-# Student.dump_to_json(st3, 'student.json')
-# # my_group = Group(sts, "ГК Python")
-# # print(my_group)
+# # Student.dump_to_json(st1, 'student.json')
+# # Student.dump_to_json(st3, 'student.json')
+# my_group = Group(sts, "ГК Python")
+# print(my_group)
 # # my_group.add_student(st3)
 # # print(my_group)
 # # my_group.remove_student(1)
 # # print(my_group)
 # #
-# # group22 = [st3]
-# # my_group2 = Group(group22, "ГК Web")
-# # print(my_group2)
-# # #
+# group22 = [st3]
+# my_group2 = Group(group22, "ГК Web")
+# print(my_group2)
+# #
 # # Group.change_group(my_group, my_group2, 0)
 # # print(my_group)
 # # print(my_group2)
@@ -6872,10 +6806,8 @@ import pickle
 # # print(st1)
 # # print(st1.average_mark())
 # # Group.dump_group('group.json', my_group2)
-# # Group.upload_group('group.json')
+# Group.upload_group('group.json')
 
-
-#--------------------------------------------------------------------------
 
 # import requests
 # import json
@@ -6937,7 +6869,7 @@ import csv
 #     file_reader = csv.reader(r_file, delimiter=";")
 #     count = 0
 #     for row in file_reader:
-#         print(row)
+#         # print(row)
 #         if count == 0:
 #             print(f"Файл содержит столбцы: {', '.join(row)}")
 #         else:
@@ -6945,7 +6877,7 @@ import csv
 #         count += 1
 #     print(f"Всего в файле {count} строки.")
 
-#
+
 # with open("data.csv") as r_file:
 #     field_names = ['Имя', 'Профессия', 'Год рождения']
 #     file_reader = csv.DictReader(r_file, delimiter=";", fieldnames=field_names)
@@ -6956,15 +6888,15 @@ import csv
 #         print(f"{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
 #         count += 1
 
-#
+
 # with open('student.csv', 'w') as f:
 #     writer = csv.writer(f, delimiter=";", lineterminator='\r')
 #     writer.writerow(["Имя", "Класс", "Возраст"])
 #     writer.writerow(["Женя", "9", "15"])
 #     writer.writerow(["Саша", "5", "12"])
 #     writer.writerow(["Маша", "11", "18"])
-#
-#
+
+
 # data = [['hostname', 'vendor', 'model', 'location'],
 #         ['sw1', 'Cisco', '3750', 'London, Best str'],
 #         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
@@ -6972,7 +6904,7 @@ import csv
 #         ['sw4', 'Cisco', '3650', 'London, Best str']]
 #
 # with open('data_new.csv', 'w') as f:
-#     writer = csv.writer(f, delimiter=",", lineterminator='\r', quoting=csv.QUOTE_ALL)
+#     writer = csv.writer(f, delimiter=",", lineterminator='\r', quoting=csv.QUOTE_NONNUMERIC)
 #     # for row in data:
 #     #     writer.writerow(row)
 #     writer.writerows(data)
@@ -7094,7 +7026,7 @@ import csv
 # if __name__ == '__main__':
 #     main()
 
-#
+
 # def get_html(url):
 #     r = requests.get(url)
 #     return r.text
@@ -7136,4 +7068,263 @@ import csv
 #
 # if __name__ == '__main__':
 #     main()
+
+#------------------------------------------------------------------------------------------------------
+# import json
 #
+# data = {"Россия": "Москва"}
+#
+#
+# def load_data(func):
+#     def wrap(*args, filename):
+#         try:
+#             data = json.load(open(filename))
+#         except FileNotFoundError:
+#             data = {}
+#         func(*args, filename)
+#         print("Файл сохранен")
+#     return wrap
+#
+#
+# class CountryCapital:
+#     def __init__(self, country, capital):
+#         self.country = country
+#         self.capital = capital
+#         data[self.country] = self.capital
+#
+#     def __str__(self):
+#         return f'{self.country}: {self.capital}'
+#
+#     @classmethod
+#     @load_data
+#     def add_country(cls, new_country, new_capital, filename):
+#
+#         data[new_country] = new_capital
+#
+#         with open(filename, "w") as f:
+#             json.dump(data, f, indent=2, ensure_ascii=False)
+#
+#     @classmethod
+#     @load_data
+#     def delete_country(cls, del_country, filename):
+#         if del_country in data:
+#             del data[del_country]
+#
+#             with open(filename, "w") as f:
+#                 json.dump(data, f, indent=2, ensure_ascii=False)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#     @classmethod
+#     @load_data
+#     def search_data(cls, country, filename):
+#         if country in data:
+#             print(f"Страна {country} столица {data[country]} есть в словаре!")
+#         else:
+#             print(f"Страна {country} отсутствует в словаре")
+#
+#     @classmethod
+#     @load_data
+#     def change_capital(cls, country, new_value, filename):
+#
+#         if country in data:
+#             data[country] = new_value
+#
+#             with open(filename, "w") as f:
+#                 json.dump(data, f, indent=2, ensure_ascii=False)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#     @classmethod
+#     def load_from_file(cls, filename):
+#         with open(filename, 'r') as f:
+#             print(json.load(f))
+#
+#
+# index = ''
+# filename1 = 'list_capital.json'
+# with open(filename1, "w") as fw:
+#     json.dump(data, fw, indent=2, ensure_ascii=False)
+#
+# while index != 6:
+#     try:
+#         print("*" * 40)
+#         index = int(input('Выбор действия:\n1 - добавление данных\n2 - удаление данных\n'
+#                           '3 - поиск данных\n4 - редактирование данных\n5 - просмотр данных\n'
+#                           '6 - завершение работы\nВвод: '))
+#         if index == 1:
+#             country_name = input("Введите название страны (с заглавной буквы): ")
+#             capital_name = input("Введите название столицы страны (с заглавной буквы): ")
+#             CountryCapital.add_country(country_name, capital_name, filename='list_capital.json')
+#         if index == 2:
+#             country_name = input("Введите страну для удаления (с заглавной буквы): ")
+#             CountryCapital.delete_country(country_name, filename='list_capital.json')
+#         if index == 3:
+#             country_name = input("Введите название страны (с заглавной буквы): ")
+#             CountryCapital.search_data(country_name, filename='list_capital.json')
+#         if index == 4:
+#             country_name = input("Введите название страны столицу которой хотите изменить (с заглавной буквы): ")
+#             new_capital = input("Введите новое название столицы: ")
+#             CountryCapital.change_capital(country_name, new_capital, filename='list_capital.json')
+#         if index == 5:
+#             CountryCapital.load_from_file(filename='list_capital.json')
+#     except IndexError:
+#         break
+
+#----------------------------------------------------------------------------------------------------------
+# from bs4 import BeautifulSoup
+# import requests
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def write_csv(data):
+#     with open('plugins1.csv', 'a') as f:
+#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
+#         writer.writerow((data['name'],
+#                         data['url'],
+#                         data['snippet'],
+#                         data['active_install'],
+#                         data['tested']))
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')
+#     elements = soup.find_all("article", class_="plugin-card")
+#     for el in elements:
+#         try:
+#             name = el.find('h3').text
+#         except ValueError:
+#             name = ''
+#
+#         try:
+#             url = el.find('h3').find("a").get('href')
+#         except ValueError:
+#             url = ''
+#
+#         try:
+#             snippet = el.find('div', class_='entry-excerpt').text.strip()
+#         except ValueError:
+#             snippet = ''
+#
+#         try:
+#             active = el.find("span", class_="active-installs").text.strip()
+#         except ValueError:
+#             active = ''
+#
+#         try:
+#             c = el.find("span", class_="tested-with").text.strip()
+#             cy = refine_cy(c)
+#         except ValueError:
+#             cy = ''
+#
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'snippet': snippet,
+#             'active_install': active,
+#             'tested': cy
+#         }
+#
+#         write_csv(data)
+#
+#
+# def main():
+#     for i in range(12, 13):
+#         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+
+# from parse import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+#
+# import socket
+# from view import index, blog
+#
+# URLS = {
+#     "/": index,
+#     "/blog": blog
+# }
+#
+#
+# def parse_request(request):
+#     parsed = request.split()
+#     method = parsed[0]  # GET
+#     url = parsed[1]  # / или /blog
+#     return method, url
+#
+#
+# def generate_headers(method, url):
+#     if method != "GET":
+#         return 'HTTP/1.1 405 Method Not Allowed!\n\n', 405
+#     if url not in URLS:
+#         return 'HTTP/1.1 404 Page Not Found!\n\n', 404
+#     return 'HTTP/1.1 200 OK!\n\n', 200
+#
+#
+# def generate_content(code, url):
+#     if code == 404:
+#         return '<h1>404</h1><h3>Page not found!</h3>'
+#     elif code == 405:
+#         return '<h1>405</h1><h3>Method Not Allowed!</h3>'
+#     return URLS[url]()
+#
+#
+# def generate_response(request):
+#     method, url = parse_request(request)
+#     headers, code = generate_headers(method, url)
+#     body = generate_content(code, url)
+#     return (headers + body).encode()
+#
+#
+# def run():
+#     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server_socket.bind(('127.0.0.1', 5000))
+#     server_socket.listen()
+#
+#     while True:
+#         client_socket, addr = server_socket.accept()
+#         request = client_socket.recv(1024)
+#         print(f"Клиент: {addr} => \n{request.decode('utf-8')}\n")
+#
+#         response = generate_response(request.decode())
+#         client_socket.sendall(response)
+#         client_socket.close()
+#
+#
+# if __name__ == '__main__':
+#     run()
+
+import sqlite3 as sq
+
+
+with sq.connect("profile.db") as con:
+    cur = con.cursor()
+    cur.execute("DROP TABLE users")
+    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # summa REAL,
+    # date TEXT
+    # )""")

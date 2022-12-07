@@ -4220,25 +4220,21 @@
 #     print(f"Всего в файле {count} строки.")
 
 
-
-
-
 # import csv
 #
 # with open("data1.csv") as r_file:
 #     field_names = ['Имя', 'Профессия', 'Год рождения']  #-----Names of columns
 #     file_reader = csv.DictReader(r_file, delimiter=";", fieldnames=field_names)
 #     print(file_reader)
-    # count = 0
-    # for row in file_reader:
-    #     if count == 0:
-    #         print(f"Файл содержит столбцы: {', '.join(row)}")
-    #     print(f"{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
-    #     count += 1
-    # print(f'Overal in file - {count} strings')
+# count = 0
+# for row in file_reader:
+#     if count == 0:
+#         print(f"Файл содержит столбцы: {', '.join(row)}")
+#     print(f"{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
+#     count += 1
+# print(f'Overal in file - {count} strings')
 
 #
-
 
 
 # import csv
@@ -4257,8 +4253,6 @@
 #         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
 #         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
 #         ['sw4', 'Cisco', '3650', 'London, Best str']]
-
-
 
 
 #
@@ -4314,13 +4308,11 @@
 # #         writer.writerow(d)
 
 
+# -----------------------------------------
 
+# ----------------LESSON 37
 
-#-----------------------------------------
-
-#----------------LESSON 37
-
-#-----------------------------------------
+# -----------------------------------------
 
 
 #
@@ -4378,9 +4370,6 @@
 # print("*" * 40)
 
 
-
-
-
 from bs4 import BeautifulSoup
 
 # print("-" * 40)
@@ -4407,7 +4396,7 @@ from bs4 import BeautifulSoup
 # # print('copywriter: ', copywriter)
 # # print("-" * 40)
 
-#---------------------------------------------
+# ---------------------------------------------
 
 # from bs4 import BeautifulSoup
 #
@@ -4428,7 +4417,7 @@ from bs4 import BeautifulSoup
 # print(copywriter)
 
 
-#----------------------------------------------
+# ----------------------------------------------
 import re
 
 # def get_salary(s):
@@ -4454,7 +4443,6 @@ import re
 
 # r = requests.get("https://ru.wordpress.org/")
 # print()
-
 
 
 # --------------------------------------
@@ -4494,9 +4482,7 @@ import re
 # import lxml
 
 
-
-
-#-----------------------------
+# -----------------------------
 
 #
 # from bs4 import BeautifulSoup
@@ -4505,11 +4491,11 @@ import re
 # r = requests.get("https://ru.wordpress.org/")
 # print(r)
 
-#-------------------------------------------
+# -------------------------------------------
 
-               # lesson 37 (2)
+# lesson 37 (2)
 
-#-------------------------------------------
+# -------------------------------------------
 
 
 # from bs4 import BeautifulSoup
@@ -4556,7 +4542,7 @@ import re
 # print(row11)
 
 
-#-----------------------------------------------------
+# -----------------------------------------------------
 # f  = open("index1.html", encoding='utf-8').read()
 # soup = BeautifulSoup(f, 'html.parser')
 #
@@ -4574,7 +4560,7 @@ import re
 #     if cw:
 #         copywriter.append(cw)
 # print(copywriter)
-#-----------------------------------------------------
+# -----------------------------------------------------
 
 
 # import re
@@ -4596,21 +4582,19 @@ import re
 # # print(salary)
 
 
+# ----------------------------------------------------------
 
-#----------------------------------------------------------
-
-from bs4 import BeautifulSoup
-import requests
-
-req = requests.get("https://ru.wordpress.org/")
-req.encoding = 'utf - 8' # устанавливаем если нужно кодировку
-print(req)
-print(req.headers)
-print(req.headers['content-type'])
-print(req.content)    # содержимое в виде байтовой строки
-print("------------------------")
-print("TEXT: \n", req.text)
-
+# from bs4 import BeautifulSoup
+# import requests
+#
+# req = requests.get("https://ru.wordpress.org/")
+# req.encoding = 'utf - 8' # устанавливаем если нужно кодировку
+# print(req)
+# print(req.headers)
+# print(req.headers['content-type'])
+# print(req.content)    # содержимое в виде байтовой строки
+# print("------------------------")
+# print("TEXT: \n", req.text)
 
 
 # ------------------------ Разбили на две функции.
@@ -4635,13 +4619,74 @@ print("TEXT: \n", req.text)
 #     main()
 
 
+# -----------------------------------------------------------------------------
+#
+#
+# from bs4 import BeautifulSoup
+# import requests
+# import re
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     res = re.sub(r'\D+', '', s)
+#     return res
+#
+#
+# def write_csv(data):
+#     with open('plugins.csv', 'a') as f:
+#         writer = csv.writer(f, lineterminator = '\n', delimiter=';')
+#         writer.writerow((data['name'], data['url'], data['rating']))
+#         # print('DATA:', data)
+#         # print("NAME:", data['name'])
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')   # ------ changing of parser
+#     p1 = soup.find_all('section', class_="plugin-section")[1]
+#     plugins = p1.find_all('article')
+#
+#
+#     for plugin in plugins:
+#         name = plugin.find('h3').text
+#         # url = plugin.find('h3').find('a')['href']    # ---- к атрибуту можем обратиться как по ключу.
+#         url = plugin.find('h3').find('a').get('href')  # ----- второй метод
+#         rating = plugin.find('span', class_= 'rating-count').find('a').text
+#         r = refined(rating)
+#
+#         data = {'name': name, 'url': url, 'rating': r}
+#         print("DATA: ", data)
+#         write_csv(data)
+#
+#         # print(r)
+#         # print(rating)
+#         # print(name)
+#         # print(url)
+#     # return len(plugins)
+#
+#
+# def main():
+#     url = 'https://ru.wordpress.org/plugins/'
+#     (get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
+#
 
-#-----------------------------------------------------------------------------
+# ------------------------------------------------------------------------
 
+#                               lesson 38
+
+# ------------------------------------------------------------------------
 
 from bs4 import BeautifulSoup
 import requests
-import re
 import csv
 
 
@@ -4650,62 +4695,74 @@ def get_html(url):
     return r.text
 
 
-def refined(s):
-    res = re.sub(r'\D+', '', s)
-    return res
-
-
 def write_csv(data):
-    with open('plugins.csv', 'a') as f:
-        writer = csv.writer(f, lineterminator = '\n', delimiter=';')
-        writer.writerow((data['name'], data['url'], data['rating']))
-        # print('DATA:', data)
-        # print("NAME:", data['name'])
+    with open('plugins1.csv', 'a') as f:
+        writer = csv.writer(f, lineterminator = '\r', delimiter = ';')
+        writer.writerow((data['name'],
+                            data['url'],
+                            data['snippet'],
+                            data['active_install'],
+                            data['tested']))
+
+
+
+def refine_cy(s):
+    return s.split()[-1]
 
 
 def get_data(html):
-    soup = BeautifulSoup(html, 'lxml')   # ------ changing of parser
-    p1 = soup.find_all('section', class_="plugin-section")[1]
-    plugins = p1.find_all('article')
+    soup = BeautifulSoup(html, 'lxml')
+    elements = soup.find_all('article', class_='plugin-card')
+    for el in elements:
+        try:
+            name = el.find('h3').text
+            # print(name)
+        except ValueError:
+            name = ''
 
+        try:
+            url = el.find('h3').find('a').get('href')
+            # print(url)
+        except ValueError:
+            url = ''
 
-    for plugin in plugins:
-        name = plugin.find('h3').text
-        # url = plugin.find('h3').find('a')['href']    # ---- к атрибуту можем обратиться как по ключу.
-        url = plugin.find('h3').find('a').get('href')  # ----- второй метод
-        rating = plugin.find('span', class_= 'rating-count').find('a').text
-        r = refined(rating)
+        try:
+            snippet = el.find('div', class_='entry-excerpt').text.strip()
+            # print(snippet)
+        except ValueError:
+            snippet = ''
 
-        data = {'name': name, 'url': url, 'rating': r}
-        print("DATA: ", data)
+        try:
+            active = el.find('span', class_="active-installs").text.strip()
+            # print(active)
+        except ValueError:
+            active = ''
+
+        try:
+            c = el.find('span', class_="tested-with").text.strip()
+            # print("c:", c)
+            cy = refine_cy(c)
+            # print(cy)
+        except ValueError:
+            cy = ''
+
+        data = {
+                'name': name,
+                'url': url,
+                'snippet': snippet,
+                'active_install': active,
+                'tested': cy
+            }
+
         write_csv(data)
 
-        # print(r)
-        # print(rating)
-        # print(name)
-        # print(url)
-    # return len(plugins)
 
+# print(len(elements))
 
 def main():
-    url = 'https://ru.wordpress.org/plugins/'
-    (get_data(get_html(url)))
+    url = "https://ru.wordpress.org/plugins/browse/blocks/"
+    get_data(get_html(url))
 
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
