@@ -1093,7 +1093,6 @@
 
 #--------------------------------------------------------------------------------------------
 
-
 #                                                DZ 39
 
 # Елена, разбил на два файла.
@@ -1101,23 +1100,23 @@
 #--------------------------------------------------------------------------------------------
 
 
-#------ FILE #1 ----------------
-
+#  FILE #1
 
 from trombones import Parser
 
 
 def main():
-    pars = Parser("https://www.muztorg.ru/category"
-                  "/trombony?in-stock=1&pre-order=2",
+    for i in range(1, 3):
+        pars = Parser(f"https://www.muztorg.ru/category/trombony?in-stock=1&pre-order=2&page={i}",
                   "trombones_class_method.txt")
-    pars.run()
+        pars.run()
 
 if __name__ == '__main__':
     main()
 
 
-#------  FILE #2 (trombones.py) ----------------
+# - FILE #2   (trombones.py)
+
 
 
 from bs4 import BeautifulSoup
@@ -1161,9 +1160,6 @@ class Parser:
         self.get_html()
         self.parsing()
         self.save()
-
-
-
 
 
 

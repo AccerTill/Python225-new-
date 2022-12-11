@@ -94,3 +94,99 @@ Name: Bach 35012C
 Link: /product/A132719
 
 ********************
+Name: Bach 3414GB
+Link: /product/A132561
+
+********************
+Name: Bach K3505 Megatone
+Link: /product/A133069
+
+********************
+Name: Conn-Selmer 195B
+Link: /product/A132554
+
+********************
+Name: Bach 3411G
+Link: /product/A132555
+
+********************
+Name: Bach 3412G
+Link: /product/A132556
+
+********************
+Name: Bach 3412GGP
+Link: /product/A132557
+
+********************
+Name: Bach 3413G
+Link: /product/A132558
+
+********************
+Name: Bach 3413GGP
+Link: /product/A132559
+
+********************
+Name: Bach 3414GGP
+Link: /product/A132562
+
+********************
+Name: Bach 3415GGP
+Link: /product/A132563
+
+********************
+Name: Conn-Selmer 380TB
+Link: /product/A132700
+
+********************
+Name: Bach A45011C2 Artisan
+Link: /product/A132705
+
+********************
+Name: Bach A45012C2 Artisan
+Link: /product/A132706
+
+********************
+Name: Bach A4507C2 Artisan
+Link: /product/A132707
+
+********************
+Name: Bach 35011C
+Link: /product/A132717
+
+********************
+Name: Bach 35011CGP
+Link: /product/A132718
+
+********************
+Name: Bach 35012CGP
+Link: /product/A132720
+
+********************
+Name: Bach 35015C
+Link: /product/A132721
+
+********************
+Name: Bach 35015CGP
+Link: /product/A132722
+
+********************
+Name: Bach 35017CGP
+Link: /product/A132724
+
+********************
+Name: Bach 35018C
+Link: /product/A132725
+
+********************
+Name: Bach 35018CGP
+Link: /product/A132726
+
+********************
+Name: Bach 35022C
+Link: /product/A132727
+
+********************
+Name: Bach 35022CGP
+Link: /product/A132728
+
+********************
