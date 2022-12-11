@@ -7171,16 +7171,15 @@ import csv
 #     except IndexError:
 #         break
 
-#----------------------------------------------------------------------------------------------------------
+#------------------------------------------   LESSON 38   ------------------------------------------------
+# #
 # from bs4 import BeautifulSoup
 # import requests
 # import csv
 #
-#
 # def get_html(url):
 #     r = requests.get(url)
 #     return r.text
-#
 #
 # def write_csv(data):
 #     with open('plugins1.csv', 'a') as f:
@@ -7191,10 +7190,8 @@ import csv
 #                         data['active_install'],
 #                         data['tested']))
 #
-#
 # def refine_cy(s):
 #     return s.split()[-1]
-#
 #
 # def get_data(html):
 #     soup = BeautifulSoup(html, 'lxml')
@@ -7238,27 +7235,28 @@ import csv
 #
 #
 # def main():
-#     for i in range(12, 13):
+#     for i in range(13, 14):
 #         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
 #         get_data(get_html(url))
-#
 #
 # if __name__ == '__main__':
 #     main()
 
-
+#-----------------------------------------------------------------------------------
+# from bs4 import BeautifulSoup
+# import requests
 # from parse import Parser
 #
 #
 # def main():
-#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars = Parser("https://www.ixbt.com/live/index/news/",
+#                   "news.txt")
 #     pars.run()
-#
 #
 # if __name__ == '__main__':
 #     main()
 
-#
+#--------------------------------------------------------------------
 # import socket
 # from view import index, blog
 #
@@ -7316,12 +7314,12 @@ import csv
 # if __name__ == '__main__':
 #     run()
 
-import sqlite3 as sq
-
-
-with sq.connect("profile.db") as con:
-    cur = con.cursor()
-    cur.execute("DROP TABLE users")
+# import sqlite3 as sq
+#
+#
+# with sq.connect("profile.db") as con:
+#     cur = con.cursor()
+#     cur.execute("DROP TABLE users")
     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
     # id INTEGER PRIMARY KEY AUTOINCREMENT,
     # name TEXT NOT NULL,

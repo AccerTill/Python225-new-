@@ -1091,6 +1091,87 @@
 #         break
 
 
+#--------------------------------------------------------------------------------------------
+
+
+#                                                DZ 39
+
+# Елена, разбил на два файла.
+
+#--------------------------------------------------------------------------------------------
+
+
+#------ FILE #1 ----------------
+
+
+from trombones import Parser
+
+
+def main():
+    pars = Parser("https://www.muztorg.ru/category"
+                  "/trombony?in-stock=1&pre-order=2",
+                  "trombones_class_method.txt")
+    pars.run()
+
+if __name__ == '__main__':
+    main()
+
+
+#------  FILE #2 (trombones.py) ----------------
+
+
+from bs4 import BeautifulSoup
+import requests
+
+
+class Parser:
+    html = ''
+    res = []
+
+    def __init__(self, url, path):
+        self.url = url
+        self.path = path
+
+    def get_html(self):
+        req = requests.get(self.url).text
+        self.html = BeautifulSoup(req, 'lxml')
+
+    def parsing(self):
+        trombones = self.html.find_all("div", class_="title")
+        for item in trombones:
+            name = item.find("a").text
+            href = item.find('a').get('href')
+
+            self.res.append({"name": name,
+                             'href': href})
+        # print("RESULT: ", self.res)
+        for i in self.res:
+            print("I ------:", i)
+
+    def save(self):
+        with open(self.path, 'w') as f:
+            i = 1
+            for item in self.res:
+                f.write(f"Name: {item['name']}\n"
+                        f'Link: {item["href"]}'
+                        f'\n\n{"*" * 20}\n')
+                i += 1
+
+    def run(self):
+        self.get_html()
+        self.parsing()
+        self.save()
+
+
+
+
+
+
+
+
+
+
+
 
 
 

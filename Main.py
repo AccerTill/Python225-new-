@@ -4681,88 +4681,220 @@ import re
 
 # ------------------------------------------------------------------------
 
-#                               lesson 38
+#                               lesson 38 - 39
 
 # ------------------------------------------------------------------------
+#
+# from bs4 import BeautifulSoup
+# import requests
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def write_csv(data):
+#     with open('plugins1.csv', 'a') as f:
+#         writer = csv.writer(f, lineterminator = '\r', delimiter = ';')
+#         writer.writerow((data['name'],
+#                             data['url'],
+#                             data['snippet'],
+#                             data['active_install'],
+#                             data['tested']))
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, 'lxml')
+#     elements = soup.find_all('article', class_='plugin-card')
+#     for el in elements:
+#         try:
+#             name = el.find('h3').text
+#             # print(name)
+#         except ValueError:
+#             name = ''
+#
+#         try:
+#             url = el.find('h3').find('a').get('href')
+#             # print(url)
+#         except ValueError:
+#             url = ''
+#
+#         try:
+#             snippet = el.find('div', class_='entry-excerpt').text.strip()
+#             # print(snippet)
+#         except ValueError:
+#             snippet = ''
+#
+#         try:
+#             active = el.find('span', class_="active-installs").text.strip()
+#             # print(active)
+#         except ValueError:
+#             active = ''
+#
+#         try:
+#             c = el.find('span', class_="tested-with").text.strip()
+#             # print("c:", c)
+#             cy = refine_cy(c)
+#             # print(cy)
+#         except ValueError:
+#             cy = ''
+#
+#         data = {
+#                 'name': name,
+#                 'url': url,
+#                 'snippet': snippet,
+#                 'active_install': active,
+#                 'tested': cy
+#             }
+#
+#         write_csv(data)
+#
+#
+# # print(len(elements))
+#
+# def main():
+#     for i in range(9,16):
+#
+#         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+#
+#
+# # pages:
+# # 1: https://ru.wordpress.org/plugins/browse/blocks/
+# # 2: https://ru.wordpress.org/plugins/browse/blocks/page/2/
+# # 3: https://ru.wordpress.org/plugins/browse/blocks/page/3/
+# # 25: https://ru.wordpress.org/plugins/browse/blocks/page/25/
+
+
+
+#----------------------------------------------------------------------------
+#                        for module "parse.py"
+#----------------------------------------------------------------------------
+
+#
+# from bs4 import BeautifulSoup
+# import requests
+# from parse import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/",
+#                   "news.txt")
+#     pars.run()
+#
+# if __name__ == '__main__':
+#     main()
+
+
+#---------------------------------------------------------------------
+#
+# import socket
+#
+# from view import index
+#
+# # http://127.0.0.1:5000/
+#
+#
+# URLS = {
+#     '/': index,
+#     "/blog": "blog page"
+# }
+#
+#
+# # URLS = {
+# #     '/': "index page",
+# #     "/blog": "blog page"
+# # }
+#
+# def parse_request(request):
+#     parsed = request.split()
+#     method= parsed[0] # GET
+#     url = parsed[1]   #/ or /blor
+#     return method, url
+#
+#
+# def generate_headers(method, url):
+#     if method !="GET":
+#         return 'HTTP/1.1 405 Method Not Allowed!\n\n', 405
+#     if url not in URLS:
+#         return 'HTTP/1.1 404 Page Not Found\n\n', 404
+#     return 'HTTP/1.1 200 OK!\n\n', 200
+#
+#
+# def generate_content(code, url):
+#     if code == 404:
+#         return '<h1>404</h1><h3>Page not found!</h3>'
+#     elif code == 405:
+#         return '<h1>404</h1><h3>Method Not Allowed!</h3>'
+#     return URLS[url]
+#
+#
+#
+# def generate_response(request):
+#     method, url = parse_request(request)
+#     headers, code = generate_headers(method, url)
+#     # body = URLS[url]
+#     # body = URLS.get(url, "Errors 404")
+#     body = generate_content(code, url)
+#     return (headers + body).encode()
+#
+#
+# def run():
+#     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server_socket.bind(('127.0.0.1', 5000))
+#     server_socket.listen()
+#
+#     while True:
+#         client_socket, addr = server_socket.accept()
+#         request = client_socket.recv(1024)
+#         print(f'Client: {addr} => \n{request.decode("utf-8")}\n')
+#
+#         response = generate_response(request.decode())
+#         client_socket.sendall((response))
+#         client_socket.close()
+#
+#
+#
+# if __name__ == '__main__':
+#     run()
+
+
+
+#---------------------------------
+# repeating parsing
+#---------------------------------
 
 from bs4 import BeautifulSoup
-import requests
-import csv
 
-
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-
-def write_csv(data):
-    with open('plugins1.csv', 'a') as f:
-        writer = csv.writer(f, lineterminator = '\r', delimiter = ';')
-        writer.writerow((data['name'],
-                            data['url'],
-                            data['snippet'],
-                            data['active_install'],
-                            data['tested']))
+f open
 
 
 
-def refine_cy(s):
-    return s.split()[-1]
 
 
-def get_data(html):
-    soup = BeautifulSoup(html, 'lxml')
-    elements = soup.find_all('article', class_='plugin-card')
-    for el in elements:
-        try:
-            name = el.find('h3').text
-            # print(name)
-        except ValueError:
-            name = ''
-
-        try:
-            url = el.find('h3').find('a').get('href')
-            # print(url)
-        except ValueError:
-            url = ''
-
-        try:
-            snippet = el.find('div', class_='entry-excerpt').text.strip()
-            # print(snippet)
-        except ValueError:
-            snippet = ''
-
-        try:
-            active = el.find('span', class_="active-installs").text.strip()
-            # print(active)
-        except ValueError:
-            active = ''
-
-        try:
-            c = el.find('span', class_="tested-with").text.strip()
-            # print("c:", c)
-            cy = refine_cy(c)
-            # print(cy)
-        except ValueError:
-            cy = ''
-
-        data = {
-                'name': name,
-                'url': url,
-                'snippet': snippet,
-                'active_install': active,
-                'tested': cy
-            }
-
-        write_csv(data)
 
 
-# print(len(elements))
-
-def main():
-    url = "https://ru.wordpress.org/plugins/browse/blocks/"
-    get_data(get_html(url))
 
 
-if __name__ == '__main__':
-    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
