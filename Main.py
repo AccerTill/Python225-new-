@@ -4845,7 +4845,7 @@ import re
 #     # body = URLS[url]
 #     # body = URLS.get(url, "Errors 404")
 #     body = generate_content(code, url)
-#     return (headers + body).encode()
+#     return (headers + body).encode()h
 #
 #
 # def run():
@@ -4866,25 +4866,39 @@ import re
 #
 # if __name__ == '__main__':
 #     run()
-
-
-
-#---------------------------------
-# repeating parsing
-#---------------------------------
+#
 
 
 
 
+#-----------------------------
+#                                    CREATING SERVER FROM YOUTUBE
+#-----------------------------
+
+
+#
+import socket
+
+# some_socket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+server=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('127.0.0.1', 2000))                  # adding address 'local host', port
+server.listen(4)                                  # учим слушать (принимать инфо)
+print('Starting working...')
+client_socket, address = server.accept()          # учим принимать запросы и разделять на клиента и адрес
+data = client_socket.recv(1024).decode('utf-8')   # получаем содержимое запроса
+print("DATA: ", data)
+HDRS = 'HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n'
+content = 'Hello ### (*&^%$#%)'.encode('utf - 8') # ответ
+client_socket.send(content)                       # метод ответа
+print('Shutdown here....')
 
 
 
-
-
-
-
-
-
+# #---------------------------------------------------
+# # or possible create server via:
+# server = socket.create_server(('127.0.0.1', 2000))
+# #---------------------------------------------------
 
 
 
