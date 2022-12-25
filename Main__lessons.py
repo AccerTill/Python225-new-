@@ -1127,7 +1127,7 @@ import geometry
 # rd = int(input("Введите радиус окружности: "))
 # print("Длина окружности:", round(2 * geometry.pi * rd, 2))
 
-import time
+# import time
 
 # seconds = time.time()
 # print("Секунды с начала эпохи: ", seconds)
@@ -2478,7 +2478,7 @@ import time
 # res = list(filter(lambda s: s < 75, b))
 # print(res)
 
-import random
+# import random
 
 # lst = [random.randint(1, 40) for i in range(10)]
 # print(lst)
@@ -2993,7 +2993,7 @@ import random
 
 
 # Регулярные выражения
-import re
+# import re
 
 # s = "Я ищу сов[паден]ия в 2021 го-да. И я из найду в 2 счёта. 45678"
 # # # reg = r'[201]'
@@ -3495,7 +3495,7 @@ import re
 
 # Модуль os и os.path
 
-import os
+# import os
 
 # import os.path
 
@@ -6819,8 +6819,8 @@ import pickle
 #
 # todos_by_user = {}
 #
-## for todo in todos:
-##     if #todo['completed']:
+# for todo in todos:
+#     if todo['completed']:
 #         try:
 #             todos_by_user[todo['userId']] += 1
 #         except KeyError:
@@ -6863,7 +6863,7 @@ import pickle
 #     print(data)
 
 
-# import csv
+import csv
 
 # with open("data.csv") as r_file:
 #     file_reader = csv.reader(r_file, delimiter=";")
@@ -7254,73 +7254,98 @@ import pickle
 #     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
 #     pars.run()
 #
-## if __name__ == '__main__':
+#
+# if __name__ == '__main__':
 #     main()
-# -----------------------------------------------------------------------------------------    lesson 39
-import socket
-from view import index, blog
 
-URLS = {
-    "/": index,
-    "/blog": blog
-}
-
-def parse_request(request):
-    parsed = request.split()
-    method = parsed[0]  # GET
-    url = parsed[1]  # / или /blog
-    return method, url
-
-def generate_headers(method, url):
-    if method != "GET":
-        return 'HTTP/1.1 405 Method Not Allowed!\n\n', 405
-    if url not in URLS:
-        return 'HTTP/1.1 404 Page Not Found!\n\n', 404
-    return 'HTTP/1.1 200 OK!\n\n', 200
-
-def generate_content(code, url):
-    if code == 404:
-        return '<h1>404</h1><h3>Page not found!</h3>'
-    elif code == 405:
-        return '<h1>405</h1><h3>Method Not Allowed!</h3>'
-    return URLS[url]()
-
-def generate_response(request):
-    method, url = parse_request(request)
-    headers, code = generate_headers(method, url)
-    body = generate_content(code, url)
-    return (headers + body).encode()
-
-def run():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('127.0.0.1', 5000))
-    server_socket.listen()
-
-    while True:
-        client_socket, addr = server_socket.accept()
-        request = client_socket.recv(1024)
-        print(f"Клиент: {addr} => \n{request.decode('utf-8')}\n")
-
-        response = generate_response(request.decode())
-        client_socket.sendall(response)
-        client_socket.close()
-
-
-if __name__ == '__main__':
-    run()
-
-# import sqlite3 as sq
+#
+# import socket
+# from view import index, blog
+#
+# URLS = {
+#     "/": index,
+#     "/blog": blog
+# }
 #
 #
-# with sq.connect("profile.db") as con:
-#     cur = con.cursor()
-#     cur.execute("DROP TABLE users")
-# cur.execute("""CREATE TABLE IF NOT EXISTS users(
-# id INTEGER PRIMARY KEY AUTOINCREMENT,
-# name TEXT NOT NULL,
-# summa REAL,
-# date TEXT
-# )""")
+# def parse_request(request):
+#     parsed = request.split()
+#     method = parsed[0]  # GET
+#     url = parsed[1]  # / или /blog
+#     return method, url
+#
+#
+# def generate_headers(method, url):
+#     if method != "GET":
+#         return 'HTTP/1.1 405 Method Not Allowed!\n\n', 405
+#     if url not in URLS:
+#         return 'HTTP/1.1 404 Page Not Found!\n\n', 404
+#     return 'HTTP/1.1 200 OK!\n\n', 200
+#
+#
+# def generate_content(code, url):
+#     if code == 404:
+#         return '<h1>404</h1><h3>Page not found!</h3>'
+#     elif code == 405:
+#         return '<h1>405</h1><h3>Method Not Allowed!</h3>'
+#     return URLS[url]()
+#
+#
+# def generate_response(request):
+#     method, url = parse_request(request)
+#     headers, code = generate_headers(method, url)
+#     body = generate_content(code, url)
+#     return (headers + body).encode()
+#
+#
+# def run():
+#     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server_socket.bind(('127.0.0.1', 5000))
+#     server_socket.listen()
+#
+#     while True:
+#         client_socket, addr = server_socket.accept()
+#         request = client_socket.recv(1024)
+#         print(f"Клиент: {addr} => \n{request.decode('utf-8')}\n")
+#
+#         response = generate_response(request.decode())
+#         client_socket.sendall(response)
+#         client_socket.close()
+##
+# if __name__ == '__main__':
+#     run()
+#--------------------------------------------------------------------------------
+
+import sqlite3 as sq
+#    *.db, *.db3, *.sqlite, *.sqlite3.
+
+with sq.connect('profile.db') as con:
+    cur = con.cursor()
+    cur.execute("DROP TABLE users")
+    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # summa REAL,
+    # date TEXT
+    # )""")
+
+#   ----------------------------OPERATORS SQL-----------------------------------
+
+# SELECT [ALL | DISTINCT]   (* | столбец1 [, столбец n])
+
+
+# FROM таблица1 [, таблица_n]
+
+
+
+# WHERE  условие = <> != > >= < <=   and  or [not] between  start  _and_   end.
+#          LIKE  шаблон_строки
+#          % - любое количество символов
+#          _ - один любой символ
+
+
+# ORDER BY
+#--------------------------------------------------------------------------------
 
 
 # import sqlite3 as sq
@@ -7379,7 +7404,7 @@ if __name__ == '__main__':
 # VALUES (1, 'Ирина', '+75052031166', 23, 'irina@gmail.com')
 # """)
 
-#
+
 # import sqlite3 as sq
 #
 # with sq.connect("db_4.db") as con:
@@ -7395,7 +7420,87 @@ if __name__ == '__main__':
 #     res2 = cur.fetchmany(2)
 #     print(res)
 #     print(res2)
-#     # res = cur.fetchall()
-#     # print(res)
-#     # for res in cur:
-#     #     print(res)
+# res = cur.fetchall()
+# print(res)
+# for res in cur:
+#     print(res)
+
+# import sqlite3 as sq
+
+# cars = [
+#     ('BMW', 54000),
+#     ('Chevrolet', 46000),
+#     ('Daewoo', 38000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000)
+# ]
+# con = None
+# try:
+#     con = sq.connect("cars.db")
+#     cur = con.cursor()
+#     cur.executescript("""
+#         CREATE TABLE IF NOT EXISTS cars (
+#             cars_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#             model TEXT,
+#             price INTEGER
+#         );
+#         BEGIN;
+#         INSERT INTO cars VALUES(NULL, 'Renault', 22000);
+#         UPDATE cars2 SET price = price + 100;
+#         """)
+#     con.commit()
+# except sq.Error as e:
+#     if con:
+#         con.rollback()
+#     print("Ошибка выполнения запроса")
+# finally:
+#     if con:
+#         con.close()
+
+# with sq.connect("cars.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars (
+#         cars_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     )
+#     """)
+#
+#     cur.executescript("""
+#     DELETE FROM cars WHERE model LIKE 'B%';
+#     UPDATE cars SET price = price + 100;
+#     """)
+# cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'B%'", {'Price': 0})
+# cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars)
+# for car in cars:
+#     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+# cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
+# cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
+# cur.execute("INSERT INTO cars VALUES(3, 'Mercedes', 57000)")
+# cur.execute("INSERT INTO cars VALUES(4, 'Bentley', 35000)")
+# cur.execute("INSERT INTO cars VALUES(5, 'Audy', 52000)")
+
+# con.commit() - сохраняет все изменения в базу данных
+# con.close() - закрывает соединение с БД
+
+
+# import sqlite3 as sq
+#
+# with sq.connect("cars.db") as con:
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS cars (
+#         cars_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     );
+#     CREATE TABLE IF NOT EXISTS cost(
+#         name TEXT, tr_in INTEGER, buy INTEGER
+#     )
+#     """)
+#
+#     cur.execute("INSERT INTO cars VALUES(NULL, 'Запорожец', 1000)")
+#     last_row_id = cur.lastrowid  # lastrowid - возвращает id последней записи
+#     buy_car_id = 2
+#     cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
