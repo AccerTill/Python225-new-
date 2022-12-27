@@ -7315,95 +7315,93 @@ import csv
 # if __name__ == '__main__':
 #     run()
 #--------------------------------------------------------------------------------
+#
+# import sqlite3 as sq
+# #    *.db, *.db3, *.sqlite, *.sqlite3.
+#
+# with sq.connect('profile.db') as con:
+#     cur = con.cursor()
+#     cur.execute("DROP TABLE users")
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # summa REAL,
+#     # date TEXT
+#     # )""")
 
-import sqlite3 as sq
-#    *.db, *.db3, *.sqlite, *.sqlite3.
-
-with sq.connect('profile.db') as con:
-    cur = con.cursor()
-    cur.execute("DROP TABLE users")
-    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
-    # id INTEGER PRIMARY KEY AUTOINCREMENT,
-    # name TEXT NOT NULL,
-    # summa REAL,
-    # date TEXT
-    # )""")
-
-#   ----------------------------OPERATORS SQL-----------------------------------
-
-# SELECT [ALL | DISTINCT]   (* | столбец1 [, столбец n])
-
-
-# FROM таблица1 [, таблица_n]
-
-
-
-# WHERE  условие = <> != > >= < <=   and  or [not] between  start  _and_   end.
-#          LIKE  шаблон_строки
-#          % - любое количество символов
-#          _ - один любой символ
-
-
-# ORDER BY
-#--------------------------------------------------------------------------------
-
-
+# -----------------------------------------------------------------
+#
 # import sqlite3 as sq
 #
 #
 # with sq.connect("users.db") as con:
 #     cur = con.cursor()
-# cur.execute("""
-# CREATE TABLE IF NOT EXISTS person(
-# id INTEGER PRIMARY KEY AUTOINCREMENT,
-# name TEXT NOT NULL,
-# phone BLOB NOT NULL DEFAULT '+79090000000',
-# age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
-# email TEXT UNIQUE
-# )
-# """)
-# cur.execute("""
-# ALTER TABLE person
-# RENAME TO person_table;
-# """)
-# cur.execute("""
-# ALTER TABLE person_table
-# ADD COLUMN address TEXT;
-# """)
-
-# cur.execute("""
-# ALTER TABLE person_table
-# RENAME COLUMN address TO home_address;
-# """)
-
+    # cur.execute("""
+    # CREATE TABLE IF NOT EXISTS person(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # phone BLOB NOT NULL DEFAULT '+79090000000',
+    # age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
+    # email TEXT UNIQUE
+    # )
+    #  """)
+# -------------          RENAMING
+#
+# # with sq.connect("users.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     ALTER TABLE person
+#     RENAME TO person_table;
+#     """)
+#--------------         ADDING COLUMN
+#     cur.execute("""
+#     ALTER TABLE person_table
+#     ADD COLUMN address TEXT;
+#     """)
+#     cur.execute("""
+#     ALTER TABLE person_table
+#     ADD COLUMN description TEXT;
+#     """)
+# --------------        RENAMING COLUMN
+#     cur.execute("""
+#     ALTER TABLE person_table
+#     RENAME COLUMN address TO home_address;
+#     """)
+# -------------         DELETING TABLE
 # cur.execute("""
 # DROP TABLE person_table;
 # """)
 
+#--------------------------------------------------------
 
-# import sqlite3 as sq
-#
-#
-# with sq.connect("users.db") as con:
-#     cur = con.cursor()
-#     cur.execute("""
-#     CREATE TABLE IF NOT EXISTS person(
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     name TEXT NOT NULL,
-#     phone BLOB NOT NULL DEFAULT '+79090000000',
-#     age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
-#     email TEXT UNIQUE
-#     )
-#     """)
-#     cur.execute("""
-#         INSERT INTO person(email, name, age)
-#         VALUES ('igor@gmail.com', 'Игор', 20)
-#         """)
-# cur.execute("""
-# INSERT INTO person
-# VALUES (1, 'Ирина', '+75052031166', 23, 'irina@gmail.com')
-# """)
+import sqlite3 as sq
 
+
+with sq.connect("users.db") as con:
+    cur = con.cursor()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone BLOB NOT NULL DEFAULT '+79090000000',
+    age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
+    email TEXT UNIQUE
+    )
+    """)
+    #------------- INSERT INTO name of table [column1, column2, ....]
+    #------------- VALUE (meaning1, meaning2, ....)
+
+    # cur.execute("""
+    # INSERT INTO person
+    # VALUES (1, 'Ирина', '+75052031166', 23, 'irina@gmail.com')
+    # """)
+
+
+    # ---------------------- ADDING IN PARTICULAR ORDER ------
+    cur.execute("""
+    INSERT INTO person(email, name, age)
+    VALUES ('igor@gmail.com', 'Ingwar', 20)
+    """)
 
 # import sqlite3 as sq
 #

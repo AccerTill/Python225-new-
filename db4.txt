@@ -1,0 +1,209 @@
+
+=============== DZ 42  ============
+
+Елена, в пункте 5 переименовал таблицу в Waremain.
+
+
+ID - код по магазину
+Produce - название продукта
+Material – материал
+Color – цвет
+Size – размер
+Country -  страна производитель
+ID_salespeople - код поставщика товара
+Price - цена за штуку
+Count - количество штук
+REM - ремарки
+
+============================================================
+
+Определите для какого товара код поставщика не определен. (полностью вся табл. переименованные атрибуты)
+
+SELECT Produce
+FROM Ware
+WHERE ID_salespeople IS NULL
+
+
+2.	Определить все товары, которые производятся в Украине (марка, код товара. страна)
+
+	SELECT *
+FROM Ware
+WHERE Country = "Украина"
+
+3.	Удалите из таблицы все товары, которые произведены в Германии
+
+
+DELETE FROM Ware
+WHERE Country = "Германия"
+
+
+4.	Замените страну-производителя Польшу на Россию (код, товар, страна, описание товара).
+
+UPDATE Ware
+SET Country = "France"
+WHERE Country = "Польша"
+
+5. Восстановите строки, удаленные в 3 пункте.
+
+
+     А) 	   Переименовал таблицу:
+
+                        ALTER TABLE Ware
+                        RENAME TO Waremain	
+
+     Б)    Переоткрыл таблицу Ware
+
+     В)    Скопировал из новой  Ware в Waremain: 
+INSERT INTO Waremain(ID, Produce, Material, Color, Size, Country, ID_salespeople, Price, Count, REM)
+SELECT ID, Produce, Material, Color, Size, Country, ID_salespeople, Price, Count, REM
+FROM Ware
+WHERE Country = 'Германия'
+
+
+
+6.  Выведите весь товар, который не черного цвета (продукт, цену, код продукта)	
+
+SELECT *
+FROM Waremain
+WHERE Color!='ч'
+
+
+
+7. Вставьте строку  NTC-117BK Micro Camera Case, нейлон, ч, 13,3x8,3x5,7, 2016, Украина, 1046
+
+INSERT INTO Waremain(Produce, Material, Color, Size, 
+ID_salespeople, Country, ID)
+VALUES('NTC-117BK Micro Camera Case', 'нейлон', 'ч', 
+'13,3x8,3x5,7', '2016', 'Украина', '1046')
+
+
+
+
+8. Вставьте строку POC-463BK Compact Camera Case, полиэстер, ч, 11x7x4,5, остальные данные не определены.
+
+
+либо айди 1039
+
+INSERT INTO Waremain(Produce, Material, Color, Size, ID)
+VALUES('POC-463BK Compact Camera Case', 
+'полиэстер', 'ч', '11x7x4,5', '1039')
+ 
+либо айди 0
+
+INSERT INTO Waremain(Produce, Material, Color, Size, ID)
+VALUES('POC-463BK Compact Camera Case', 
+'полиэстер', 'ч', '11x7x4,5', '0')
+
+
+
+9. Вывести весь товар, который поставляет продавец с кодом 2065 из России
+
+SELECT ALL Produce
+FROM Waremain
+WHERE ID_salespeople = '2065' and Country = 'Россия'
+
+
+10. Вывести товар, цена за который находится в диапазоне от 200 до 345
+
+
+SELECT ALL Produce, Price
+FROM Waremain
+WHERE Price BETWEEN 200 and 345
+
+11. Определите все сумки из кожи с размером не менее 40х30х5
+
+SELECT *
+FROM Waremain
+WHERE Size GLOB '[4-9]*x[3-9]*x[5-9]' AND Material = 'кожа'
+
+
+12. Написать запрос, который выводит все сумки и коды их поставщиков, если товара меньше чем на 1200 грн.
+
+SELECT *
+FROM Waremain
+WHERE Price * Count < 1200
+
+13. Написать запрос, который заменит код поставщика на 2000, если на складе хранится товара менее чем на 500 грн. По данному поставщику.
+
+
+UPDATE Waremain
+SET ID_salespeople = 2000
+WHERE Price * Count < 500
+
+
+14. Вывести все кожаные сумки, количество которых менее 5 шт. и общая сумма товара не превышает 450 грн. 
+
+
+SELECT *
+FROM Waremain
+WHERE Material = 'кожа' AND Count < 5 and Price * Count < 450
+
+
+15. Напишите запрос, который выведет все нейлоновые сумки цена на которые не превышает 250 грн.
+
+SELECT *
+FROM Waremain
+WHERE Material = 'нейлон' AND Price <= 250
+
+
+16. Замените материал нейлон на брезент, если сумка стоит менее 200 грн. 
+
+
+UPDATE Waremain
+SET Material = 'брезент'
+WHERE Price < 200
+
+17. Напишите запрос, который выводит все сумки, у которых есть косметички
+
+
+SELECT *
+FROM Waremain
+WHERE REM LIKE '%косметичка'
+
+
+18. Напишите запрос, который покажет все кожаные сумки черного цвета китайского производства.
+
+
+SELECT *
+FROM Waremain
+WHERE Material = 'кожа' AND Color = 'ч' AND Country = 'Китай'
+
+19. Напишите запрос, который покажет все сумки с размером более 15 дюймов.
+
+ (Учитывал десятичные знаки.    т.е  15.1 дюйма  это больше   15.0 дюйма )
+
+SELECT *
+FROM Waremain
+WHERE REM GLOB '*[1-9][5-9],[1-9]*' or REM GLOB '*[1-9][6-9]*'
+
+
+20. Напишите запрос, который покажет всех поставщиков сумок не черного цвета.
+
+SELECT ALL ID_salespeople 
+FROM Waremain
+WHERE Color != 'ч'
+
+
+21. Замените материал полиэстер у сумок китайского производства на нейлон
+
+UPDATE Waremain
+SET Material = 'NYLON'
+WHERE Material = 'полиэстер' AND Country = 'Китай'
+
+22. В записях с кодом товара: 1015, 1041, 1032, 1010 материал нейлон заменить на полиэстер если страна-производитель Китай.
+
+1) Variant (with material)
+
+UPDATE Waremain
+SET Material = 'POLYESTER'
+WHERE (ID = 1015 OR ID = 1041 OR ID = 1032 OR ID = 1010) AND Country = 'Китай' AND 
+(Material = 'NYLON' OR Material = 'нейлон')
+
+
+2)Variant (without material) 
+
+UPDATE Waremain
+SET Material = 'POLYESTER'
+WHERE (ID = 1015 OR ID = 1041 OR ID = 1032 OR ID = 1010) 
+AND Country = 'Китай' 
+
