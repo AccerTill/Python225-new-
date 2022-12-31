@@ -7374,34 +7374,75 @@ import csv
 
 #--------------------------------------------------------
 
+# import sqlite3 as sq
+#
+#
+# with sq.connect("users.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS person(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     phone BLOB NOT NULL DEFAULT '+79090000000',
+#     age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
+#     email TEXT UNIQUE
+#     )
+#     """)
+#     #------------- INSERT INTO name of table [column1, column2, ....]
+#     #------------- VALUE (meaning1, meaning2, ....)
+#
+#     # cur.execute("""
+#     # INSERT INTO person
+#     # VALUES (1, 'Ирина', '+75052031166', 23, 'irina@gmail.com')
+#     # """)
+#
+#
+#     # ---------------------- ADDING IN PARTICULAR ORDER ------
+#     cur.execute("""
+#     INSERT INTO person(email, name, age)
+#     VALUES ('igor@gmail.com', 'Ingwar', 20)
+#     """)
+#-------------------------------------------------------------------------------
+
+# ==========================   IMAGING OF CHANGING  ============================
+
 import sqlite3 as sq
 
 
-with sq.connect("users.db") as con:
+with sq.connect("db_4.db") as con:
     cur = con.cursor()
     cur.execute("""
-    CREATE TABLE IF NOT EXISTS person(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    phone BLOB NOT NULL DEFAULT '+79090000000',
-    age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
-    email TEXT UNIQUE
-    )
+    SELECT *
+    FROM Ware
+    ORDER BY Price DESC 
+    LIMIT 2, 5;
     """)
-    #------------- INSERT INTO name of table [column1, column2, ....]
-    #------------- VALUE (meaning1, meaning2, ....)
 
-    # cur.execute("""
-    # INSERT INTO person
-    # VALUES (1, 'Ирина', '+75052031166', 23, 'irina@gmail.com')
-    # """)
+    # res = cur.fetchall()
+    # print(res)
+
+    res = cur.fetchone()      #  only first element
+    print(res)
+
+    res2 = cur.fetchmany(3)   #  only some elements
+    print(res2)
+
+    # res = cur.fetchall()
+    # for i in res:
+    #     print(i)
+    #
+    # for res in cur:
+    #     print(res)
 
 
-    # ---------------------- ADDING IN PARTICULAR ORDER ------
-    cur.execute("""
-    INSERT INTO person(email, name, age)
-    VALUES ('igor@gmail.com', 'Ingwar', 20)
-    """)
+
+
+
+
+
+
+
+
 
 # import sqlite3 as sq
 #
@@ -7422,6 +7463,9 @@ with sq.connect("users.db") as con:
 # print(res)
 # for res in cur:
 #     print(res)
+
+
+
 
 # import sqlite3 as sq
 
