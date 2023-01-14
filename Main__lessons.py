@@ -7331,23 +7331,26 @@ import csv
 
 # -----------------------------------------------------------------
 #
-# import sqlite3 as sq
-#
-#
+import sqlite3 as sq
+
+
 # with sq.connect("users.db") as con:
 #     cur = con.cursor()
-    # cur.execute("""
-    # CREATE TABLE IF NOT EXISTS person(
-    # id INTEGER PRIMARY KEY AUTOINCREMENT,
-    # name TEXT NOT NULL,
-    # phone BLOB NOT NULL DEFAULT '+79090000000',
-    # age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
-    # email TEXT UNIQUE
-    # )
-    #  """)
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS person(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     phone BLOB NOT NULL DEFAULT '+79090000000',
+#     age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
+#     email TEXT UNIQUE
+#     )
+#      """)
+
+
+
 # -------------          RENAMING
-#
-# # with sq.connect("users.db") as con:
+
+# with sq.connect("users.db") as con:
 #     cur = con.cursor()
 #     cur.execute("""
 #     ALTER TABLE person
@@ -7414,18 +7417,18 @@ with sq.connect("db_4.db") as con:
     cur.execute("""
     SELECT *
     FROM Ware
-    ORDER BY Price DESC 
+    ORDER BY Price DESC
     LIMIT 2, 5;
     """)
 
     # res = cur.fetchall()
     # print(res)
 
-    res = cur.fetchone()      #  only first element
-    print(res)
+    # res = cur.fetchone()      #  only first element
+    # print(res)
 
-    res2 = cur.fetchmany(3)   #  only some elements
-    print(res2)
+    # res2 = cur.fetchmany(3)   #  only some elements
+    # print(res2)
 
     # res = cur.fetchall()
     # for i in res:
@@ -7433,13 +7436,6 @@ with sq.connect("db_4.db") as con:
     #
     # for res in cur:
     #     print(res)
-
-
-
-
-
-
-
 
 
 

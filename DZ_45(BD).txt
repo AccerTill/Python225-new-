@@ -1,0 +1,136 @@
+====================  DZ 45  ============================
+===========================================================
+bd_11
+
+Таблица Prodaves:
+ID_Pr - уникальный номер продавца (первичный ключ)
+Name_Pr - имя продавца
+City_Pr - город в котором проживает продавец
+Procent - комисcионные
+
+Таблица Klient:
+ID_KL - уникальный номер клиента (первичный ключ)
+ID_Pr - уникальный номер продавца
+Name_KL - имя клиента
+City_KL – город, в котором живет клиент
+Obl_KL – страна, в которой проживает клиент
+Discoun - скидки
+
+Таблица Zakaz:
+ID_Z - уникальный номер заказа (первичный ключ)
+ID_Pr – уникальный номер продавца
+ID_KL - уникальный номер клиента
+SUMMA - сумма заказа
+Kol – количество единиц товара
+DATA - дата заказа
+CITY_Z – город, в который доставляется заказ
+Cena_Dostavki - цена доставки заказа
+
+
+1.	С помощью объединения вывести данные о каждом клиенте, для которого определен продавец.
+
+SELECT *
+FROM Klient k
+WHERE EXISTS
+(SELECT p.ID_Pr
+FROM Prodaves p
+WHERE  k.ID_Pr= p.ID_Pr AND p.Name_Pr IS NOT NULL)
+
+
+
+2.	Вывести имя клиента и данные о средней цене доставки для него.
+Если цена доставки больше средней по таблице написать - lot, меньше – few
+
+1) Первый вариант
+
+SELECT k.Name_KL, AVG(z.Cena_Dostavki), "HIGH PRICE" as "PRICE OF SHIPPING"
+FROM Klient k, Zakaz z
+WHERE k.ID_KL = z.ID_KL AND z.Cena_Dostavki > (SELECT AVG(Cena_Dostavki) FROM ZAKAZ)
+GROUP BY k.Name_KL
+
+UNION
+
+SELECT k.Name_KL, AVG(z.Cena_Dostavki), "LOW PRICE" as "PRICE OF SHIPPING"
+FROM Klient k, Zakaz z
+WHERE k.ID_KL = z.ID_KL AND z.Cena_Dostavki <=(SELECT AVG(Cena_Dostavki) FROM ZAKAZ)
+GROUP BY k.Name_KL
+
+2) Второй вариант (HAVING)
+
+SELECT k.Name_KL, AVG(z.Cena_Dostavki), "HIGH PRICE" as "PRICE OF SHIPPING"
+FROM Klient k, Zakaz z
+WHERE k.ID_KL = z.ID_KL
+GROUP BY z.Cena_Dostavki
+HAVING AVG(z.Cena_Dostavki) > (SELECT AVG(Cena_Dostavki) FROM ZAKAZ)
+
+
+UNION
+
+SELECT AVG(z.Cena_Dostavki), k.Name_KL,  "LOW PRICE" as "PRICE OF SHIPPING"
+FROM Klient k, Zakaz z
+WHERE k.ID_KL = z.ID_KL
+GROUP BY z.Cena_Dostavki
+HAVING AVG(z.Cena_Dostavki) < (SELECT AVG(Cena_Dostavki) FROM ZAKAZ)
+
+
+
+3.	Соедините вместе все таблицы с помощью внешнего объединения.
+
+SELECT
+ p.ID_Pr, p.Name_Pr, p.City_Pr, p.Procent,
+ k.ID_KL, k.ID_Pr, k.Name_KL, k.City_KL, k.Obl_KL, k.Discoun,
+ z.ID_Z, z.ID_Pr, z.ID_KL, z.SUMMA, z.Kol, z.DATA, z.CITY_Z, z.Cena_Dostavki
+FROM Prodaves p OUTER JOIN Klient k OUTER JOIN Zakaz z
+ON p.ID_Pr = k.ID_Pr AND k.ID_KL = z.ID_KL
+
+
+
+4.	С помощью объединения вывести данные о скидках клиента для каждого продавца
+
+SELECT p.Name_Pr, k.Discoun, k.Name_KL
+FROM Prodaves p LEFT JOIN  Klient k
+WHERE p.ID_Pr = k.ID_Pr
+ORDER BY p.Name_Pr
+
+
+
+5.	Напишите запрос, который выведет все города, в которых живут продавцы и заказчики.
+
+SELECT k.City_KL as "CITY for BOTH", k.Name_Kl, p.Name_Pr
+FROM Klient k, Prodaves p
+WHERE p.ID_Pr = k.ID_Pr AND p.City_pr = k.City_KL
+
+
+6.	С помощью объединения вывести все данные о заказчиках и  заказах,
+даже если заказчик не сделал ни одного заказа за указанный период.
+
+	     Не понятен вопрос - какой период!!!!
+
+
+7.	Составьте запрос  для вывода имен и кодов всех продавцов,
+в чьих городах есть покупатели, которых они не обслуживают.
+С помощью оператора в подзапросе.
+
+ ----------
+
+8.	Напишите запрос, который выведет все города и имена продавцов и
+заказчиков, которые живут в Лондоне.
+
+
+1) Вариант:
+
+SELECT p.Name_Pr, p.City_Pr, k.Name_KL, k.City_KL
+FROM Prodaves p LEFT JOIN Klient k
+WHERE p.City_Pr = 'London' AND k.City_Kl = 'London'
+
+2) Вариант:
+
+SELECT p.Name_Pr as NAME, p.City_Pr as  CITY
+FROM Prodaves p
+WHERE p.City_Pr = 'London'
+
+UNION
+
+SELECT  k.Name_KL, k.City_KL
+FROM  Klient k
+WHERE k.City_Kl = 'London'

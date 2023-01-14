@@ -295,7 +295,7 @@
 # s2 = Student("Alex")
 # s1.info()
 # s2.info()
-
+#
 
 # -----------------------------------------------------------------------------------
 #                          DZ lesson 29
@@ -478,11 +478,11 @@
 # print("Сложение координат:  ", first3.get_info())
 # first3 = first1 - first2
 # print("Вычитание координат: ", first3.get_info())
-#
-#
-# # first1.x=first1.x+10
-# # first1= first1+10
-# # print(first1.get_info())
+
+
+# first1.x=first1.x+10
+# first1= first1+10
+# print(first1.get_info())
 
 # -----------------------------------------------------------------------------------
 
@@ -502,7 +502,7 @@
 #             print()
 #             for i in range(self.size):
 #                 print("*" * self.size)
-
+#
 #         elif type(self)==Rectangle:
 #             print(f"=={self.name}== \nLength: {self.size1} \nWidth: {self.size2} \nColor: {self.color}")
 #             print(f'Perimeter = {(self.size1 + self.size2) * 2} ')
@@ -510,7 +510,7 @@
 #             print()
 #             for i in range(self.size1):
 #                 print("*" * self.size2)
-
+#
 #         elif type(self)==Triangle:
 #             print(f"=={self.name}== \nSize1: {self.size1} \nSize2: {self.size2} "
 #                   f"\nSize3: {self.size2}  \nColor: {self.color}")
@@ -631,8 +631,8 @@
 #         if isinstance(value, int) and value < 0:
 #             raise ValueError(f" - Size \"{value}\" Must be more than zero.")
 #         instance.__dict__[self.__name] = value
-#         # print(instance.__dict__)
-#         # print(self.__name, "-" ,value, "- NAME")
+#         print(instance.__dict__)
+#         print(self.__name, "-" ,value, "- NAME")
 #
 #         Order.count +=1
 #         if Order.count == 1:
@@ -667,7 +667,6 @@
 # t1 = Triangle(2, 5, 6)
 # t2 = Triangle(5, 2, 8)
 # t3 = Triangle(7, 3, 6)
-# # #
 # t4 = Triangle(2, -5, 6)
 #
 
@@ -1172,202 +1171,203 @@
 
 
 #------------     file #1 (project_films)   -------------------------------------
+#
+# from controller_films import Controller
+#
+#
+# def main():
+#     app = Controller()
+#     app.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+#
+#
+#
+# #------------   file #2 (controller_films)   -----------------------------------
+#
+# from view_films import UserInterface
+# from model_films import FilmModel
+#
+#
+# class Controller:
+#     def __init__(self):
+#         self.MODEL_films = FilmModel()
+#         self.VIEW_films = UserInterface()
+#
+#     def run(self):
+#         answer = None
+#         while answer != "q":
+#             answer = self.VIEW_films.wait_user_answer()
+#             self.check_user_answer(answer)
+#
+#     def check_user_answer(self, answer):
+#         if answer == "1":
+#             film = self.VIEW_films.add_user_film_1()
+#             self.MODEL_films.add_film(film)
+#
+#         elif answer == '2':
+#             articles = self.MODEL_films.get_all_films()
+#             self.VIEW_films.show_all_filmes_2(articles)
+#
+#         elif answer == '3':
+#             film_title = self.VIEW_films.get_user_film_3()
+#             try:
+#                 film = self.MODEL_films.get_singe_film(film_title)
+#             except KeyError:
+#                 self.VIEW_films.show_incorrect_title_error(film_title)
+#             else:
+#                 self.VIEW_films.show_single_film(film)
+#
+#         elif answer == '4':
+#             film_title = self.VIEW_films.get_user_film_3()
+#             try:
+#                 title = self.MODEL_films.remove_film(film_title)
+#             except KeyError:
+#                 self.VIEW_films.show_incorrect_title_error(film_title)
+#             else:
+#                 self.VIEW_films.remove_single_film(title)
+#
+#         elif answer == 'q':
+#             self.MODEL_films.save_data()
+#         else:
+#             self.VIEW_films.show_incorrect_answer_error(answer)
+#
+# #------------   file #3 (model_films) ------------------------------------------
+#
+# import pickle
+# import os.path
+#
+#
+# class Film:
+#     def __init__(self, title, genre, director, year, time, studio, actors):
+#         self.title = title
+#         self.genre = genre
+#         self.director = director
+#         self.year = year
+#         self.time = time
+#         self.studio = studio
+#         self.actors = actors
+#
+#     def __str__(self):
+#         return f"{self.title} ({self.director})"
+#
+#
+# class FilmModel:
+#     def __init__(self):
+#         self.db_name = 'films_catalogue.txt'
+#         self.films = self.load_data()  # {}
+#
+#
+#     def add_film(self, dict_film):
+#         film = Film(*dict_film.values())
+#         self.films[film.title] = film
+#
+#
+#     def get_all_films(self):
+#         return self.films.values()
+#
+#
+#     def get_singe_film(self, user_title):
+#         film = self.films[user_title]
+#         dict_film = {
+#             "название": film.title,
+#             "жарр фильма" : film.genre,
+#             "режиссер": film.director,
+#             "год": film.year,
+#             "длительность": film.time,
+#             "студия": film.studio,
+#             "актеры": film.actors
+#         }
+#         return dict_film
+#
+#
+#     def remove_film(self, user_title):
+#         return self.films.pop(user_title)
+#
+#
+#     def load_data(self):
+#         if os.path.exists(self.db_name):
+#             with open(self.db_name, 'rb') as f:
+#                 return pickle.load(f)
+#         else:
+#             return dict()
+#
+#
+#     def save_data(self):
+#         with open(self.db_name, 'wb') as f:
+#             pickle.dump(self.films, f)
+#
+#
+# #------------   file #4 (view_films)   ----------------------------------------------
+#
+# def add_title(title):
+#     def wrapper(func):
+#         def wrap(*args, **kwargs):
+#             print(f" {title} ".center(50, "="))
+#
+#             output = func(*args, **kwargs)
+#
+#             print("=" * 50)
+#             return output
+#         return wrap
+#     return wrapper
+#
+#
+# class UserInterface:
+#     @add_title('Ввод пользовательских данных')
+#     def wait_user_answer(self):
+#         print("Действие со фильмами: ")
+#         print("1 - создание фильма"
+#               "\n2 - просмотр каталога фильмов"
+#               "\n3 - просмотр определенного фильма"
+#               "\n4 - удаление фильма"
+#               "\nq - выход из программы")
+#         user_answer = input("Выберите вариант действия: ")
+#         return user_answer
+#
+#     @add_title('Создание статьи:')
+#     def add_user_film_1(self):
+#         dictionary_film = {
+#             "название фильма": None,
+#             "жанр": None,
+#             "режиссер": None,
+#             "год выпуска": None,
+#             "длительность": None,
+#             "студия": None,
+#             "актеры": None,
+#         }
+#         for key in dictionary_film:
+#             dictionary_film[key] = input(f'Введите {key} фильма: ')
+#         return dictionary_film
+#
+#     @add_title('Список фильмов')
+#     def show_all_filmes_2(self, films):
+#         for ind, film in enumerate(films, start=1):
+#             print(f"{ind}. {film}")
+#
+#     @add_title('Ввод названия фильма')
+#     def get_user_film_3(self):
+#         user_film = input("Введите название фильма: ")
+#         return user_film
+#
+#     @add_title("Просмотр фильма: ")
+#     def show_single_film(self, film):
+#         for key in film:
+#             print(f"{key} фильма - {film[key]}")
+#
+#     @add_title("Сообщение об ошибке")
+#     def show_incorrect_title_error(self, user_title):
+#         print(f"Фильма с названием {user_title} не существует")
+#
+#     @add_title("Удаление фильма")
+#     def remove_single_film(self, film):
+#         print(f"Фильм {film} - был удален")
+#
+#     @add_title("Сообщение об ошибке")
+#     def show_incorrect_answer_error(self, answer):
+#         print(f"Варианта {answer} не существует")
 
-from controller_films import Controller
-
-
-def main():
-    app = Controller()
-    app.run()
-
-
-if __name__ == '__main__':
-    main()
-
-
-
-#------------   file #2 (controller_films)   -----------------------------------
-
-from view_films import UserInterface
-from model_films import FilmModel
-
-
-class Controller:
-    def __init__(self):
-        self.MODEL_films = FilmModel()
-        self.VIEW_films = UserInterface()
-
-    def run(self):
-        answer = None
-        while answer != "q":
-            answer = self.VIEW_films.wait_user_answer()
-            self.check_user_answer(answer)
-
-    def check_user_answer(self, answer):
-        if answer == "1":
-            film = self.VIEW_films.add_user_film_1()
-            self.MODEL_films.add_film(film)
-
-        elif answer == '2':
-            articles = self.MODEL_films.get_all_films()
-            self.VIEW_films.show_all_filmes_2(articles)
-
-        elif answer == '3':
-            film_title = self.VIEW_films.get_user_film_3()
-            try:
-                film = self.MODEL_films.get_singe_film(film_title)
-            except KeyError:
-                self.VIEW_films.show_incorrect_title_error(film_title)
-            else:
-                self.VIEW_films.show_single_film(film)
-
-        elif answer == '4':
-            film_title = self.VIEW_films.get_user_film_3()
-            try:
-                title = self.MODEL_films.remove_film(film_title)
-            except KeyError:
-                self.VIEW_films.show_incorrect_title_error(film_title)
-            else:
-                self.VIEW_films.remove_single_film(title)
-
-        elif answer == 'q':
-            self.MODEL_films.save_data()
-        else:
-            self.VIEW_films.show_incorrect_answer_error(answer)
-
-#------------   file #3 (model_films) ------------------------------------------
-
-import pickle
-import os.path
-
-
-class Film:
-    def __init__(self, title, genre, director, year, time, studio, actors):
-        self.title = title
-        self.genre = genre
-        self.director = director
-        self.year = year
-        self.time = time
-        self.studio = studio
-        self.actors = actors
-
-    def __str__(self):
-        return f"{self.title} ({self.director})"
-
-
-class FilmModel:
-    def __init__(self):
-        self.db_name = 'films_catalogue.txt'
-        self.films = self.load_data()  # {}
-
-
-    def add_film(self, dict_film):
-        film = Film(*dict_film.values())
-        self.films[film.title] = film
-
-
-    def get_all_films(self):
-        return self.films.values()
-
-
-    def get_singe_film(self, user_title):
-        film = self.films[user_title]
-        dict_film = {
-            "название": film.title,
-            "жарр фильма" : film.genre,
-            "режиссер": film.director,
-            "год": film.year,
-            "длительность": film.time,
-            "студия": film.studio,
-            "актеры": film.actors
-        }
-        return dict_film
-
-
-    def remove_film(self, user_title):
-        return self.films.pop(user_title)
-
-
-    def load_data(self):
-        if os.path.exists(self.db_name):
-            with open(self.db_name, 'rb') as f:
-                return pickle.load(f)
-        else:
-            return dict()
-
-
-    def save_data(self):
-        with open(self.db_name, 'wb') as f:
-            pickle.dump(self.films, f)
-
-
-#------------   file #4 (view_films)   ----------------------------------------------
-
-def add_title(title):
-    def wrapper(func):
-        def wrap(*args, **kwargs):
-            print(f" {title} ".center(50, "="))
-
-            output = func(*args, **kwargs)
-
-            print("=" * 50)
-            return output
-        return wrap
-    return wrapper
-
-
-class UserInterface:
-    @add_title('Ввод пользовательских данных')
-    def wait_user_answer(self):
-        print("Действие со фильмами: ")
-        print("1 - создание фильма"
-              "\n2 - просмотр каталога фильмов"
-              "\n3 - просмотр определенного фильма"
-              "\n4 - удаление фильма"
-              "\nq - выход из программы")
-        user_answer = input("Выберите вариант действия: ")
-        return user_answer
-
-    @add_title('Создание статьи:')
-    def add_user_film_1(self):
-        dictionary_film = {
-            "название фильма": None,
-            "жанр": None,
-            "режиссер": None,
-            "год выпуска": None,
-            "длительность": None,
-            "студия": None,
-            "актеры": None,
-        }
-        for key in dictionary_film:
-            dictionary_film[key] = input(f'Введите {key} фильма: ')
-        return dictionary_film
-
-    @add_title('Список фильмов')
-    def show_all_filmes_2(self, films):
-        for ind, film in enumerate(films, start=1):
-            print(f"{ind}. {film}")
-
-    @add_title('Ввод названия фильма')
-    def get_user_film_3(self):
-        user_film = input("Введите название фильма: ")
-        return user_film
-
-    @add_title("Просмотр фильма: ")
-    def show_single_film(self, film):
-        for key in film:
-            print(f"{key} фильма - {film[key]}")
-
-    @add_title("Сообщение об ошибке")
-    def show_incorrect_title_error(self, user_title):
-        print(f"Фильма с названием {user_title} не существует")
-
-    @add_title("Удаление фильма")
-    def remove_single_film(self, film):
-        print(f"Фильм {film} - был удален")
-
-    @add_title("Сообщение об ошибке")
-    def show_incorrect_answer_error(self, answer):
-        print(f"Варианта {answer} не существует")
 
 
