@@ -1371,3 +1371,100 @@
 
 
 
+#--------------------------------------------------------------------------------------------
+
+#                                                DZ 46
+
+#--------------------------------------------------------------------------------------------
+
+# -----------------------------------FIRST METHOD:
+
+# import sqlite3 as sq
+#
+#
+# with sq.connect("books.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS books (
+#         book_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         name TEXT,
+#         price INTEGER,
+#         genre TEXT
+#     )
+#     """)
+
+    # cur.execute("INSERT INTO books VALUES(1, 'Animals of Africa', 23, 'NATURE')")
+    # cur.execute("INSERT INTO books VALUES(2, 'Ancient Greece', 33, 'HISTORY')")
+    # cur.execute("INSERT INTO books VALUES(3, 'Alto Giove', 43, 'ASTRONOMY')")
+    # cur.execute("INSERT INTO books VALUES(4, 'Funny ball', 20, 'Literature for kids')")
+    # cur.execute("INSERT INTO books VALUES(5, 'Dof of Baskerwilles', 31, 'DETECTIVES')")
+    # cur.execute("INSERT INTO books VALUES(6, 'Churchill', 29, 'POLITICS')")
+
+# con.commit()
+# con.close()
+
+
+# -----------------------------------SECOND METHOD
+
+# import sqlite3 as sq
+#
+# books_2 = [
+#     ('Spruces from North America', 23, 'NATURE'),
+#     ('Drills for hard types of wood', 2, 'WORK'),
+#     ('Beatles', 29, 'CULTURE'),
+#     ('Rene Dekart', 38, 'PHILOSOPHY'),
+# ]
+#
+# with sq.connect("books_2.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS books_2 (
+#         book_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         name TEXT,
+#         price INTEGER,
+#         genre TEXT
+#     )
+#     """)
+#
+#     for book in books_2:
+#         cur.execute("INSERT INTO books_2 VALUES(NULL, ?, ?, ?)", book)
+#
+#     cur.execute("UPDATE books_2 SET price = :Price WHERE name LIKE 'B%'",{'Price': 0})
+#
+#     cur.executescript("""
+#     DELETE FROM books_2 WHERE name LIKE 'D%';
+#     UPDATE books_2 SET price = price + 10;
+#     """)
+
+#----------------------------THIRD METHOD
+
+import sqlite3 as sq
+
+con = None
+try:
+    con = sq.connect("books_3.db")
+    cur = con.cursor()
+    cur.executescript("""
+        CREATE TABLE IF NOT EXISTS books_3 (
+            books_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            price INTEGER,
+            genre TEXT
+        );
+        BEGIN;
+        INSERT INTO books_3 VALUES(NULL, 'Ferrari', 32, "AUTOMOBILES");
+        INSERT INTO books_3 VALUES(NULL, 'Chamomiles', 20, "NATURE");
+        UPDATE books_3 SET price = price - 5;
+        """)
+
+    con.commit()
+except sq.Error as e:
+    if con:
+        con.rollback()
+    print("ERROR OF CALLING")
+finally:
+    if con:
+        con.close()
+
+
+
