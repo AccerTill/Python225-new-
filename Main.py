@@ -1111,7 +1111,7 @@
 # print("Произведение ненулевых элементов: ", m)
 
 
-import geometry
+# import geometry
 
 # num1 = geometry.sqrt(16)
 # num2 = geometry.ceil(3.2)
@@ -1127,7 +1127,7 @@ import geometry
 # rd = int(input("Введите радиус окружности: "))
 # print("Длина окружности:", round(2 * geometry.pi * rd, 2))
 
-import time
+# import time
 
 # seconds = time.time()
 # print("Секунды с начала эпохи: ", seconds)
@@ -2478,7 +2478,7 @@ import time
 # res = list(filter(lambda s: s < 75, b))
 # print(res)
 
-import random
+# import random
 
 # lst = [random.randint(1, 40) for i in range(10)]
 # print(lst)
@@ -2993,7 +2993,7 @@ import random
 
 
 # Регулярные выражения
-import re
+# import re
 
 # s = "Я ищу сов[паден]ия в 2021 го-да. И я из найду в 2 счёта. 45678"
 # # # reg = r'[201]'
@@ -3495,7 +3495,7 @@ import re
 
 # Модуль os и os.path
 
-import os
+# import os
 
 # import os.path
 
@@ -6502,7 +6502,7 @@ import os
 # pickle
 # json
 
-import pickle
+# import pickle
 
 # filename = "basket.txt"
 #
@@ -6863,7 +6863,7 @@ import pickle
 #     print(data)
 
 
-import csv
+# import csv
 
 # with open("data.csv") as r_file:
 #     file_reader = csv.reader(r_file, delimiter=";")
@@ -6951,7 +6951,7 @@ import csv
 
 # from bs4 import BeautifulSoup
 
-# f = open('index.html').read()
+# f = open('index49.html').read()
 # soup = BeautifulSoup(f, "html.parser")
 # row = soup.find("div", class_="name")
 # row = soup.find_all("div", class_="name")
@@ -6972,7 +6972,7 @@ import csv
 #     return None
 #
 #
-# f = open('index.html', encoding='utf-8').read()
+# f = open('index49.html', encoding='utf-8').read()
 # soup = BeautifulSoup(f, "html.parser")
 # copywriter = []
 # row = soup.find_all('div', class_="row")
@@ -6992,7 +6992,7 @@ import csv
 #     print(res)
 #
 #
-# f = open('index.html', encoding='utf-8').read()
+# f = open('index49.html', encoding='utf-8').read()
 # soup = BeautifulSoup(f, "html.parser")
 # salary = soup.find_all("div", {"data-set": "salary"})
 # for i in salary:
@@ -7408,7 +7408,7 @@ import csv
 # for res in cur:
 #     print(res)
 
-import sqlite3 as sq
+# import sqlite3 as sq
 #
 # cars = [
 #     ('BMW', 54000),
@@ -7441,7 +7441,7 @@ import sqlite3 as sq
 #         con.close()
 # ----------------------------------- my code------------------
 
-import sqlite3 as sq
+# import sqlite3 as sq
 # cars = [
 #     ('BMW', 54000),
 #     ('Chevrolet', 46000),
@@ -7481,7 +7481,7 @@ import sqlite3 as sq
 #     if con:
 #         con.close()
 
-#-----------------------------------
+# -----------------------------------
 # with sq.connect("cars.db") as con:
 #     cur = con.cursor()
 #     cur.execute("""
@@ -7493,27 +7493,25 @@ import sqlite3 as sq
 #     """)
 
 
-
-
 # many commands,  !!! нельзя использовать подстановочные шаблоны !!!
 
-    # cur.executescript("""
-    # DELETE FROM cars WHERE model LIKE 'B%';
-    # UPDATE cars SET price = price + 100;
-    # """)
+# cur.executescript("""
+# DELETE FROM cars WHERE model LIKE 'B%';
+# UPDATE cars SET price = price + 100;
+# """)
 
 # обновление !!!
 
-    # cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'B%'", {'Price': 0})
+# cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'B%'", {'Price': 0})
 
 # 1--------creating
 
-    # for car in cars:
-    #     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+# for car in cars:
+#     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
 
 # 2--------creating
 
-    # cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars)
+# cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars)
 
 # 3--------creting
 
@@ -7528,8 +7526,7 @@ import sqlite3 as sq
 # con.close() - закрывает соединение с БД
 
 
-
-#----------------------------------------------------------------
+# ----------------------------------------------------------------
 
 # ниже еще создаем таблицу.
 
@@ -7552,7 +7549,6 @@ import sqlite3 as sq
 #     last_row_id = cur.lastrowid  # lastrowid - возвращает id последней записи
 #     buy_car_id = 2
 #     cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
-
 
 
 # --------------------------------------------------------------- lesson 46
@@ -7580,34 +7576,34 @@ import sqlite3 as sq
 #         price INTEGER);
 #          """)
 
-    # fetchall() - берет все данные из запроса
-    # fetchone()
-    # fetchmany(5)
+# fetchall() - берет все данные из запроса
+# fetchone()
+# fetchmany(5)
 
-    # cur.execute("SELECT model, price FROM cars")
-    # rows = cur.fetchall()
-    # print(rows)
+# cur.execute("SELECT model, price FROM cars")
+# rows = cur.fetchall()
+# print(rows)
 
-    # rows = cur.fetchall()
-    # rows = cur.fetchone()
-    # rows = cur.fetchmany(5)
+# rows = cur.fetchall()
+# rows = cur.fetchone()
+# rows = cur.fetchmany(5)
 
 # выводим данные:
 
-    # for res in cur:
-    #     print(res)
+# for res in cur:
+#     print(res)
 
-    # for res in cur:
-    #     print(res[0])
+# for res in cur:
+#     print(res[0])
 
-    # for res in cur:
-    #     print(res['model'], "-", res['price'])
-    #
-    # for res in cur:
-    #     print(res[0], "-", res[1])
+# for res in cur:
+#     print(res['model'], "-", res['price'])
+#
+# for res in cur:
+#     print(res[0], "-", res[1])
 
 
-#-------------------------------------     working with pictures
+# -------------------------------------     working with pictures
 
 
 # import sqlite3 as sq
@@ -7649,22 +7645,20 @@ import sqlite3 as sq
 #     img =cur.fetchone()['ava']
 #
 #     write_ava("out.png", img)
-    # первый параметр имя файла, второй - что возмеме по запросу из базы данных.
+# первый параметр имя файла, второй - что возмеме по запросу из базы данных.
 
 
-    # img= read_ava(1)
-    # if img:
-    #     binary = sq.Binary(img)
-    #     cur.execute("INSERT INTO users VALUES ('Илья', ?, 1000)", (binary, ))
+# img= read_ava(1)
+# if img:
+#     binary = sq.Binary(img)
+#     cur.execute("INSERT INTO users VALUES ('Илья', ?, 1000)", (binary, ))
 
 
-
-    # cur.execute("SELECT model, price FROM cars")
-    # for res in cur:
-    #     print(res['model'], "-", res['price'])
-    # for res in cur:
-    #     print(res[0], "-", res[1])
-
+# cur.execute("SELECT model, price FROM cars")
+# for res in cur:
+#     print(res['model'], "-", res['price'])
+# for res in cur:
+#     print(res[0], "-", res[1])
 
 
 # ------------------------------- Восстановление базы данных
@@ -7684,158 +7678,32 @@ import sqlite3 as sq
 #         cur.executescript(sql)
 
 
- # база данных в памяти(создание)
-
-import sqlite3 as sq
-
-data = [('car', 'машина'), ('house', 'дом'), ('tree', 'дерево'),('color', 'цвет')]
-
-# - :memory: - создаем в память.
-con = sq.connect(':memory:')
-with con:
-    cur = con.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS dict(
-    eng TEXT,
-    rus TEXT
-    )
-    """)
-    cur.executemany("INSERT INTO dict VALUES(?, ?)", data)
-    cur.execute("SELECT rus FROM dict WHERE eng LIKE 'c%'")
-    print(cur.fetchall())
-
-
-
-#--------------------------------- my code is upper------------------------------------------
-#
-#
-#
-#
-#
-# -------------
-#     cur.executescript("""
-#     DELETE FROM cars WHERE model LIKE 'B%';
-#     UPDATE cars SET price = price + 100;
-#     """)
-# cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'B%'", {'Price': 0})
-# cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars)
-# for car in cars:
-#     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
-# cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
-# cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
-# cur.execute("INSERT INTO cars VALUES(3, 'Mercedes', 57000)")
-# cur.execute("INSERT INTO cars VALUES(4, 'Bentley', 35000)")
-# cur.execute("INSERT INTO cars VALUES(5, 'Audy', 52000)")
-
-# con.commit() - сохраняет все изменения в базу данных
-# con.close() - закрывает соединение с БД
-
+# база данных в памяти(создание)
 
 # import sqlite3 as sq
 #
-# with sq.connect("cars.db") as con:
-#     cur = con.cursor()
-#     cur.executescript("""
-#     CREATE TABLE IF NOT EXISTS cars (
-#         cars_id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         model TEXT,
-#         price INTEGER
-#     );
-#     CREATE TABLE IF NOT EXISTS cost(
-#         name TEXT, tr_in INTEGER, buy INTEGER
-#     )
-#     """)
+# data = [('car', 'машина'), ('house', 'дом'), ('tree', 'дерево'),('color', 'цвет')]
 #
-#     cur.execute("INSERT INTO cars VALUES(NULL, 'Запорожец', 1000)")
-#     last_row_id = cur.lastrowid  # lastrowid - возвращает id последней записи
-#     buy_car_id = 2
-#     cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
-
-
-# import sqlite3 as sq
-#
-#
-# def read_ava(n):
-#     try:
-#         with open(f"avatars/{n}.png", "rb") as f:
-#             return f.read()
-#     except IOError as e:
-#         print(e)
-#         return False
-#
-#
-# def write_ava(name, data):
-#     try:
-#         with open(name, "wb") as f:
-#             f.write(data)
-#     except IOError as e:
-#         print(e)
-#         return False
-#     return True
-#
-#
-# with sq.connect("cars.db") as con:
-#     con.row_factory = sq.Row
-#     # print(con.row_factory)
-#     cur = con.cursor()
-#     cur.executescript("""
-#     CREATE TABLE IF NOT EXISTS users (
-#         name TEXT,
-#         ava BLOB,
-#         score INTEGER
-#     );
-#     """)
-#
-#     cur.execute("SELECT ava FROM users LIMIT 1")
-#     img = cur.fetchone()['ava']
-#
-#     write_ava("out.png", img)
-
-# img = read_ava(1)
-# if img:
-#     binary = sq.Binary(img)
-#     cur.execute("INSERT INTO users VALUES ('Илья', ?, 1000)", (binary,))
-
-# cur.execute("SELECT model, price FROM cars")
-
-# rows = cur.fetchall()
-# rows = cur.fetchone()
-# rows = cur.fetchmany(5)
-# for res in cur:
-#     print(res['model'], "-", res['price'])
-
-
-# import sqlite3 as sq
-#
-# with sq.connect("cars.db") as con:
-#     cur = con.cursor()
-#
-#     with open("sql_dump.sql", "r") as f:
-#         sql = f.read()
-#         cur.executescript(sql)
-
-# with open("sql_dump.sql", "w") as f:
-#     for sql in con.iterdump():
-#         f.write(sql)
-
-
-# import sqlite3 as sq
-#
-# data = [('car', "машина"), ('house', 'дом'), ('tree', 'дерево'), ('color', 'цвет')]
-#
+# # - :memory: - создаем в память.
 # con = sq.connect(':memory:')
 # with con:
 #     cur = con.cursor()
 #     cur.execute("""
 #     CREATE TABLE IF NOT EXISTS dict(
 #     eng TEXT,
-#     ru TEXT
-#     )""")
-#
-#     cur.executemany("INSERT INTO dict VALUES (?, ?)", data)
-#
-#     cur.execute("SELECT ru FROM dict WHERE eng LIKE 'c%'")
+#     rus TEXT
+#     )
+#     """)
+#     cur.executemany("INSERT INTO dict VALUES(?, ?)", data)
+#     cur.execute("SELECT rus FROM dict WHERE eng LIKE 'c%'")
 #     print(cur.fetchall())
+
+
+# ------------------------------------------------------------------------ LESSON 47 --------------
+
+# внутри models  есть __init__.py
+# database.py
+# import sqlite3 as sq
 
 
 # import os
@@ -7855,24 +7723,34 @@ with con:
 #         db_creator.create_database()
 #
 #     session = Session()
-#     print(session.query(Lesson).all())  # результат запроса по всем элементам в виде списка
+#     print(session.query(Lesson).all()) # all возвращает список результат запроса по всем элементам в виде списка
 #     print("*" * 60)
+#
 #     for it in session.query(Lesson):
+#         # print(it)
 #         print(it.lesson_title)
 #     print("*" * 60)
+
 # print(session.query(Lesson).count())  # количество записей в запросе
 # print("*" * 60)
+#
 # print(session.query(Lesson).first())  # первый результат в запросе
 # print("*" * 60)
-# print(session.query(Lesson).get(3))  # результат по номеру первичного ключа
+#
+# print(session.query(Lesson).get(19))  # результат по номеру первичного ключа
 # print("*" * 60)
-# for it in session.query(Lesson).filter(Lesson.id >= 3, Lesson.lesson_title.like('Ф%')):  # отфильтровать
-#     # результаты по условию
-#     print(it)
-# print("*" * 60)
+#
+#
+# # for it in session.query(Lesson).filter(Lesson.id >= 3, Lesson.lesson_title.like('Ф%')):  # отфильтровать
+# #     # результаты по условию   (,  = OR)
+# # # for it in session.query(Lesson).filter(Lesson.id >= 3):
+# #     print(it)
+# # print("*" * 60)
+#
 # for it in session.query(Lesson).filter(and_(Lesson.id >= 3, Lesson.lesson_title.like('Ф%'))):
 #     print(it)
 # print("*" * 60)
+#
 # for it in session.query(Lesson).filter(or_(Lesson.id >= 3, Lesson.lesson_title.like('Ф%'))):
 #     print(it)
 # print("*" * 60)
@@ -7928,19 +7806,28 @@ with con:
 #     print(it)
 # print("*" * 60)
 #
+#
+#
+#
+# for it in session.query(Student).join(Group):
+#     print(it)
+# print("*" * 60)
+#
 # for it in session.query(Student).join(Group).filter(Group.group_name == 'MDA-7'):
 #     print(it)
 # print("*" * 60)
 #
 # for it in session.query(func.count(Student.surname), Group.group_name).join(Group).group_by(Group.group_name):
 #     print(it)
-# print("*" * 60)
+# print("*" * 60)  # количество студентов в каждой группе.
+#
 #
 # for it in session.query(func.count(Student.surname), Group.group_name).join(Group).group_by(
 #         Group.group_name).having(func.count(Student.surname) < 25):
 #     print(it)
-# print("*" * 60)
-#
+# print("*" * 60) # фильтрация где меньше чем 25 человек
+# #
+# # for it in session.query(Student.age):
 # for it in session.query(distinct(Student.age)):
 #     print(it)
 # print("*" * 60)
@@ -7949,30 +7836,49 @@ with con:
 #     print(it)
 # print("*" * 60)
 
-# i = session.query(Lesson).get(7)
-# i.lesson_title = "Информатика"
+# - для обновления обьекта, устанавливаем новое значение обьекта и сохраняем в сессию.
+
+
+#
+# i = session.query(Lesson).get(7) # получаем элемент физику и меняем на рисование:
+# i.lesson_title = "Рисование"
 # session.add(i)
 # session.commit()
 #
 # for it in session.query(Lesson):
 #     print(it.lesson_title)
 # print("*" * 60)
-
-# session.query(Lesson).filter(
+#
+#
+#
+#
+#
+# session.query(Lesson).filter(        # Несколько (вместо add - update):
 #     Lesson.lesson_title.like("%м%")
 # ).update({"lesson_title": "M"}, synchronize_session="fetch")
 # session.commit()
-
+#
 # for it in session.query(Lesson):
 #     print(it.lesson_title)
 # print("*" * 60)
 #
-# session.add(Lesson(lesson_title="Физика"))
+#
+#
+# session.add(Lesson(lesson_title="Физика")) # добавляем Физику.
 # session.commit()
-
 # for it in session.query(Lesson):
 #     print(it.lesson_title)
 # print("*" * 60)
+#
+# i = session.query(Lesson).filter(Lesson.lesson_title == "Физика").first() # удаление
+# print(i)
+# session.delete(i)
+# session.commit()
+#
+# for it in session.query(Lesson):
+#     print(it.lesson_title)
+# print("*" * 60)
+#
 #
 # i = session.query(Lesson).filter(Lesson.lesson_title == "Физика").first()
 # print(i)
@@ -7983,24 +7889,57 @@ with con:
 #     print(it.lesson_title)
 # print("*" * 60)
 
+
+# after adding to import text
+
 # for it in session.query(Student).filter(text("surname like 'В%'")).order_by(text("name, id desc")):
 #     print(it)
 
 
-# шаблонизатор
+# -------------------------------------- END OF BASES  WITH DATA------------------------------------------
+
+
+# --------------------------------------      FRAMEWORKS    ---------------------------------------
+
+# ----------------------- шаблонизатор
 
 # pip install jinja2
 
 # from jinja2 import Template
 
-# name = "Игорь"
+
+    # ------------------------- LOWER are some methods -----------------
+
+# name = "Федя"
+# tm = Template('Hello {{name}} !')
+# msg =tm.render(name = name)
+# print(msg)
+
+
+
+# name = "Федя"
 # age = 28
-# per = {'name': "Игорь", 'age': 28}
-#
+# tm = Template("Мне {{ a * 1.2}} лет. Меня зовут {{ n.upper() }} !.")
+# msg = tm.render(n=name, a=age)
+# print(msg)
+
+
+
+# per = {'name': "Федя", 'age': 28}
+# tm = Template("Мне {{ p.age }} лет. Меня зовут {{ p.name }}.")
+# msg = tm.render(p=per)
+# print(msg)
+
+
+
+# per = {'name': "Федя", 'age': 28}
 # tm = Template("Мне {{ p['age'] }} лет. Меня зовут {{ p.name }}.")
 # msg = tm.render(p=per)
-#
 # print(msg)
+
+
+
+
 
 # class Person:
 #     def __init__(self, name, age):
@@ -8014,29 +7953,162 @@ with con:
 #         return self.__age
 #
 #
-# per = Person("Игорь", 28)
+# per = Person("Федя", 28)
 #
+# # tm = Template("Мне {{ p['age'] }} лет. Меня зовут {{ p.name }}.")
 # tm = Template("Мне {{ p.get_age() }} лет. Меня зовут {{ p.get_name() }}.")
 # msg = tm.render(p=per)
 #
 # print(msg)
+
+
+
+
+# data = """Модуль Jinja вместо
+# определения {{ name }}
+# подставит соответствующее значение"""
+#
+# tm = Template(data)
+# msg = tm.render(name="Федя")
+#
+# print(msg)
+
+
+
 
 # data = """{% raw %}Модуль Jinja вместо
 # определения {{ name }}
 # подставит соответствующее значение {% endraw %}"""
 #
 # tm = Template(data)
-# msg = tm.render(name="Игорь")
+# msg = tm.render(name="Федя")
 #
 # print(msg)
 
+
+
+
+# ----------------------------------- LESSON 49 ---------------
+
+# from jinja2 import Template
+
+
+# {%%} - спецификатор шаблона
+# {{}} - выражение для вставки конструкций Python в шаблон
+# {##} - блок комментариев
+#  ##  - строковый комментарий
+
+
+#      ---  EXAMPLE FROM stepik:
+
+# -----------1
+#
+# name = 'Fedya'
+# age=28
+# tm = Template("Hello {{ a }}, you {{ 2*3 }} are {{ b + 1,2 }}.")
+# msg = tm.render (b = age, a=name)
+# print(msg)
+
+
+# # -----------2
+#
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age=age
+#
+#
+#
+# per = Person("Fedya", 28)
+# tm = Template("Hello {{ p.name + ' ' + 'Programmer'}}, you {{ 2*3 }} are {{ p.age + 3  }}.")
+# msg = tm.render (p=per)
+# print(msg)
+
+
+# -----------3
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def getName(self):
+#         return self.name
+#
+#     def getAge(self):
+#         return self.age
+#
+# per = Person("Fedya", 28)
+# tm = Template("Hello {{ p.getName() + ' programmer' + '&' }}, you {{ 2*3 }} are {{ p.getAge() + 7 }}.")
+# msg = tm.render(p=per)
+# print(msg)
+
+
+
+
+# # -----------4
+#
+# per = {'name':"Fedya", 'age': 28}
+# # tm = Template("Hello {{ p.name + ' programmer' + ' &' }}, you {{ 2*3 }} are {{ p.age + 7 }}.")
+# tm = Template("Hello {{ p ['name'] }}, you {{ 2*3 }} "
+#               "are {{ p['age'] + 1.2 }}.")
+# msg = tm.render(p=per)
+# print(msg)
+
+
+
+# -----------5 {%raw%} {% endraw %}
+
+# data = '''{%raw%}Module jinja instead phrase {{ name }}
+# puts data in according {% endraw %}'''
+#
+# tm = Template(data)
+# msg = tm.render(name = 'Fedya')
+# print(msg)
+
+
+# # ----------- 6
+#
+# link = '''In HTML  - docs links are:
+# <a href = "h" > link </a> '''
+#
+# tm = Template(link)
+# msg = tm.render()
+# print(msg)
+
+
+# ----------- 7  (экранирование + escape)
+
+
+
+# from jinja2 import Template, escape # (escape)
+#
+# link = '''In HTML  - docs links are: <a href = "h" > link </a> '''
+# msg = escape(link)
+# print(msg)
+
+
+
+#       ---  EXAMPLE END
+
+
+
+
+
 # link = """В HTML-документе ссылка определяется так:
 # <a href="#">Ссылка</a>"""
+#
+# # tm = Template(link)
+#
+# # tm = Template('{{ link }}')
 #
 # tm = Template("{{ link | e }}")
 # msg = tm.render(link=link)
 #
 # print(msg)
+
+
+
 
 # cities = [
 #     {'id': 1, 'city': 'Москва'},
@@ -8046,12 +8118,81 @@ with con:
 #     {'id': 5, 'city': 'Ярославль'},
 # ]
 #
+#  # --- 1
+#
+# link = """<select name="cities">
+# {% for c in cities %}
+#     <option value=""></option>
+# {% endfor %}
+# </select>"""
+#
+# #  # endfor - закрывает цикл
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+
+
+
+ # --- 2
+
+# link = """<select name="cities">
+# {% for c in cities %}
+#     <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+#     {% endfor %}
+# </select>"""
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+
+  # --- 3  (добавляем "-")
+
+# link = """<select name="cities">
+# {% for c in cities -%}
+#     <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+# {% endfor -%}
+# </select>"""
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+
+
+                    # {% for <выражение> -%}
+                    #     < repeating code >
+                    # {% endfor %}
+
+
+                    # {% if <условие> %}
+                    #     <  фрагмент при истинности условия >
+                    # {% endif %}
+
+
+
+
+
+ # --- 4 (все if и for должны быть закрыты)
+
 # link = """<select name="cities">
 # {% for c in cities -%}
 # {% if c.id > 3 -%}
 #     <option value="{{ c['id'] }}">{{ c['city'] }}</option>
-# {% elif c.city == "Москва" -%}
-#     <option>{{ c['city'] }}</option>
+# {% endif -%}
+# {% endfor -%}
+# </select>"""
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+
+
+# --- 5 (else)
+
+# link = """<select name="cities">
+# {% for c in cities -%}
+# {% if c.id > 3 -%}
+#     <option value="{{ c['id'] }}">{{ c['city'] }}</option>
 # {% else -%}
 #     {{ c['city'] }}
 # {% endif -%}
@@ -8060,9 +8201,44 @@ with con:
 #
 # tm = Template(link)
 # msg = tm.render(cities=cities)
-#
 # print(msg)
 
+
+
+# --- 6 (elif)
+
+# cities = [
+#     {'id': 1, 'city': 'Москва'},
+#     {'id': 2, 'city': 'Сочи'},
+#     {'id': 3, 'city': 'Смоленск'},
+#     {'id': 4, 'city': 'Минск'},
+#     {'id': 5, 'city': 'Ярославль'},
+# ]
+#
+#
+# link = """<select name="cities">
+# {% for c in cities -%}
+# {% if c.id > 3 -%}
+#     <option value="{{ c['id'] }}">{{ c['city'] + ' if' }}</option>
+# {% elif c.city == "Москва" -%}
+#     <option>{{ c['city'] + '-'}}</option>
+# {% else -%}
+#     {{ c['city'] + ' else' }}
+# {% endif -%}
+# {% endfor -%}
+# </select>"""
+#
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+
+
+
+
+
+
+#
 # menu = [
 #     {'url': '/index', 'title': 'Главная '},
 #     {'url': '/news', 'title': 'О нас'},
@@ -8070,14 +8246,22 @@ with con:
 #     {'url': '/shop', 'title': 'Магазин'},
 #     {'url': '/contacts', 'title': 'Контакты'}
 # ]
-#
+
+
+# for i in menu:
+#     if i['url'] == '/index':
+#         print(i)
+#     else:
+#         print(i , "---")
+
 # text = """
 #     <ul>
 #     {% for m in menu -%}
 #         {% if m['url'] == '/index' -%}
 #             <li><a href='{{ m['url'] }}' class='active'>{{ m['title'] }}</a></li>
 #         {% else -%}
-#             <li><a href='{{ m['url'] }}'>{{ m['title'] }}</a></li>
+#             {# -- comments -- #}
+#            <li><a href='{{ m['url'] }}'>{{ m['title'] }}</a></li>
 #         {% endif -%}
 #     {% endfor -%}
 #     </ul>
@@ -8087,37 +8271,74 @@ with con:
 # msg = tm.render(menu=menu)
 # print(msg)
 
+# <li><a href='{{'d'}}'>8888</a></li>
+# <li>777</li>
+
+
+
+
+
+
+
 # cars = [
-#     {'model': 'Audi', 'price': 23000},
-#     {'model': 'Skoda', 'price': 17300},
-#     {'model': 'Renault', 'price': 44300},
-#     {'model': 'Wolksvagen', 'price': 21300}
+#     {'model': 'Audi', 'price': 2},
+#     {'model': 'Skoda', 'price': 3},
+#     {'model': 'Renault', 'price': 4},
+#     {'model': 'Wolksvagen', 'price': 5}
 # ]
 #
 # lst = [1, 2, 3, 4, 5, 6]
+
+# добавляем фильтр:
+
+# tpl = "Summary price of cars {{cs | sum( attribute  =  'price', start = 100 ) + 2**7}} &" # start - прибавка к сумме
+
+# tpl = "Summary price of cars {{cs | sum }}"       # ------ lst
+
+# tpl = "Автомобиль: {{ (cs | min( attribute = 'price')).model }}"
+# tpl = "Автомобиль: {{ (cs | min( attribute = 'price')) }}"
 #
-# # tpl = "Автомобиль: {{ (cs | min(attribute='price')).model }}"
-# # tpl = "Автомобиль: {{ cs | random }}"
+# tpl = "Автомобиль: {{ cs | random }}"
+#
 # tpl = "Автомобиль: {{ cs | replace('model', 'brand') }}"
+
 # tm = Template(tpl)
+# # msg = tm.render(cs=lst) # lst
 # msg = tm.render(cs=cars)
 # print(msg)
+
+
+
+
 
 # persons = [
 #     {"name": "Алексей", "year": 18, "weight": 78.5},
 #     {"name": "Никита", "year": 28, "weight": 82.3},
 #     {"name": "Виталий", "year": 33, "weight": 94.2}
 # ]
-#
+
 # tpl = """
 # {%- for u in user -%}
-#     {% filter upper %} {{ u.name }} {% endfilter %} {% filter string %} {{u.year}} - {{u.weight}} {% endfilter %}
+#     {% filter upper %} {{ u.name + " # " }} {% endfilter %} {% filter string %} {{u.year }} - {{u.weight}} +'*' {% endfilter %}
 # {% endfor -%}
 # """
-#
+
+# tpl = """
+# {%- for u in user -%}
+#     {% filter upper %} {{ u.name }} {% endfilter %}   {% filter replace ('а', '@') %} {% filter upper %} {{u.name }}
+#      {% endfilter %}{% endfilter %}
+# {% endfor -%}
+# """
+
 # tm = Template(tpl)
 # msg = tm.render(user=persons)
 # print(msg)
+
+
+
+
+
+
 
 # html = '''
 # {%- macro input(name, value='', type='text', size=20) -%}
@@ -8133,21 +8354,52 @@ with con:
 # msg = tm.render()
 # print(msg)
 
-# html = """
-# {% macro input(name, placeholder, type='text') -%}
-#     <input type='{{ type }}' name='{{ name }}' placeholder='{{ placeholder }}'>
+
+
+# html = '''
+# {%- macro input(name,   value='',   type='text',    size=20,  pl = '') -%}
+#     <input type="{{ type }}"     name="{{ name }}"    value="{{ value }}"     size="{{ size }}"   placeholder= "{{ pl }}"  >
 # {%- endmacro %}
 #
-# <p>{{ input('firstname', 'Имя') }}</p>
-# <p>{{ input('lastname', 'Фамилия') }}</p>
-# <p>{{ input('address', 'Адрес')}}</p>
-# <p>{{ input('phone', 'Телефон', 'tel')}}</p>
-# <p>{{ input('email', 'Почта', 'email')}}</p>
-# """
+# <p>{{ input('username', type='text', pl = ' yuyuyu ') }}</p>
+# <p>{{ input('email', type='mail', pl = ' wwww ') }}</p>
+# <p>{{ input('password', type='tel',  pl = ' sssss ') }}</p>
+# '''
+#
 # tm = Template(html)
 # msg = tm.render()
 # print(msg)
 
+
+
+
+#
+# html = """
+# {% macro func(name,  placeholder,  type='text') -%}
+#
+#     <input type='{{ type }}'    name='{{ name }}'   placeholder='{{ placeholder }}'>
+#
+# {%- endmacro %}
+#
+#
+# <p>{{ func('firstname', 'Имя') }}</p>
+# <p>{{ func('lastname', 'Фамилия') }}</p>
+# <p>{{ func('address', 'Адрес')}}</p>
+# <p>{{ func('phone', 'Телефон', 'tel')}}</p>
+# <p>{{ func('email', 'Почта', 'email')}}</p>
+# """
+# # adding new type upper
+#
+# tm = Template(html)
+# msg = tm.render()
+# print(msg)
+
+
+
+
+
+# from jinja2 import Template
+#
 #
 # persons = [
 #     {"name": "Алексей", "year": 18, "weight": 78.5},
@@ -8156,26 +8408,36 @@ with con:
 # ]
 #
 # html = '''
-#     {% macro list_users(list_of_user) -%}
+#     {% macro   list_users(user)    -%}
 #     <ul>
-#         {% for u in list_of_user -%}
-#         <li>{{ u.name }} {{ caller(u) }} </li>
-#         {% endfor %}
+#            {%   for u in user   -%}
+#                 <li>   {{ u.name }}   {{ caller(u) }}    </li>
+#            {% endfor %}
 #     </ul>
 #     {%- endmacro %}
 #
+#
+# {# {{  list_users(users) }}  - commentary #}
+#
+#
 #     {% call(user) list_users(users) %}
-#         <ul>
-#             <li>age: {{ user.year }}</li>
-#             <li>weight: {{ user.weight }}</li>
-#         </ul>
+#           <ul>
+#               <li>age: {{  user.year  }}</li>
+#               <li>weight: {{  user.weight  }}</li>
+#           </ul>
 #     {% endcall -%}
 # '''
+#
 #
 # tm = Template(html)
 # msg = tm.render(users=persons)
 # print(msg)
 
+
+
+
+
+#
 # from jinja2 import Environment, FileSystemLoader
 #
 # persons = [
@@ -8184,6 +8446,15 @@ with con:
 #     {"name": "Виталий", "year": 33, "weight": 94.2}
 # ]
 #
+# file_loader = FileSystemLoader('templates') # где лежат шаблоны (папка templates)
+# env = Environment(loader=file_loader) # экземпляр класса Enveronment
+#
+# tm = env.get_template('main.html') # имя шаблона
+# msg = tm.render(users=persons) #
+# # msg = tm.render(users=persons, title="About Jinja") #
+# print(msg)
+#
+#
 # file_loader = FileSystemLoader('templates')
 # env = Environment(loader=file_loader)
 #
@@ -8191,15 +8462,6 @@ with con:
 # msg = tm.render(users=persons, title="About Jinja")
 #
 # print(msg)
-
-print()
-print("..End of code..")
-print()
-
-
-
-
-
 
 
 

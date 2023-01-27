@@ -6951,7 +6951,7 @@ import csv
 
 # from bs4 import BeautifulSoup
 
-# f = open('index.html').read()
+# f = open('index49.html').read()
 # soup = BeautifulSoup(f, "html.parser")
 # row = soup.find("div", class_="name")
 # row = soup.find_all("div", class_="name")
@@ -6972,7 +6972,7 @@ import csv
 #     return None
 #
 #
-# f = open('index.html', encoding='utf-8').read()
+# f = open('index49.html', encoding='utf-8').read()
 # soup = BeautifulSoup(f, "html.parser")
 # copywriter = []
 # row = soup.find_all('div', class_="row")
@@ -6992,7 +6992,7 @@ import csv
 #     print(res)
 #
 #
-# f = open('index.html', encoding='utf-8').read()
+# f = open('index49.html', encoding='utf-8').read()
 # soup = BeautifulSoup(f, "html.parser")
 # salary = soup.find_all("div", {"data-set": "salary"})
 # for i in salary:

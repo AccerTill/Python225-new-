@@ -1437,34 +1437,101 @@
 #     """)
 
 #----------------------------THIRD METHOD
+#
+# import sqlite3 as sq
+#
+# con = None
+# try:
+#     con = sq.connect("books_3.db")
+#     cur = con.cursor()
+#     cur.executescript("""
+#         CREATE TABLE IF NOT EXISTS books_3 (
+#             books_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#             name TEXT,
+#             price INTEGER,
+#             genre TEXT
+#         );
+#         BEGIN;
+#         INSERT INTO books_3 VALUES(NULL, 'Ferrari', 32, "AUTOMOBILES");
+#         INSERT INTO books_3 VALUES(NULL, 'Chamomiles', 20, "NATURE");
+#         UPDATE books_3 SET price = price - 5;
+#         """)
+#
+#     con.commit()
+# except sq.Error as e:
+#     if con:
+#         con.rollback()
+#     print("ERROR OF CALLING")
+# finally:
+#     if con:
+#         con.close()
 
-import sqlite3 as sq
 
-con = None
-try:
-    con = sq.connect("books_3.db")
-    cur = con.cursor()
-    cur.executescript("""
-        CREATE TABLE IF NOT EXISTS books_3 (
-            books_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            price INTEGER,
-            genre TEXT
-        );
-        BEGIN;
-        INSERT INTO books_3 VALUES(NULL, 'Ferrari', 32, "AUTOMOBILES");
-        INSERT INTO books_3 VALUES(NULL, 'Chamomiles', 20, "NATURE");
-        UPDATE books_3 SET price = price - 5;
-        """)
+#--------------------------------------------------------------------------------------------
 
-    con.commit()
-except sq.Error as e:
-    if con:
-        con.rollback()
-    print("ERROR OF CALLING")
-finally:
-    if con:
-        con.close()
+#                                                DZ 49
+
+# Елена, ниже скрипт всех файлов либо все в папке "DZ_49".
+#--------------------------------------------------------------------------------------------
+
+
+from jinja2 import Environment, FileSystemLoader
+
+books = [
+    {"№": 1, "name": "Tom Sawyer", "writer": 'M. Twen', 'genre': 'adventure', "price": 12},
+    {"№": 2,"name": "Philosophy", "writer": 'I. Kant', 'genre': 'education', "price": 14},
+    {"№": 3,"name": "Astronomy", "writer": 'G. Galilei','genre': 'education', "price": 16},
+    {"№": 4,"name": "Team from Mesozoic", "writer": 'S. Pulsarov','genre': 'adventure', "price": 15},
+]
+
+file_loader = FileSystemLoader('DZ_49')
+env = Environment(loader=file_loader)
+tm = env.get_template('main49.html')
+msg = tm.render(books=books)
+
+print(msg)
 
 
 
+#------main49.html-----
+
+
+# {% include 'header49.html' %}
+#
+# <h1> Below is homework number 49. </h1>
+#
+# <ul>
+#     {%- for b in books %}
+#
+#         {%- if b['genre'] != 'education' %}
+#             <li> {{ b.name }}, {{ b.writer }} - {{ b.price }} EURO </li>
+#         {%- else %}
+#             <li> Number {{ b['№'] }} - FOR EDUCATION. </li>
+#         {%- endif -%}
+#
+#     {% endfor %}
+# </ul>
+#
+# <p> Home work number 49 is completed. </p>
+#
+# {% include 'footer49.html' %}
+
+
+
+
+#------header49.html-----
+
+#
+# <!DOCTYPE html>
+# <html lang="en">
+# <head>
+#     <meta charset="UTF-8">
+#     <title>Title</title>
+# </head>
+# <body>
+
+
+#------footer49.html-----
+#
+# </body>
+# </html>

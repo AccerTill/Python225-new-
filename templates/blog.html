@@ -5,7 +5,15 @@
     <title>Page of blog</title>
 </head>
 <body>
-    <h1>Main page of BLOG</h1>
+
+<!--    <h1>Main page of BLOG</h1>-->
+<ul>
+
+    {% for u in users %}
+        <li>{{ u.name }}</li>
+    {% endfor %}
+
+</ul>
 
 </body>
 </html>

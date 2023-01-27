@@ -6,8 +6,17 @@
 </head>
 <body>
 
-    <h1>Main page.</h1>
-    <p>Text on main page</p>
+<!--    <h1>Main page.</h1>-->
+<!--    <p>Text on main page</p>-->
+
+<ul>
+
+    {% for u in users %}
+        <li>{{ u.name }}</li>
+    {% endfor %}
+
+</ul>
+
 
 </body>
 </html>

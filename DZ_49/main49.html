@@ -1,0 +1,19 @@
+{% include 'header49.html' %}
+
+<h1> Below is homework number 49. </h1>
+
+<ul>
+    {%- for b in books %}
+
+        {%- if b['genre'] != 'education' %}
+            <li> {{ b.name }}, {{ b.writer }} - {{ b.price }} EURO </li>
+        {%- else %}
+            <li> Number {{ b['№'] }} - FOR EDUCATION. </li>
+        {%- endif -%}
+
+    {% endfor %}
+</ul>
+
+<p> Home work number 49 is completed. </p>
+
+{% include 'footer49.html' %}
