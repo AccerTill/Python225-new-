@@ -8437,7 +8437,7 @@
 
 
 
-#
+
 # from jinja2 import Environment, FileSystemLoader
 #
 # persons = [
@@ -8462,6 +8462,43 @@
 # msg = tm.render(users=persons, title="About Jinja")
 #
 # print(msg)
+
+
+
+
+
+
+# ----------------------LESSON 50-------------------------
+
+
+
+# from jinja2 import Environment, FileSystemLoader
+#
+#
+# subs = ['Culture','Science','Politic','Sport']
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('pageone.html')
+# msg = tm.render(list_table = subs)
+#
+# print(msg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -613,7 +613,7 @@
 
 
 # -------------------------------------------------------------------------------------------------------------
-# #
+
 # class Order:
 #     count = 0
 #     a = 0
@@ -668,7 +668,7 @@
 # t2 = Triangle(5, 2, 8)
 # t3 = Triangle(7, 3, 6)
 # t4 = Triangle(2, -5, 6)
-#
+# #
 
 # -------------------------------------------------------------------------------------
 
@@ -1475,21 +1475,21 @@
 #--------------------------------------------------------------------------------------------
 
 
-from jinja2 import Environment, FileSystemLoader
-
-books = [
-    {"№": 1, "name": "Tom Sawyer", "writer": 'M. Twen', 'genre': 'adventure', "price": 12},
-    {"№": 2,"name": "Philosophy", "writer": 'I. Kant', 'genre': 'education', "price": 14},
-    {"№": 3,"name": "Astronomy", "writer": 'G. Galilei','genre': 'education', "price": 16},
-    {"№": 4,"name": "Team from Mesozoic", "writer": 'S. Pulsarov','genre': 'adventure', "price": 15},
-]
-
-file_loader = FileSystemLoader('DZ_49')
-env = Environment(loader=file_loader)
-tm = env.get_template('main49.html')
-msg = tm.render(books=books)
-
-print(msg)
+# from jinja2 import Environment, FileSystemLoader
+#
+# books = [
+#     {"№": 1, "name": "Tom Sawyer", "writer": 'M. Twen', 'genre': 'adventure', "price": 12},
+#     {"№": 2,"name": "Philosophy", "writer": 'I. Kant', 'genre': 'education', "price": 14},
+#     {"№": 3,"name": "Astronomy", "writer": 'G. Galilei','genre': 'education', "price": 16},
+#     {"№": 4,"name": "Team from Mesozoic", "writer": 'S. Pulsarov','genre': 'adventure', "price": 15},
+# ]
+#
+# file_loader = FileSystemLoader('DZ_49')
+# env = Environment(loader=file_loader)
+# tm = env.get_template('main49.html')
+# msg = tm.render(books=books)
+#
+# print(msg)
 
 
 

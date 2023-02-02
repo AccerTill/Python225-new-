@@ -1,0 +1,32 @@
+      {% extends 'base.html' %}
+
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+
+{% block content %}
+{{ super() }}
+  Content of page 'About site'.
+{% endblock %}
+
+
+
+{% block LOREM %}
+{{ super() }}
+     <p>Content of block 'LOREM'</p>
+      <button> PUSH (about) {{ text }} </button>
+       <ul>
+              {% for m in count %}
+              <li>
+                  <p>{{ m }}</p>
+              </li>
+              {% endfor %}
+       </ul>
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/styleDZ.css') }}">
+
+      {% block title %}
+           {% if title %}
+               <title> HOME WORK 50 {{ title }}</title>
+           {% else %}
+               <title>HOME WORK 50 </title>
+           {% endif %}
+      {% endblock %}
+
+</head>
+
+
+<body>
+ <p> HOME WORK 50 </p>
+
+    {% block content %}
+          <ul class = 'menu'>
+              {% for m in menu %}
+              <li>
+                  <a href="{{ m.url }}">{{ m.name }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+
+    <div class="content">
+
+          {% if title %}
+               <h1> {{ title }}  </h1>
+          {% else %}
+               <h1> About Flask. </h1>
+          {% endif %}
+          {% endblock %}
+    </div>
+
+     {% block LOREM %}
+     {% endblock %}
+
+
+</body>
+</html>

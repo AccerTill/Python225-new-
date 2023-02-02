@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/styleDZ.css') }}">
+      {% if title %}
+        <title>  Home Work 50 - {{ title }} </title>
+      {% else %}
+        <title> Home Work 50 </title>
+      {% endif %}
+</head>
+<body>
+
+      {% if title %}
+        <h1> Home Work 50 - {{ title }}</h1>
+      {% else %}
+        <h1> Home Work 50 </h1>
+      {% endif %}
+
+
+      {% block content_index %}
+          <ul class = 'menu'>
+              {% for m in menu %}
+              <li>
+                  <a href="{{ m.url }}">{{ m.name }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+      {% endblock %}
+
+        <p class = 'text'> Upper you can choose needed page. </p>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+<!--{% extends 'base50.html' %}-->
+
+
+<!--{% block title %}-->
+<!--{{ super() }}-->
+<!--{% endblock %}-->
+
+
+<!--{% block content %}-->
+<!--{{ super() }}-->
+<!--  You can choose needed page upper.-->
+<!--{% endblock %}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

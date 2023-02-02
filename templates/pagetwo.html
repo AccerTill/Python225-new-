@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/styleDZ.css') }}">
+      <title> HOME WORK 50 {{ title }}</title>
+</head>
+
+
+<body>
+<!-- <p> HOME WORK 50 (page two)</p>-->
+
+    {% block content2 %}
+          <ul class = 'menu'>
+              {% for m in menu %}
+              <li>
+                  <a href="{{ m.url }}">{{ m.name }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+
+    <div class="content">
+
+          {% if title %}
+               <h1>  {{ text2 }}  </h1>
+          {% else %}
+               <h1> Home Work 50. </h1>
+          {% endif %}
+          {% endblock %}
+    </div>
+
+   <a class = 'link' href="https://www.yahoo.com/"> Link to Yahoo </a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!--{% extends 'base50.html' %}-->
+
+
+<!--{% block title %}-->
+<!--{{ super() }}-->
+<!--{% endblock %}-->
+
+
+<!--{% block content %}-->
+<!--{{ super() }}-->
+<!--<a class = 'link' href="https://www.yahoo.com/"> Link to Yahoo </a>-->
+<!--<p> {{ text2 }}</p>-->
+<!--{% endblock %}-->
+
+
+

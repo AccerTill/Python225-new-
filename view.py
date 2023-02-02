@@ -1,5 +1,5 @@
 def index():
-    with open("templates/index.html", encoding = 'utf -8') as template:
+    with open("templates/indexDZ.html", encoding ='utf -8') as template:
         return template.read()
 
 

@@ -1,0 +1,63 @@
+body{
+    background-color: #bfebc9;
+    margin: 10px;
+    padding: 0;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background-color: rgb(178, 239, 165);
+    padding: 20px;
+    margin-top: 0;
+    border: #3a093a;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20 px;
+    box-sizing: border-box;
+    background-color: rgb(92, 177, 177);
+}
+
+p {
+    font-family: "MS Sans Serif";
+	font-size: 17px;
+	color: #3a093a;
+}
+
+button {
+    color: #93a51c;
+    font-weight: 600;
+    background-color: #a5451c;
+    font-style: italic;
+    text-shadow: #ebe0bf 2px;
+    height: 35px;
+}
+
+.text {
+    font-family: "MS Sans Serif";
+	font-size: 34px;
+    font-weight: 700;
+	color: #3a093a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

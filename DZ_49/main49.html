@@ -6,7 +6,7 @@
     {%- for b in books %}
 
         {%- if b['genre'] != 'education' %}
-            <li> {{ b.name }}, {{ b.writer }} - {{ b.price }} EURO </li>
+            <li> {{ b.name }}, {{ b.writer }} - {{ b.price * 2 }} EURO </li>
         {%- else %}
             <li> Number {{ b['№'] }} - FOR EDUCATION. </li>
         {%- endif -%}
