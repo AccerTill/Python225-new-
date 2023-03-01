@@ -1,13 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 <!--<h1> Home page...</h1>-->
 <!--{{password}}-->
-
+<div class='container'>
     <h2> Generator of paroles</h2>
     <form action = "{% url 'password' %}">
         <p><select name="length">
@@ -31,8 +37,6 @@
     </form>
 
 
-
-
-
+</div>
 </body>
 </html>

@@ -32,11 +32,13 @@ def password(request):
     if request.GET.get('numbers'):
         char.extend([chr(i) for i in range(48, 58)])
 
-# NUMBERS
+# SYMBOLS
     if request.GET.get('special'):
         char.extend([chr(i) for i in range(33, 48)])
 
-
+# # To password page
+#     if request.GET.get('lll'):
+#         render(request, 'generator/password.html')
 
     length = int(request.GET.get('length')) # - обращение к элементу
     psw = ''
@@ -45,9 +47,12 @@ def password(request):
     return render(request, 'generator/password.html',
                   {'password':psw})
 
+def about(request):
+    return render(request, 'generator/about.html')
 
+def password_back(request):
+    return render(request, 'generator/password.html')
 
+def single(request):
 
-
-
-
+    return render(request, 'generator/single.html')

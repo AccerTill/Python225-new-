@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+<div class="description">
+<p > Меня зовут Сергей.</p>
+    <p class = 'links'> Ссылки ниже: </p>
+<p><a href="{% url 'home' %}"> Вернуться на главную страницу.</a></p>
+<p name='lll'><a href="{% url 'password_back' %}">Пароль. (наверное это невозможно - перейти напрямую отсюда)</a></p>
+<p><a href="{% url 'single' %}">Single.</a></p>
+</div>
+</body>
+</html>
