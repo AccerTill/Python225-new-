@@ -7603,7 +7603,7 @@
 #     print(res[0], "-", res[1])
 
 
-# -------------------------------------     working with pictures
+# -------------------------------------     working with images
 
 
 # import sqlite3 as sq

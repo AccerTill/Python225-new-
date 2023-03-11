@@ -54,5 +54,5 @@ def password_back(request):
     return render(request, 'generator/password.html')
 
 def single(request):
-
-    return render(request, 'generator/single.html')
+    aa=88
+    return render(request, 'generator/single.html', {'aa':aa})
