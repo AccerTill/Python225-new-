@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <title>Title</title>
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link rel="icon"  type="image/x-icon"  href="{% static 'sorting/favicon.ico' %}">
+
+</head>
+    <body>
+
+<div class = 'menu'>
+    <div class = 'wrap'>
+        <div class="'logo">
+            <a href =' {%  url "index" %}'>
+                <img src='{% static "sorting/logo_history.jpg" %}' alt ="">
+            </a>
+
+        </div>
+        <ul>
+            <li><a href=" {%  url 'index' %} ">Главная</a></li>
+            <li><a href=" {%  url 'blog:blogs' %}  ">Блог</a></li>
+            <li><a href=" {% static 'sorting/History_art.pdf' %} "  target='_blank'>Статья</a></li>
+            <li><a href=" {%  url 'about' %}" target="_blank">О сайте</a></li>
+            <li><a href=" {%  url 'loginuser' %} ">Авторизация</a></li>
+        </ul>
+    </div>
+</div>
+                    <div class ='content'>
+                      <div class ='wrap'>
+                        {% block content %}
+
+                        {% endblock %}
+                      </div>
+                    </div>
+
+
+    </body>
+
+</html>

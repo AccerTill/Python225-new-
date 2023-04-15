@@ -1,5 +1,5 @@
 body{
-     background-color: rgb(220, 179, 91);
+     background-color: rgb(197, 152, 206);
      font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container{
@@ -10,7 +10,7 @@ body{
      text-align: center;
 }
 .container form, .container h2{
-     background-color: rgb(24, 170, 88);
+     background-color: rgb(80, 160, 176);
      padding: 40px;
      box-sizing: border-box;
      border-radius: 6px;
@@ -20,15 +20,13 @@ body{
      font-size: larger;
      font-weight: 600;
      font-style: italic;
-     color: brown;
-     background-color: rgb(24, 170, 88);
+     color: rgb(5, 25, 28);
+     background-color: rgb(139, 130, 208);
      padding: 40px;
      box-sizing: border-box;
-     border-radius: 6px;
-
+     border-radius: 10px;
 }
-
 .links{
-     color: rgb(214, 255, 80);
+     color: rgb(69, 248, 251);
 }
 

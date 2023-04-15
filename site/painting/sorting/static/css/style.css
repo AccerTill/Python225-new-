@@ -1,0 +1,356 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+body{
+     padding: 0;
+     margin: 0;
+     background: #c3a8ec;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-style: italic;
+ }
+
+
+
+
+/* .block {
+
+     display: flex;
+     flex-wrap: wrap;
+     justify-content:left;
+     margin-bottom: 30px;
+     box-shadow: #baa8ec;
+   
+} */
+
+
+.text {
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     text-align: left;
+     text-indent: 90px;
+     font-size: x-large;
+     text-shadow: 1px 2px 1px rgb(68, 14, 122);
+     box-sizing: border-box;
+     width: 760px;
+ }
+
+
+ .description {
+    color: #3e1c76;
+    font-family: Lobster;
+    font-size: x-large;
+    text-indent: 50px;
+    text-shadow: 1px 0px 1px rgb(255, 255, 255);
+    text-align: justify;
+ }
+
+
+.img{
+     max-height:100px;
+     max-width: auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+     position: relative;
+}
+
+h1 {
+     color: #3a1577;
+     font-size: xxx-large;
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     text-align: center;
+     font-weight: 900;
+     text-shadow: 2px 4px 3px rebeccapurple;
+}
+
+.pic3{
+     max-height:420px;
+     max-width: auto;
+     justify-content: center;
+     box-shadow: 0px 0px 10px 5px #14336f;
+}
+
+.pic2{
+     max-height:620px;
+     justify-content: center;
+     opacity: .9;
+}
+
+
+.genre {
+     color: rgb(250, 250, 250);
+     font-size: x-large;
+     font-weight: 600;
+     text-shadow: 2px 4px 3px rebeccapurple;
+     text-align: justify;
+     text-indent: 30px;
+}
+
+
+ .detail {
+     font-size: larger;
+     margin-top: 3%;
+     background-color: #baa8ec;
+     color: #3a1577;
+     max-width: auto;
+     text-align: justify;
+     margin-top: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+     margin-bottom: 20px;
+     padding-left: 10px;
+     padding-right: 10px;
+     padding-bottom: 12px;
+     padding-top: 20px;
+     box-shadow: 0px 0px 10px 5px #14336f;
+ }
+
+
+ h2 {
+     font-size: smaller
+ }
+
+
+ .element_blog {
+
+     font-size: larger;
+     margin-top: 3%;
+     background-color: #baa8ec;
+     color: #3a1577;
+     max-width: auto;
+     text-align: justify;
+     margin-top: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
+     margin-bottom: 20px;
+     padding-left: 10px;
+     padding-right: 10px;
+     padding-bottom: 12px;
+     padding-top: 20px;
+     box-shadow: 0px 0px 10px 5px #14336f;
+ }
+
+ .logo {
+    max-width: 60px;
+ }
+
+
+
+ .wrap {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 10px 30px;
+     box-sizing: border-box;
+ }
+
+
+
+
+.menu{
+     color: #3a1577;
+     font-size: x-large;
+     text-shadow: 1px 1px 2px rgb(207, 219, 192);
+     box-sizing: border-box;
+     background-color: #8368cb;
+     padding: 20px 20px 60px;
+     box-shadow: 3px 6px 7px #6036a3;
+     max-height: 4.5cm;
+     justify-content: space-between;
+
+}
+
+.menu .wrap{
+     display: flex;
+     flex-wrap:wrap;
+     justify-content: space-between;
+     align-items: center;
+     gap: 40px;
+}
+
+
+ul {
+     list-style: none;
+     padding: 0;
+}
+
+.menu ul{
+     justify-content: space-between;
+     display: flex;
+     /* list-style-type: none; */
+     align-items: center;
+     font-size: 20px;
+     padding: 0;
+}
+
+.menu li{
+     margin-left: 40px;
+
+}
+
+.menu .logo{
+     margin-left: 30%;
+     color: aliceblue;
+}
+
+.menu a{
+     color: rgb(208, 219, 230);
+     font-weight: bold;
+     font-size: larger;
+     text-decoration: none;
+     text-shadow: 2px 3px 2px #6036a3;
+}
+
+.pic{
+     max-height:400px;
+     max-width: auto;
+}
+
+.about {
+     color: rgb(250, 250, 250);
+     font-size: x-large;
+     font-weight: 600;
+     text-shadow: 2px 4px 3px rebeccapurple;
+     text-align: justify;
+     text-indent: 30px;
+}
+
+
+
+
+
+
+.btn {    
+     background: #003366;    
+     color: #FFF;
+} 
+
+
+h1, h2 {    
+     color: #003366;
+}
+
+button {    
+     border-radius: 6px;    
+     box-shadow: inset 0 0 6px 2px #FFF;    
+     padding: 10px 40px;    
+     margin-top: 40px;    
+     font-size: 24px;    
+     cursor: pointer;
+} 
+
+input {    
+     width: 100%;    
+     padding: 6px 10px;    
+     box-sizing: border-box;    
+     margin-top: 4px;
+} 
+
+.center {    
+     text-align: center;
+} 
+
+.bg {    
+     box-shadow: 0 2px 12px 2px #003366;    
+     padding: 40px;    
+     box-sizing: border-box;   
+      border-radius: 6px;
+     max-width: 10cm;
+}
+
+.top {    
+     padding: 4px 24px;    
+     margin-top: 0;    
+     background: transparent;    
+     border: none;    
+     color: #FFF;
+} 
+
+
+.content .wrap {    
+     display: flex;    
+     flex-direction: column;    
+     align-items: center;    
+     justify-content: center;    
+     margin-top: 40px;
+} 
+
+h1, h2 {    
+     color: #003366;
+}
+
+.register {
+     max-width: 8cm;
+}
+
+
+.imp{
+     color: rgb(25, 72, 75);
+     font-size: x-large;
+}
+
+
+
+.targets{
+     box-shadow: 0 2px 8px 2px rgb(144, 30, 210);
+     margin-bottom: 20px;
+     font-size: 20px;
+     /* padding: 8px; */
+     background-color: rgb(231, 213, 238);
+}
+
+.target_a{
+     color:rgb(40, 40, 16);
+     display: block;
+     padding: 20px;
+     box-sizing: border-box;
+}
+
+.but{
+     display: flex;
+     align-items: flex-end;
+}
+
+.good{
+     background-color:aqua;
+}
+
+.remove {
+     background-color: chocolate;
+}
+
+a b{
+     color: chocolate;
+}
+
+
+
+.register ul{
+     margin-top: -16;
+}
+
+.register li {
+     box-shadow: none;
+     font-size: 16px;
+     margin-bottom: 0;
+}
+
+.helptext {
+     font-size:14px;
+}
+
+.register label{
+     color:rgb(255, 77, 0);
+     font-weight: bold;
+     font-size: larger;
+     text-shadow: 1px 1px 1px rgb(255, 255, 255);
+}
+
+.register button{
+     margin-top: 14px;
+}
+
+#user{
+     color: #3a1577;
+}

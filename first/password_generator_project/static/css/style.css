@@ -1,18 +1,24 @@
-body{
-     background-color: rgb(192, 220, 91);
-     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.container{
-     width: 400px;
-     margin: 0 auto;
-}
-.container h1{
-     text-align: center;
 }
 .container form, .container h2{
-     background-color: rgb(25, 154, 197);
+     background-color: rgb(7, 13, 31);
      padding: 40px;
      box-sizing: border-box;
      border-radius: 6px;
+}
+.description{
+     width: 400px;
+     font-size: larger;
+     font-weight: 600;
+     font-style: italic;
+     color: brown;
+     background-color: rgb(24, 26, 170);
+     padding: 40px;
+     box-sizing: border-box;
+     border-radius: 6px;
+
+}
+
+.links{
+     color: rgb(214, 255, 80);
 }
 

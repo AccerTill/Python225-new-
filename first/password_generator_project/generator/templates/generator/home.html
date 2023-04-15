@@ -3,20 +3,25 @@
 <!DOCTYPE html>
 
 
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
+
 <body>
 <!--<h1> Home page...</h1>-->
 <!--{{password}}-->
 <div class='container'>
-    <h2> Generator of paroles</h2>
+
+    <p>HOME</p>
+    <h2> Generator of paroles...</h2>
     <form action = "{% url 'password' %}">
-        <p><select name="length">
+
+        <p>
+            <select name="length">
             {% for i in lst %}
             {% if i == 12 %}
             <option value = "{{i}}" selected> {{i}} </option>
@@ -26,17 +31,23 @@
 <!--            <option value = "3">Значение 3</option>-->
             {% endif %}
             {% endfor %}
-        </select> Количество символов. </p>
+            </select> Количество символов.
+        </p>
+
+
         <p>
             <input type = "checkbox" name = "uppercase"> Верхний регистр <br>
             <input type = "checkbox" name = "numbers"> Цифры <br>
             <input type = "checkbox" name = "special"> Спецсимволы <br>
-
         </p>
+
+           <input type = "checkbox" name = "qqq"> qqq <br>
+            <input type = "checkbox" name = "www"> www <br>
+            <input type = "checkbox" name = "eee"> eee <br>
+
         <input type="submit" value = "Сгенерировать пароль">
-    </form>
 
 
-</div>
+ </div>
 </body>
 </html>

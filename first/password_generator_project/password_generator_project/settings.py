@@ -29,7 +29,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+
+
+# Application definition - ПРИЛОЖЕНИЯ (регистрация)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,9 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'generator.apps.GeneratorConfig',
+    'generator.apps.GeneratorConfig', # - ПРИЛОЖЕНИЕ GENERATOR !
 ]
-# ---- НАШЕ ПРИЛОЖЕНИЕ GENERATOR выше на две строчки
+
+
+
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -117,15 +124,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
+
+
+# ---------------- Тут указаны пути к файлу стилей css
+
 STATIC_URL = 'static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'generator/static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'generator/static')]
 
 # BASE_DIR определен вверху и добавляем папку static
+
+
+# python manage.py collectstatic
+
 
 
 # Default primary key field type
